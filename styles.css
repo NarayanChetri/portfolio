@@ -5,6 +5,9 @@
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
     color: white;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+   
 }
 html
 {
@@ -14,7 +17,7 @@ html
 body 
 {
     min-height: 100vh;
-    background: white;
+    background: #1e1e1e;
 
 }
 /*****************************************************
@@ -26,7 +29,7 @@ nav
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background: #0d1117;
+    background: #1e1e1e;
 
 }
 nav span 
@@ -89,7 +92,7 @@ nav ul li a:active
 
 .sidebar 
 {
- background: rgba(255, 255, 255, 0.11);
+ background: #0d1117;
     display: none;
 flex-direction: column;
 justify-content: flex-start;
@@ -162,7 +165,7 @@ outline: none;
 .div1
 {
     height: 85vh;
-    background: linear-gradient(180deg,#0d1117,#0d1117);
+    background:#1e1e1e;
     width: 100%;
     display: flex;
 }
@@ -176,7 +179,7 @@ outline: none;
 .div2
 {
     height: 75vh;
-    background: linear-gradient(180deg,#0d1117,#000000);
+    background: #1e1e1e;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -188,21 +191,13 @@ outline: none;
 .div3
 {
     height: 80vh;
-    background: #0d1117;
+    background: #1e1e1e;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
    align-items: center;
 }
-
-footer 
-{
-    height: 15vh;
-    background: rgba(0, 0, 0, 0.712);
-    width: 100%;
-}
-
 
 .left
 {
@@ -229,7 +224,7 @@ transition: 0.2s ease-in
 }
 .links img:hover
 {
-    transform: scale(1.1);
+    transform: scale(1.2);
    filter: drop-shadow(0px 0px 5px white);
 }
 
@@ -460,8 +455,10 @@ to
     animation: appearLeft 5s linear;
     animation-timeline: view();
     animation-range: entry 0% cover 40%;
-
+filter: drop-shadow(0px 0px 8px white);
 }
+
+
 @keyframes appearLeft
 {
 
@@ -471,11 +468,13 @@ from
 transform: translateX(-60%);
 
 
+
 }
 to
 {
     opacity: 1;
     transform: translateX(0%);
+
   
 }
     
@@ -501,6 +500,7 @@ to
 animation: appear 5s linear;
 animation-timeline: view();
 animation-range: entry 0% cover 10%;
+transition: 0.25s ease;
 }
 
 .projectTxt
@@ -550,15 +550,40 @@ animation-range: entry 0% cover 10%;
     align-items: center;
     flex-direction: column;
     padding: 10px;
+    transition: 0.2s ease-in;
 }
 .project-box img
 {
     height: 80px;
 }
+.project-box:hover
+{
+    transform: scale(1.1);
 
+}
 
+footer
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+justify-content: space-around;
+    font-family: monospace;
+    font-weight: 200;
+    background: #1e1e1e;
+    border-top: 2px solid rgba(255, 255, 255, 0.452);
+    padding-top: 10px;
+}
+footer h2,h3
+{
+    padding: 10px;
+}
+#cv:hover
+{
+    transform: scale(1.07);
+    box-shadow: 0px 0px 10px orange;
 
-
+}
 
 /*****************************************************
  ******************   Media Queries   ********************
@@ -724,6 +749,7 @@ display: none;
 #pic3
 {
     height: 200px;
+    margin-top: 8%;
 }
 table {
     width: 100%; 
@@ -748,8 +774,10 @@ th, td {
 {
     font-size: 15px;
     padding: 10px;
-    margin-top: 0;
+   margin-right:0%;
+
 }
+
 .projectTxt
 {
     font-size: 30px;
@@ -781,9 +809,18 @@ margin-top: 5%;
     height: max-content;
 }
 
-
-
-
+footer
+{
+    margin-top: 1%;
+}
+footer h3,h4 
+{
+    font-size: 15px;
+}
+marquee
+{
+    margin-top: 1%;
+}
 
 
 }
