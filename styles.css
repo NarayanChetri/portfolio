@@ -918,8 +918,15 @@ table
 }
 .div2 h2 
 {
-    font-size: 30px;
+    font-size: 28px;
     margin-top: 5%;
+    
+}
+#proj-count 
+{
+    display: inline-block;
+    width: 80px;
+    margin: 0;
 }
 #pic3
 {
@@ -947,4 +954,19 @@ nav ul li
     margin: 0;
     padding: 0;
 }
+.projectTxt,.aboutMe
+{
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+}
+
+
+
+
+
+
+
+
+
  }
