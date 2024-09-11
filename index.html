@@ -1,140 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=-1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=-1.0" />
     <title>Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-</head>
-<body>
-<nav>
-<span>Welcome</span>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- 
+*****************************************************
+ ******************   Nav Bar ********************
+ *****************************************************
+-->
 
-<ul>
-    <li class="hideOnMobile" ><a href="#">Home</a></li>
-    <li class="hideOnMobile" ><a href="#">About</a></li>
-    <li class="hideOnMobile" ><a href="#">Projects</a></li>
-    <li class="hideOnMobile" ><a href="#">Contact</a></li>
-    <li><a href="#" ><img src="menu.svg" alt="" id="hamburger" onclick="showSidebar()"></a></li>
+    <nav>
+      <span>Welcome</span>
 
-</ul>
+      <ul>
+        <li class="hideOnMobile"><a href="#">Home</a></li>
+        <li class="hideOnMobile"><a href="#">About</a></li>
+        <li class="hideOnMobile"><a href="#">Projects</a></li>
+        <li class="hideOnMobile"><a href="#">Contact</a></li>
+        <li>
+          <a href="#"
+            ><img src="menu.svg" alt="" id="hamburger" onclick="showSidebar()"
+          /></a>
+        </li>
+      </ul>
 
+      <ul class="sidebar">
+        <li id="ham2">
+          <a href="#"
+            ><img src="menu-close.svg" id="hamburger2" onclick="hideSidebar()"
+          /></a>
+        </li>
+        <img src="man.png" height="100px" id="person" />
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+        <li id="call"><a href="#">Request Call 📞</a></li>
+      </ul>
+    </nav>
 
-<ul class="sidebar">
-    
-    <li id="ham2"><a href="#"><img src="menu-close.svg" id="hamburger2" onclick="hideSidebar()"></a></li>
-    <img src="man.png" height="100px" id="person">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Projects</a></li>
-    <li><a href="#">Contact</a></li>
-    <li id="call"><a href="#">Request Call 📞</a></li>
+    <!-- 
+*****************************************************
+ ******************   Div1  ********************
+ *****************************************************
+-->
 
-</ul>
+    <div class="div1">
+      <div class="left">
+        <div class="text">
+          <h5>Hello !</h5>
+          <h1>I'M NARAYAN</h1>
+          <h3>
+            A FREELANCER <span class="autoType"> WEB DEVELOPER &nbsp;</span>
+          </h3>
+          <h4>
+            Developer, student, and part-time problem solver. I spend my days
+            coding, my nights learning, and all my free time asking ``How to
+            solve this issue ?``
+          </h4>
+        </div>
+        <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
+        <div class="links2">
+          <a href="#">Hire Me</a>
+          <a href="#" id="projects">Projects</a>
+        </div>
 
-</nav>
-
-<div class="div1">
-
-<div class="left">
-<div class="text"> 
-<h5>Hello !</h5>
-<h1>I'M NARAYAN </h1>
-<h3>A FREELANCER <span class="autoType">  WEB DEVELOPER &nbsp;</span></h3>
-<h4>Developer, student, and part-time problem solver. I spend my days coding, my nights learning, and all my free time asking ``How to solve this issue ?``</h4>
-</div>
-<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-
-
-<div class="links2">
-    <a href="#">Hire Me</a>
-    <a href="#" id="projects">Projects</a>
-</div>
-
-
-<div class="links">
-    <a href="#"><img src="github2.png" alt=""></a>
-    <a href="#"><img src="linkedin2.png" alt=""></a>
-    <a href="#"><img src="fb2.png" alt=""></a>
-    <a href="#"><img src="insta2.png" alt=""></a>
-</div>
-
-</div>
-<div class="right"> 
-    <div class="photo">
-
+        <div class="links">
+          <a href="#"><img src="github2.png" alt="" /></a>
+          <a href="#"><img src="linkedin2.png" alt="" /></a>
+          <a href="#"><img src="fb2.png" alt="" /></a>
+          <a href="#"><img src="insta2.png" alt="" /></a>
+        </div>
+      </div>
+      <div class="right">
+        <div class="photo"></div>
+      </div>
     </div>
 
-</div>
-</div>
+    <!-- 
+*****************************************************
+ ******************   Div2  ********************
+ *****************************************************
+-->
 
+    <div class="div2">
+      <h2>Total projects completed =><span id="proj-count">21</span></h2>
+      <h3 class="aboutMe">About Me</h3>
+      <div class="tableAndPic">
+        <img src="pic3.png" id="pic3" />
 
+        <div class="tableAndCv">
+          <table>
+            <tr>
+              <th>Name :</th>
+              <td>Narayan chetri</td>
+            </tr>
+            <tr>
+              <th>D-O-B :</th>
+              <td>08-August-2003</td>
+            </tr>
+            <tr>
+              <th>Address:</th>
+              <td>Umrangso,Assam</td>
+            </tr>
+            <tr>
+              <th>Zip :</th>
+              <td>788931</td>
+            </tr>
+            <tr>
+              <th>Email :</th>
+              <td>Narayandhungana333@gmail.com</td>
+            </tr>
+            <tr>
+              <th>Phone :</th>
+              <td>6000769289</td>
+            </tr>
+          </table>
+          <a href="#" id="cv">Download CV</a>
+        </div>
+      </div>
+    </div>
 
-<div class="div2">
-    <h2>Total projects completed =><span id="proj-count">21</span></h2>
-    <h3 class="aboutMe">About Me</h3>
-    <div class="tableAndPic">
+    <!-- 
+*****************************************************
+ ******************   Div3  ********************
+ *****************************************************
+-->
 
-        
-<img src="pic3.png" id="pic3">
+    <div class="div3">
+      <h3 class="projectTxt">Projects</h3>
 
+      <div class="projectsContainer">
+        <div class="project-box"></div>
+        <div class="project-box"></div>
+        <div class="project-box"></div>
+        <div class="project-box"></div>
+      </div>
+    </div>
 
- <div class="tableAndCv">
-
-
-<table>
- 
-<tr> <th>Name :</th><td>Narayan chetri</td></tr>
-<tr> <th>D-O-B :</th><td>08-August-2003</td></tr>
-<tr> <th>Address:</th><td>Umrangso,Assam</td></tr>
-<tr> <th>Zip :</th><td>788931</td></tr>
-<tr> <th>Email :</th><td>Narayandhungana333@gmail.com</td></tr>
-<tr> <th>Phone :</th><td>6000769289</td></tr>
-
-
-
-
-</table>
-<a href="#" id="cv">Download CV</a>
-</div>
-</div>
-
-
-</div>
-<div class="div3">
-    <h3 class="projectTxt">Projects</h3>
-
-<div class="projectsContainer">
-<div class="project-box"></div>
-<div class="project-box"></div>
-<div class="project-box"></div>
-<div class="project-box"></div>
-
-
-
-</div>
-
-
-
-
-
-
-
-</div>
-
-
-<footer> 
-    
-</footer>
-
-
-
-
+    <footer></footer>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
