@@ -225,7 +225,14 @@ footer
 {
 margin-left: 15px;
 height: 40px;
+transition: 0.2s ease-in
 }
+.links img:hover
+{
+    transform: scale(1.1);
+   filter: drop-shadow(0px 0px 5px white);
+}
+
 .links2
 {
     display: flex;
@@ -248,6 +255,12 @@ height: 40px;
     color: black;
     font-weight: 500;
     font-size: 12px;
+    transition: 0.2s ease-in;
+}
+.links2 a:hover
+{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 8px white;
 }
 .right
 {
@@ -529,8 +542,19 @@ animation-range: entry 0% cover 10%;
   min-height: 300px;
     background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
     border-radius: 20px;
+    animation: appear 5s linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
 }
-
+.project-box img
+{
+    height: 80px;
+}
 
 
 
