@@ -338,7 +338,9 @@ box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px
     
     font-size: 40px;
     color: #02fda7;
-    width: 40%;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3%;
 
 }
 
@@ -399,7 +401,7 @@ margin-top: 1%;
 from
 {
     opacity: 0;
-transform: translateX(+70%);
+transform: translateX(+10%);
 
 
 }
@@ -494,7 +496,6 @@ to
     background: orange;
     padding: 15px;
     border-radius: 10px;
-    margin-right:40%;
     color: black;
     font-weight: bolder;
 animation: appear 5s linear;
@@ -586,7 +587,7 @@ footer h2,h3
 }
 
 /*****************************************************
- ******************   Media Queries   ********************
+ ******************   Media Queries for smartphone  ********************
  *****************************************************/
 
 
@@ -803,7 +804,9 @@ margin-top: 5%;
   border: none;
     background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
     border-radius: 20px;
+    margin-bottom: 3%;
 }
+
 .div3
 {
     height: max-content;
@@ -821,6 +824,127 @@ marquee
 {
     margin-top: 1%;
 }
-
+.project-box:hover
+{
+    transform: scale(1);
 
 }
+
+}
+
+/*****************************************************
+ ******************   Media Queries   ********************
+ *****************************************************/
+
+ @media only screen and (min-width: 740px) and (max-width: 1199px)
+ {
+
+.project-box
+{
+    width: 35%;
+    height: auto;
+    margin: 20px;
+}
+table 
+{
+    animation: appear 5s linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+}
+.tableAndPic
+{
+    flex-direction: column;
+    margin-top: 20px;
+}
+.div1
+{
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+.links2
+{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    margin-top: 3%;
+    padding: 0;
+}
+.links
+{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 5%;
+}
+.links img 
+{
+    margin-left: 30px;
+}
+.photo
+{
+    width: 300px;
+    height: 300px;
+}
+.text 
+{
+    text-align: center
+}
+.text h1 
+{
+    font-size: 50px;
+}
+.text h3 
+{
+    padding: 0;
+    width: 500px;
+}
+.text h4 
+{
+    display: none;
+}
+
+.div2 
+{
+   overflow: hidden;
+    padding: 0;
+    height: auto;
+
+}
+.div2 h2 
+{
+    font-size: 30px;
+    margin-top: 5%;
+}
+#pic3
+{
+    width: 300px;
+    height: 300px;
+
+}
+
+.left,.right
+{
+    height: max-content;
+    margin-top: 5%;
+}
+.div3 
+{
+    height: auto;
+}
+
+#cv
+{
+    margin: 0;
+}
+nav ul li
+{
+    margin: 0;
+    padding: 0;
+}
+ }
