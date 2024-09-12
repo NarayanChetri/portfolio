@@ -90,53 +90,46 @@ nav ul li a:active
  *****************************************************/
 
 
-.sidebar 
-{
- background: #0d1117;
-    display: none;
-flex-direction: column;
-justify-content: flex-start;
-align-items: center;
+ .sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     position: fixed;
-    right: 0;
+    right: -70%; /* Initially hidden */
     height: 100vh;
     width: 70%;
     z-index: 999;
-    backdrop-filter: blur(10px);
-animation: slideLeft 0.7s ease ;
-  
-
+    backdrop-filter: blur(20px);
+    transition: right 0.5s ease; /* Adjusted transition */
+    background: rgba(0, 0, 0, 0.452);
 }
-@keyframes slideLeft
- 
-{
-    from
-    {
-        transform: translateX(70%);
-    }
-   to
-    {
-        transform: translateX(0%);
-    }
 
-
+.sidebar.slideleft {
+    right: 0; /* Sidebar slides in from the right */
 }
+
 .sidebar li 
 {
-    background: rgba(67, 230, 255, 0.667);
-    font-size: 20px;
-    border-radius: 10px;
-   width: 70%;
+
+    font-size: 25px;
+   width: 100%;
    padding: 5px;
     height: fit-content;
     margin-top: 10%;
     -webkit-tap-highlight-color: transparent;
 
+
 }
-.sidebar li:nth-child(7)
+.sidebar li:nth-child(6)
 {
     background: orange;
 margin-top: 60%;
+width: fit-content;
+padding: 10px;
+border-radius: 10px;
+font-size: 18px;
+
 }
 .sidebar li a 
 {
@@ -144,12 +137,19 @@ margin-top: 60%;
     outline: none;
   
 }
+#person 
+{
+    border-radius: 50%;
+    border: 2px dotted;
+}
 #hamburger2 
 {
     height: 40px;
 
     padding-right: 200px;
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    outline: none;
+    border: none;
 
 }
 #ham2 

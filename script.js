@@ -1,15 +1,28 @@
-let hamburger = document.querySelector('#hamburger');
+/*****************************************************
+ ******************  Nav bar ********************
+ *****************************************************/
+
+
+ let hamburger = document.querySelector('#hamburger');
 let hamburger2 = document.querySelector('#hamburger2');
 let sidebar = document.querySelector(".sidebar");
-function showSidebar ()
-{
-    sidebar.style.display="flex";
+function showSidebar() {
+    if (sidebar.classList.contains('slideleft')) {
+        sidebar.classList.remove('slideleft'); // Slide out
+    } else {
+        sidebar.classList.add('slideleft'); // Slide in
+    }
 }
 function hideSidebar ()
 {
-    sidebar.style.display="none";
-
+    if (sidebar.classList.contains('slideleft')) {
+        sidebar.classList.remove('slideleft'); // Slide out
+    } else {
+        sidebar.classList.add('slideleft'); // Slide in
+    }
 }
+
+
 
 /*****************************************************
  ******************  Project count timer  ********************
@@ -53,3 +66,4 @@ backSpeed :130,
 loop :true
 
 });
+

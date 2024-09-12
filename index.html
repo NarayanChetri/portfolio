@@ -18,15 +18,17 @@
  ******************   Nav Bar ********************
  *****************************************************
 -->
+<section id="Home">
+
 
     <nav>
       <span>Welcome</span>
 
       <ul>
-        <li class="hideOnMobile"><a href="#">Home</a></li>
-        <li class="hideOnMobile"><a href="#">About</a></li>
-        <li class="hideOnMobile"><a href="#">Projects</a></li>
-        <li class="hideOnMobile"><a href="#">Contact</a></li>
+        <li class="hideOnMobile"><a href="#Home">Home</a></li>
+        <li class="hideOnMobile"><a href="#About">About</a></li>
+        <li class="hideOnMobile"><a href="#Projects">Projects</a></li>
+        <li class="hideOnMobile"><a href="#contact">Contact</a></li>
         <li>
           <a href="#"
             ><img src="menu.svg" alt="" id="hamburger" onclick="showSidebar()"
@@ -37,15 +39,15 @@
       <ul class="sidebar">
         <li id="ham2">
           <a href="#"
-            ><img src="menu-close.svg" id="hamburger2" onclick="hideSidebar()"
+            ><img src="menu-close.svg" id="hamburger2" onclick="showSidebar()"
           /></a>
         </li>
-        <img src="man.png" height="100px" id="person" />
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
-        <li id="call"><a href="#">Request Call 📞</a></li>
+        <img src="man.png" height="180px" id="person" />
+        <li><a href="#Home" onclick="hideSidebar()">Home</a></li>
+        <li><a href="#About" onclick="hideSidebar()">About Me</a></li>
+        <li><a href="#Projects" onclick="hideSidebar()">Projects</a></li>
+        <li><a href="#contact" onclick="hideSidebar()">Contact Me</a></li>
+        
       </ul>
     </nav>
 
@@ -77,8 +79,8 @@
         </div>
 
         <div class="links">
-          <a href="#"><img src="github.png"  /></a>
-          <a href="#"><img src="linkedin.png" /></a>
+          <a href="https://github.com/NarayanChetri"><img src="github.png"  /></a>
+          <a href="www.linkedin.com/in/narayanchetri"><img src="linkedin.png" /></a>
           <a href="https://www.facebook.com/NaaruChetri"><img src="fb.png" /></a>
           <a href="https://www.instagram.com/naaruchetri?igsh=YzAwZjE1ZTI0Zg=="><img src="insta.png"/></a>
         </div>
@@ -88,11 +90,14 @@
       </div>
     </div>
 
+
+  </section>
     <!-- 
 *****************************************************
  ******************   Div2  ********************
  *****************************************************
 -->
+ <section id="About">
 
     <div class="div2">
       <h2>Total projects completed =><span id="proj-count">21</span></h2>
@@ -127,34 +132,37 @@
               <td>6000769289</td>
             </tr>
           </table>
-          <a href="#" id="cv">Download CV</a>
+          <a href="My Resume.pdf" id="cv" download="My CV">Download CV</a>
         </div>
       </div>
     </div>
 
+  </section>
     <!-- 
 *****************************************************
  ******************   Div3  ********************
  *****************************************************
 -->
-
+ <section id="Projects">
     <div class="div3">
       <h3 class="projectTxt">Projects</h3>
 
       <div class="projectsContainer">
-        <div class="project-box"><h2>Phising Websites</h2><a href="#"><img src="phising.png" alt=""></a></div>
-        <div class="project-box"><h2>Url Shortner</h2><a href="#"><img src="url.png" alt=""></a></div>
-        <div class="project-box"><h2>Password Generator</h2><a href="#"><img src="password.png" alt=""></a></div>
-        <div class="project-box"><h2>All</h2><a href="#"><img src="all.png" alt=""></a></div>
+        <div class="project-box"><h2>Phising Websites</h2><a href="https://github.com/NarayanChetri/projects.git"><img src="phising.png" alt=""></a></div>
+        <div class="project-box"><h2>Url Shortner</h2><a href="https://github.com/NarayanChetri/projects.git"><img src="url.png" alt=""></a></div>
+        <div class="project-box"><h2>Password Generator</h2><a href="https://github.com/NarayanChetri/projects.git"><img src="password.png" alt=""></a></div>
+        <div class="project-box"><h2>All</h2><a href="https://github.com/NarayanChetri"><img src="all.png" alt=""></a></div>
       </div>
     </div>
 
+
+  </section>
         <!-- 
 *****************************************************
  ******************   Footer  ********************
  *****************************************************
 -->
-
+<section id="contact">
 <marquee behavior="" direction="">This website is under development. stay connected for upcoming changes 🤠</marquee>
 
     <footer>
@@ -163,6 +171,13 @@
 <h3>Email => fokalndubro@gmail.com</h3>
 
     </footer>
+  </section>
+
+        <!-- 
+*****************************************************
+ ******************  Scripts  ********************
+ *****************************************************
+-->
 
     <script src="script.js"></script>
   </body>
