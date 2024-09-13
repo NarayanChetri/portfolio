@@ -379,8 +379,9 @@ box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px
 #proj-count 
 {
     color: red;
+    display: inline-block;
+    width: 200px;
 
-  margin-left: 7%;
  
 }
 table
