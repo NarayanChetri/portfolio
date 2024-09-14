@@ -20,6 +20,20 @@ body
     background: #1e1e1e;
 
 }
+
+#preloader 
+{
+    height: 100vh;
+    background: black url(loader.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    background-size: 400px;
+}
+
+
+
+
 /*****************************************************
  ******************   Nav Bar  ********************
  *****************************************************/
