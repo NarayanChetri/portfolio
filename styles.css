@@ -23,6 +23,7 @@ body
 
 #preloader 
 {
+    position: fixed;
     height: 100vh;
     background: black url(loader.gif);
     background-repeat: no-repeat;
