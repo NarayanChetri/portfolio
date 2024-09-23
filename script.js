@@ -60,7 +60,7 @@ function repeatCounter()
  *****************************************************/
 
  var typed = new Typed(".autoType",{
-    strings : ["Programmer ","Designer ","Youtuber "],
+    strings : ["Programmer ","web developer","Designer ","Youtuber "],
 typeSpeed :100,
 backSpeed :130,
 loop :true

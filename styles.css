@@ -4,7 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
-    color: white;
+    color: light-dark(#021526,#FAF7F0);
     outline: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
    
@@ -17,10 +17,13 @@ html
 body 
 {
     min-height: 100vh;
-    background: #1e1e1e;
+    background: light-dark(#FAF7F0,#021526);
 
 }
-
+:root 
+{
+    color-scheme: light dark;
+}
 #preloader 
 {
     position: fixed;
@@ -45,7 +48,7 @@ nav
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background: #1e1e1e;
+    background: light-dark(#FAF7F0,#021526);
 
 }
 nav span 
@@ -118,7 +121,7 @@ nav ul li a:active
     z-index: 999;
     backdrop-filter: blur(20px);
     transition: right 0.5s ease; /* Adjusted transition */
-    background: rgba(0, 0, 0, 0.452);
+    background: light-dark(#FAF7F0,#021526);
 }
 
 .sidebar.slideleft {
@@ -181,7 +184,7 @@ outline: none;
 .div1
 {
     height: 85vh;
-    background:#1e1e1e;
+    background: light-dark(#FAF7F0,#021526);
     width: 100%;
     display: flex;
 }
@@ -195,7 +198,7 @@ outline: none;
 .div2
 {
     height: 75vh;
-    background: #1e1e1e;
+    background: light-dark(#FAF7F0,#021526);
     width: 100%;
     display: flex;
     justify-content: center;
@@ -207,7 +210,7 @@ outline: none;
 .div3
 {
     height: 80svh;
-    background: #1e1e1e;
+    background: light-dark(#FAF7F0,#021526);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -337,6 +340,8 @@ box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px
 {
     font-size: 25px;
     color: white;
+    display: inline-block;
+    text-align: left;
 }
 .text h5 
 {
@@ -410,6 +415,7 @@ margin-top: 1%;
   animation: appearRight 5s linear;
   animation-timeline: view();
   animation-range: entry 0% cover 40%;
+
 
 }
 @keyframes appearRight
@@ -505,6 +511,7 @@ to
     display: flex;
     justify-content: space-around;
     align-items: center;
+    
 }
 #cv
 {
@@ -588,8 +595,10 @@ footer
 justify-content: space-around;
     font-family: monospace;
     font-weight: 200;
-    background: #1e1e1e;
-    border-top: 2px solid rgba(255, 255, 255, 0.452);
+    background: light-dark(#FAF7F0,#021526);
+    background-position: center;
+    background-size: 80% 100%;
+    background-repeat: no-repeat;
     padding-top: 10px;
 }
 footer h2,h3
