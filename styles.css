@@ -836,7 +836,7 @@ th, td {
   min-height: 200px;
 margin-top: 5%;
   border: none;
-    background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
+  background:light-dark(#02fda7,rgba(110, 110, 153, 0.397));
     border-radius: 20px;
     margin-bottom: 3%;
 }
