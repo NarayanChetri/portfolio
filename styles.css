@@ -7,7 +7,7 @@
     color: light-dark(#021526,#FAF7F0);
     outline: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    transition: 0.2s ease-in;
+    transition: 0.2s ease;
    
 }
 html
