@@ -4,10 +4,10 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
-    color: light-dark(#021526,#FAF7F0);
+    color: light-dark(#0d1117,#FAF7F0);
     outline: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    transition: 0.3s ease;
+    transition: 0.2s ease;
    
 }
 html
@@ -18,7 +18,7 @@ html
 body 
 {
     min-height: 100vh;
-    background: light-dark(#FAF7F0,#021526);
+    background: light-dark(#FAF7F0,#0d1117);
  
 
 }
@@ -51,7 +51,7 @@ nav
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background: light-dark(#FAF7F0,#021526);
+    background: light-dark(#FAF7F0,#0d1117);
 
 }
 nav span 
@@ -187,7 +187,7 @@ outline: none;
 .div1
 {
     height: 85vh;
-    background: light-dark(#FAF7F0,#021526);
+    background: light-dark(#FAF7F0,#0d1117);
     width: 100%;
     display: flex;
 }
@@ -201,7 +201,7 @@ outline: none;
 .div2
 {
     height: 75vh;
-    background: light-dark(#FAF7F0,#021526);
+    background: light-dark(#FAF7F0,#0d1117);
     width: 100%;
     display: flex;
     justify-content: center;
@@ -213,7 +213,7 @@ outline: none;
 .div3
 {
     height: 80svh;
-    background: light-dark(#FAF7F0,#021526);
+    background: light-dark(#FAF7F0,#0d1117);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -429,15 +429,10 @@ margin-top: 1%;
 from
 {
     opacity: 0;
-transform: translateX(+10%);
-
-
 }
 to
 {
     opacity: 1;
-    transform: translateX(0%);
-  
 }
     
 }
@@ -454,7 +449,7 @@ padding: 15px;
 
 .aboutMe 
 {
-    color: light-dark(red,orange)
+    color: light-dark(red,orange);
     font-size: 50px;
     margin-top: 2%;
     border-bottom: 2px dotted red;
@@ -603,7 +598,7 @@ footer
 justify-content: space-around;
     font-family: monospace;
     font-weight: 200;
-    background: light-dark(#FAF7F0,#021526);
+    background: light-dark(#FAF7F0,#0d1117);
     background-position: center;
     background-size: 80% 100%;
     background-repeat: no-repeat;
@@ -1022,5 +1017,5 @@ nav ul li
     {
     content: url("menu-close2.svg");
     }
-    
+ 
  }
