@@ -571,7 +571,7 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 
 {
   min-width: 300px;
   min-height: 300px;
-    background:#02fda7;
+    background:light-dark(#02fda7,rgba(110, 110, 153, 0.397));
     border-radius: 20px;
     animation: appear 5s linear;
     animation-timeline: view();
