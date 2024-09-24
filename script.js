@@ -67,3 +67,23 @@ loop :true
 
 });
 
+/*****************************************************
+ ******************  change-mode ********************
+ *****************************************************/
+
+ let mode = document.querySelector("#mode");
+ const root = document.documentElement;
+ function changeMode()
+ {
+    if(mode.src.includes("dark-mode.png"))
+ {
+    mode.src="light-mode.png";
+    root.style.colorScheme="light";
+ }
+ else 
+ {
+    mode.src="dark-mode.png";
+    root.style.colorScheme="dark";
+ }
+ 
+    }

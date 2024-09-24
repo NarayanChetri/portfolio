@@ -7,6 +7,7 @@
     color: light-dark(#021526,#FAF7F0);
     outline: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    transition: 0.2s ease-in;
    
 }
 html
@@ -18,7 +19,7 @@ body
 {
     min-height: 100vh;
     background: light-dark(#FAF7F0,#021526);
-    transition: 0.5s ease-in;
+ 
 
 }
 :root 
@@ -150,6 +151,7 @@ width: fit-content;
 padding: 10px;
 border-radius: 10px;
 font-size: 18px;
+box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 
 }
 .sidebar li a 
@@ -618,6 +620,13 @@ footer h2,h3
 
 }
 
+#mode 
+{
+    height: 25px;
+    cursor: pointer;
+}
+
+
 /*****************************************************
  ******************   Media Queries for smartphone  ********************
  *****************************************************/
@@ -995,11 +1004,23 @@ nav ul li
 }
 
 
+ }
+
+ 
+/*****************************************************
+ ******************   Media Queries for lightmode  ********************
+ *****************************************************/
 
 
-
-
-
-
-
+ @media (prefers-color-scheme: light)
+ {
+    #hamburger 
+    {
+    content: url("menu2.svg");
+    }
+    #hamburger2 
+    {
+    content: url("menu-close2.svg");
+    }
+    
  }
