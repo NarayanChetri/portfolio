@@ -75,14 +75,14 @@ loop :true
  const root = document.documentElement;
  function changeMode()
  {
-    if(mode.src.includes("dark-mode.png"))
+    if(mode.src.includes("/res/dark-mode.png"))
  {
-    mode.src="light-mode.png";
+    mode.src="/res/light-mode.png";
     root.style.colorScheme="light";
  }
  else 
  {
-    mode.src="dark-mode.png";
+    mode.src="/res/dark-mode.png";
     root.style.colorScheme="dark";
  }
  
