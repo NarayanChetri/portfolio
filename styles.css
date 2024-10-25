@@ -32,7 +32,7 @@ body
     position: fixed;
     z-index: 100;
     height: 100vh;
-    background: black url(/res/loader.gif);
+    background: black url(  loader.gif);
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;
@@ -296,7 +296,7 @@ transition: 0.2s ease-in
 
     height: 50vh;
     width: 50vh;
-   background-image: url("/res/pic1.png");
+   background-image: url("  pic1.png");
    background-size: contain;
    background-repeat: no-repeat;
    background-position: center;
@@ -309,24 +309,24 @@ box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px
 @keyframes changeImg {
     0%, 
     {
-        background-image: url('/res/pic1.png'); 
+        background-image: url('  pic1.png'); 
         box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px,inset 0px 0px 1px 12px #f9fae3;
     }
 
     40%
     {
-        background-image: url('/res/pic1.png'); 
+        background-image: url('  pic1.png'); 
         box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px,inset 0px 0px 1px 12px #f9fae3;
     }
     
     50%
     {
-        background-image: url('/res/pic2.png'); 
+        background-image: url('  pic2.png'); 
         box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px,inset 0px 0px 1px 12px #f9fae3;
     }
     90% 
     {
-        background-image: url('/res/pic2.png'); 
+        background-image: url('  pic2.png'); 
         box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px,inset 0px 0px 1px 12px #f9fae3;
     }
     100%, 
@@ -675,29 +675,29 @@ footer h2,h3
     @keyframes changeImg2 {
         0%, 
         {
-            background-image: url('/res/pic1.png'); 
+            background-image: url('  pic1.png'); 
             
         }
     
         40%
         {
-            background-image: url('/res/pic1.png'); 
+            background-image: url('  pic1.png'); 
           
         }
         
         50%
         {
-            background-image: url('/res/pic2.png'); 
+            background-image: url('  pic2.png'); 
            
         }
         90% 
         {
-            background-image: url('/res/pic2.png'); 
+            background-image: url('  pic2.png'); 
            
         }
         100%, 
         {
-            background-image: url('/res/pic1.png');
+            background-image: url('  pic1.png');
         }
     
     }
@@ -1011,11 +1011,11 @@ nav ul li
  {
     #hamburger 
     {
-    content: url("/res/menu2.svg");
+    content: url("  menu2.svg");
     }
     #hamburger2 
     {
-    content: url("/res/menu-close2.svg");
+    content: url("  menu-close2.svg");
     }
  
  }
