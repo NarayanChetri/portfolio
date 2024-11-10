@@ -315,7 +315,7 @@ box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px
 
     40%
     {
-        background-image: url('  pic1.png'); 
+        background-image: url('pic1.png'); 
         box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px,inset 0px 0px 1px 12px #f9fae3;
     }
     
