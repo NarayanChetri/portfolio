@@ -417,7 +417,7 @@ margin-top: 1%;
   max-width: min-content;
   animation: appearRight 5s linear;
   animation-timeline: view();
-  animation-range: entry 0% cover 40%;
+  animation-range: entry 0% cover 20%;
 
   
 
@@ -455,7 +455,7 @@ padding: 15px;
     border-bottom: 2px dotted red;
    animation: appear 5s linear;
    animation-timeline: view();
-   animation-range: entry 0% cover 30%;
+   animation-range: entry 0% cover 20%;
 }
 @keyframes appear
 {
@@ -479,7 +479,7 @@ to
     height: 400px;
     animation: appearLeft 5s linear;
     animation-timeline: view();
-    animation-range: entry 0% cover 40%;
+    animation-range: entry 0% cover 20%;
 filter: drop-shadow(0px 0px 8px white);
 
 }
@@ -538,7 +538,7 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 
     border-bottom: 2px dotted red;
    animation: appear 5s linear;
    animation-timeline: view();
-   animation-range: entry 0% cover 30%;
+   animation-range: entry 0% cover 20%;
    width: fit-content;
 }
 
@@ -795,7 +795,7 @@ table {
     margin: 0 auto; 
     animation: appear 5s linear;
     animation-timeline: view();
-    animation-range: entry 0% cover 30%;
+    animation-range: entry 0% cover 20%;
     width: fit-content;
 }
 
@@ -886,7 +886,7 @@ table
 {
     animation: appear 5s linear;
     animation-timeline: view();
-    animation-range: entry 0% cover 30%;
+    animation-range: entry 0% cover 20%;
 }
 .tableAndPic
 {
