@@ -937,7 +937,7 @@ th, td {
   min-height: 200px;
 margin-top: 5%;
   border: none;
-  background:light-dark(#02fda7,rgba(110, 110, 153, 0.397));
+  background:light-dark(#02fda7,rgba(110, 110, 153, 0.4));
     border-radius: 20px;
     margin-bottom: 3%;
 }
