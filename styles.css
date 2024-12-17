@@ -712,11 +712,6 @@ footer h2,h3
 
 }
 
-#mode 
-{
-    height: 25px;
-    cursor: pointer;
-}
 
 
 /*****************************************************
@@ -1100,20 +1095,5 @@ nav ul li
  }
 
  
-/*****************************************************
- ******************   Media Queries for lightmode  ********************
- *****************************************************/
 
 
- @media (prefers-color-scheme: light)
- {
-    #hamburger 
-    {
-    content: url("  menu2.svg");
-    }
-    #hamburger2 
-    {
-    content: url("  menu-close2.svg");
-    }
- 
- }
