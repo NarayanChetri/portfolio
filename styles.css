@@ -250,7 +250,7 @@ box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.788) , inset 5px 0px 10px rgba(255, 255
 .sidebar li:nth-child(6)
 {
     background: orange;
-margin-top: 50%;
+margin-top: 30%;
 width: fit-content;
 padding: 10px;
 border-radius: 10px;
@@ -281,10 +281,12 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 
 #ham2 
 {
     width: fit-content;
-    height: fit-content;
+    height: 30px;
 box-shadow: none;
 background: transparent;
 outline: none;
+border-bottom: 2px solid white;
+margin-bottom: 10px;
 }
 
 
