@@ -1024,8 +1024,34 @@ marquee
  @media only screen and (min-width: 740px) and (max-width: 1199px)
  {
 
+.preloader .imgbox
+{
+    width: 350px;
+    height: 350px;
+    left: 30%;
+    top: 8%;
 
 
+}
+.preloader #welcome
+{
+    margin-left: 40px;
+    margin-right: 200px;
+}
+.preloader .text 
+{
+    top: 45%;
+    left: 20%;
+}
+.preloader .text2 
+{
+    top: 64%;
+    left: 25%;
+}
+.preloader .text3
+{
+   left: 15%;
+}
 .project-box
 {
     width: 35%;
