@@ -4,7 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
-    color: light-dark(#0d1117,#FAF7F0);
+    color:var(--text-color);
     outline: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     transition: 0.2s ease;
@@ -459,7 +459,7 @@ box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px
 {
     
     font-size: 40px;
-    color: light-dark(rgba(0, 0, 0, 0.774),#02fda7);
+    color: var(--text-color);
     width: 100%;
     text-align: center;
     margin-bottom: 3%;
