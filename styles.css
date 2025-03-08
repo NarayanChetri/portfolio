@@ -338,6 +338,12 @@ margin-bottom: 10px;
     
  
 }
+.icons
+{
+    max-width: 90%;
+    padding: 10px;
+    
+}
 #description
 {
     color: rgb(31, 196, 58);
@@ -742,61 +748,7 @@ footer h2,h3
 
 @media(max-width:740px)
 {
-    .preloader
-    {
-        
-        position: fixed;
-        display: flex;
-        margin: 0;
-        padding: 0;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-.preloader .navbar li 
-{
-    display: none;
-}
-.preloader #welcome
-{
-    width: 130px;
-    margin: 0;
-    position: absolute;
-    left: 5%;
-
-}
-.preloader .imgbox
-{
-
-position: fixed;
-max-width: 200px;
-max-height: 200px;
-margin: 0;
-padding: 0;
-display: block;
-left: 25%;
-top: 10% ;
-
-
-
-}
-.preloader .text 
-{
-    margin: 0;
-    padding: 0;
-  top: 45%;
-  left: 15%;
-}
-.preloader .text2
-{
-top: 55%;
-left: 15%;
-}
-.preloader .text3
-{
-    bottom: 10%;
-    left: 15%;
-}
+   
   #hamburger 
     {
         display: flex;
@@ -805,14 +757,7 @@ left: 15%;
     {
         display: none;
     }
-    .div1 
-    {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-width: 100%;
-        height: 100svh;
-    }
+
     nav 
     {
         min-width: 100vw;
@@ -825,21 +770,11 @@ left: 15%;
     }
     nav ul li a 
     {
+       
         margin: 0;
         padding: 0;
     }
-    .photo
-    {
-        max-height: 200px;
-        min-width: 300px;
-        margin-right: 0;
-       margin-top: 0%;
-        padding: 0;
-        border: none;
-        animation: none;
-        box-shadow: none;
-        animation: changeImg2 8s ease-in infinite;
-    }
+
     @keyframes changeImg2 {
         0%, 
         {
@@ -885,6 +820,7 @@ left: 15%;
         min-width: max-content;
         font-size: 15px;
         padding: 0px 10px;
+        
     }
     .links
     {
@@ -911,23 +847,65 @@ left: 15%;
 }
 .div1 h4 
 {
-display: none;
+max-width: 90%;
+margin: 0;
+text-align: left;
 
+}
+.div1 
+{
+    position: relative;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    height: 130svh;
+   
+}
+#br1,#br2
+{
+    display: none;
+}
+.text
+{
+    margin: 0;
+}
+.photo
+{
+display: inline-block;
+    max-width: 90%;
+    max-height: 90%;
+    margin: 0;
+
+    
+    padding: 0;
+    border: none;
+    animation: none;
+    box-shadow: none;
+    animation: changeImg2 8s ease-in infinite;
 }
 .right 
 {
-    margin: 0;
+   position: absolute;
+   top: 2%;
     max-width: 100vw;
-    min-width: 100vw;
-    max-height:250px;
-    margin-bottom: 10%;
+    min-width: 100vw; 
+    max-height:200px;
     
 }
 .left 
 {
-    width: fit-content;
-    height: fit-content;
-    margin-bottom: 30%;
+    justify-content: start;
+    position: absolute;
+    top: 25%;
+  width: 100%;
+ 
+   
+}
+
+#description
+{
+display: none;
 }
 .div2 h2 
 {
