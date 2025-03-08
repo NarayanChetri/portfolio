@@ -288,7 +288,110 @@ outline: none;
 border-bottom: 2px solid white;
 margin-bottom: 10px;
 }
+.card
+{
+    position: relative;
+    height: 500px;
+    width: 500px;
+    border-radius: 50%;
+    background: #0d1117;
+   
+    padding: 10px;
+cursor: pointer;
+transition: 0.5s ease-in;
 
+}
+.info
+{
+    position: absolute;
+    top: 30%;
+    display:flex ;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.5s ease-in ;
+}
+.name
+{
+    font-weight: bolder;
+    color: #f76c92;
+margin: 5px;
+font-size: 25px;
+}
+.title
+{
+    font-weight: bold;
+    margin: 5px;
+    font-size: 20px;
+    color: #f1e05a;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+.divider
+{
+    width: 40%;
+    height: 1.4px;
+    background: rgba(255, 255, 255, 0.733);
+    margin-bottom: 10px;
+}
+.bio
+{
+    color: white;
+    font-weight: 500;
+}
+.contactButton
+{
+    position: absolute;
+    bottom: 5%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.contact button 
+{
+    background: orange;
+    outline: none;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.card .photo
+{
+
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0.1%;
+    right: 0.2%;
+  background-position: center;
+   transition: 0.5s ease-in;
+
+
+
+}
+.card:hover .photo
+{
+    transform: scale(0.4,0.4) translateY(-600px);
+}
+.card:hover
+{
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.582);
+    background: #282a36;
+    
+}
+.card:hover .info
+{
+    opacity: 1;
+    transform: translateY(30px);
+}
 
 .div1
 {
@@ -310,7 +413,7 @@ margin-bottom: 10px;
    background:var(--bg-color);
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     flex-direction: column;
     align-items: center;
 
@@ -354,60 +457,9 @@ margin-bottom: 10px;
     height: min-content;
     text-align: center;
 }
-.links 
-{
-    width: max-content;
-    margin-top: 3%;
 
-}
-.links img
-{
-margin-left: 15px;
-height: 40px;
-transition: 0.2s ease-in
-}
-.links img:hover
-{
-    transform: scale(1.2);
-   filter: drop-shadow(0px 0px 5px white);
-}
 
-.links2
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
-}
 
-#stats1
-{
-    margin-top: 20px;
-    padding: 3px;
-}
-
-.links2 a 
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0px 20px;
-    background: orange;
-    border-radius: 20px;
-    text-decoration: none;
-    height: 40px;
-    margin: 0px 20px;
-    color: black;
-    font-weight: 500;
-    font-size: 12px;
-    transition: 0.2s ease-in;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-}
-.links2 a:hover
-{
-    transform: scale(1.1);
-    
-}
 .right
 {
    
@@ -422,13 +474,6 @@ transition: 0.2s ease-in
 }
 .photo 
 {
-
-    height: 500px;
-    width: 500px;
-   background-image: url("  pic1.png");
-   background-size: contain;
-   background-repeat: no-repeat;
-   background-position: center;
 animation: changeImg 8s ease-in infinite;
 border-radius: 50%;
 box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px,inset 0px 0px 1px 12px #f9fae3;
@@ -532,44 +577,6 @@ box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px
 
  
 }
-table
-{
-
-margin-top: 1%;
-    border-radius: 10px;
-  overflow: auto;
-  max-width: min-content;
-  animation: appearRight 5s linear;
-  animation-timeline: view();
-  animation-range: entry 0% cover 10%;
-
-  
-
-
-}
-@keyframes appearRight
-{
-
-from
-{
-    opacity: 0;
-}
-to
-{
-    opacity: 1;
-}
-    
-}
-th,td
-{
-
-padding: 20px;
-text-align: left;
-font-size: 20px;
-padding: 15px;
-
-
-}
 
 .aboutMe 
 {
@@ -579,7 +586,7 @@ padding: 15px;
     border-bottom: 2px dotted red;
    animation: appear 5s linear;
    animation-timeline: view();
-   animation-range: entry 0% cover 10%;
+   animation-range: entry 0% cover 15%;
 }
 @keyframes appear
 {
@@ -598,146 +605,6 @@ to
 }
     
 }
-#pic3 
-{
-    height: 400px;
-    animation: appearLeft 5s linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 10%;
-filter: drop-shadow(0px 0px 8px white);
-
-}
-
-
-@keyframes appearLeft
-{
-
-from
-{
-    opacity: 0;
-transform: translateX(-60%);
-
-
-
-}
-to
-{
-    opacity: 1;
-    transform: translateX(0%);
-
-  
-}
-    
-}
-.tableAndPic 
-{
-    width: 100%;
- height: min-content;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    
-}
-#cv
-{
-    text-decoration: none;
-    font-size: 15px;
-    background: orange;
-    padding: 15px;
-    border-radius: 10px;
-    color: black;
-    font-weight: bolder;
-animation: appear 5s linear;
-animation-timeline: view();
-animation-range: entry 0% cover 10%;
-transition: 0.25s ease;
-box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-}
-
-.projectTxt
-{
-    color: orange;
-    font-size: 50px;
-    margin-top: 2%;
-    border-bottom: 2px dotted red;
-   animation: appear 5s linear;
-   animation-timeline: view();
-   animation-range: entry 0% cover 10%;
-   width: fit-content;
-}
-
-.tableAndCv
-{
-    display:flex ;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 30px;
-    
-}
-
-.projectsContainer
-{
-   
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.project-box
-{
-  min-width: 300px;
-  min-height: 300px;
-    background:light-dark(#02fda7,rgba(110, 110, 153, 0.397));
-    border-radius: 20px;
-    animation: appear 5s linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 10px;
-    transition: 0.2s ease-in;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-}
-.project-box img
-{
-    height: 80px;
-}
-.project-box:hover
-{
-    transform: scale(1.1);
-
-}
-
-footer
-{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-justify-content: space-around;
-    font-family: monospace;
-    font-weight: 200;
-   background:var(--bg-color);
-    background-position: center;
-    background-size: 80% 100%;
-    background-repeat: no-repeat;
-    padding-top: 10px;
-}
-footer h2,h3
-{
-    padding: 10px;
-}
-#cv:hover
-{
-    transform: scale(1.07);
-    box-shadow: 0px 0px 10px orange;
-
-}
 
 
 
@@ -748,7 +615,55 @@ footer h2,h3
 
 @media(max-width:740px)
 {
-   
+
+ .card .photo
+{
+
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0.1%;
+    right: 0.2%;
+  background-position: center;
+   transition: 0.5s ease-in;
+
+
+
+}
+.connectWithMe
+{
+    padding-left: 10px;
+    padding-top: 10px;
+}
+    .card:hover .photo
+    {
+        transform: none;
+    }
+    .card:hover
+    {
+        border-radius: 20px;
+        border: 2px dotted white;
+        background: #282a36;
+        
+    }
+    .card:hover .info
+    {
+        opacity: 1;
+        transform: none;
+    }
+    .info,.bio,.title,.contact
+    {
+       display: none;
+    }
+.card 
+{
+    width: 60%;
+    pointer-events: none;
+}
+ 
   #hamburger 
     {
         display: flex;
@@ -859,7 +774,8 @@ text-align: left;
     justify-content: center;
     align-items: center;
     min-width: 100%;
-    height: 130svh;
+    height: 100svh;
+
    
 }
 #br1,#br2
@@ -870,20 +786,7 @@ text-align: left;
 {
     margin: 0;
 }
-.photo
-{
-display: inline-block;
-    max-width: 90%;
-    max-height: 90%;
-    margin: 0;
 
-    
-    padding: 0;
-    border: none;
-    animation: none;
-    box-shadow: none;
-    animation: changeImg2 8s ease-in infinite;
-}
 .right 
 {
    position: absolute;
@@ -897,7 +800,7 @@ display: inline-block;
 {
     justify-content: start;
     position: absolute;
-    top: 25%;
+    top: 35%;
   width: 100%;
  
    
@@ -941,7 +844,7 @@ table {
     margin: 0 auto; 
     animation: appear 5s linear;
     animation-timeline: view();
-    animation-range: entry 0% cover 10%;
+    animation-range: entry 0% cover 15%;
     width: fit-content;
 }
 
@@ -1060,7 +963,7 @@ table
 {
     animation: appear 5s linear;
     animation-timeline: view();
-    animation-range: entry 0% cover 10%;
+    animation-range: entry 0% cover 15%;
 }
 .tableAndPic
 {
