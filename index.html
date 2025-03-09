@@ -5,183 +5,247 @@
     <meta name="viewport" content="width=device-width, initial-scale=-1.0" />
     <title>Portfolio</title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href=" icon.png">
+    <link rel="icon" href=" icon.png" />
+
+    <!-- Google fonts-->
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&family=Doto:wght@100..900&family=Handjet:wght@100..900&family=Patrick+Hand&family=Delicious+Handrawn&display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Handjet:wght@100..900&family=Patrick+Hand&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
-
   </head>
   <body>
-  
-
-
-
     <!-- 
-*****************************************************
- ******************   Nav Bar ********************
+******************************************************
+ ******************   Nav Bar ************************
  *****************************************************
 -->
-<section id="Home">
+    <section id="Home">
+      <nav>
+        <span>Hello world !</span>
 
+        <ul>
+          <li class="hideOnMobile"><a href="#Home">Home</a></li>
+          <li class="hideOnMobile"><a href="#About">About</a></li>
+          <li class="hideOnMobile"><a href="#Projects">Projects</a></li>
+          <li class="hideOnMobile"><a href="contact.html">Contact</a></li>
 
-    <nav>
-      <span>Hello world !</span>
+          <li>
+            <a href="#"
+              ><img
+                src=" menu.svg"
+                alt=""
+                id="hamburger"
+                onclick="showSidebar()"
+            /></a>
+          </li>
+        </ul>
 
-      <ul>
-        <li class="hideOnMobile"><a href="#Home">Home</a></li>
-        <li class="hideOnMobile"><a href="#About">About</a></li>
-        <li class="hideOnMobile"><a href="#Projects">Projects</a></li>
-        <li class="hideOnMobile"><a href="contact.html">Contact</a></li>
-      
-        <li>
-          <a href="#"
-            ><img src=" menu.svg" alt="" id="hamburger" onclick="showSidebar()"
-          /></a>
-        </li>
-      </ul>
+        <ul class="sidebar">
+          <li id="ham2">
+            <a href="#"
+              ><img
+                src=" menu-close.svg"
+                id="hamburger2"
+                onclick="showSidebar()"
+            /></a>
+          </li>
+          <img src=" man.png" height="180px" id="person" />
+          <li><a href="#Home" onclick="hideSidebar()">Home</a></li>
+          <li><a href="#About" onclick="hideSidebar()">About Me</a></li>
+          <li><a href="#Projects" onclick="hideSidebar()">Projects</a></li>
+          <li><a href="contact.html" onclick="hideSidebar()">Contact</a></li>
+        </ul>
+      </nav>
 
-      <ul class="sidebar">
-        <li id="ham2">
-          <a href="#"
-            ><img src=" menu-close.svg" id="hamburger2" onclick="showSidebar()"
-          /></a>
-        </li>
-        <img src=" man.png" height="180px" id="person" />
-        <li><a href="#Home" onclick="hideSidebar()">Home</a></li>
-        <li><a href="#About" onclick="hideSidebar()">About Me</a></li>
-        <li><a href="#Projects" onclick="hideSidebar()">Projects</a></li>
-        <li><a href="contact.html" onclick="hideSidebar()">Contact</a></li>
-        
-      </ul>
-    </nav>
-
-    <!-- 
+      <!-- 
 *****************************************************
- ******************   Div1  ********************
- *****************************************************
+ ******************   Div1  *************************
+ ****************************************************
 -->
 
-    <div class="div1">
-      <div class="left">
-        <div class="text">
-          <h5>Hello !</h5>
-          <h1>I'M NARAYAN</h1>
-          <h3>
-            A FREELANCER <span class="autoType"> &nbsp;</span>
-          </h3>
-          <br>
-          <h4 id="description">
-            Developer, student, and part-time problem solver. I spend my days
-            coding, my nights learning, and all my free time asking ``How to
-            solve this issue ?``
-          </h4>
+      <div class="div1">
+        <div class="left">
+          <div class="text">
+            <h5>Hello !</h5>
+            <h1>I'M NARAYAN</h1>
+            <h3>A FREELANCER <span class="autoType"> &nbsp;</span></h3>
+            <br />
+            <h4 id="description">
+              Developer, student, and part-time problem solver. I spend my days
+              coding, my nights learning, and all my free time asking ``How to
+              solve this issue ?``
+            </h4>
+          </div>
+          <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+          <br />
+          <h4>Languages & Tools</h4>
+          <br id="br1" />
+          <div class="icons" align="left">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+              height="30"
+              alt="java logo"
+              style="pointer-events: none"
+            />
+            <img width="12" />
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+              height="30"
+              alt="html5 logo"
+              style="pointer-events: none"
+            />
+            <img width="12" />
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+              height="30"
+              alt="css3 logo"
+              style="pointer-events: none"
+            />
+            <img width="12" />
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+              height="30"
+              alt="javascript logo"
+              style="pointer-events: none"
+            />
+            <img width="12" />
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+              height="30"
+              alt="mysql logo"
+              style="pointer-events: none"
+            />
+            <img width="12" />
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+              height="30"
+              alt="git logo"
+              style="pointer-events: none"
+            />
+            <img width="12" />
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+              height="30"
+              alt="react logo"
+              style="pointer-events: none"
+            />
+            <img width="12" />
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"
+              height="30"
+              alt="c logo"
+              style="pointer-events: none"
+            />
+            <img width="12" />
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+              height="30"
+              alt="github logo"
+              style="pointer-events: none"
+            />
+            <img width="12" />
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
+              height="30"
+              alt="linux logo"
+              style="pointer-events: none"
+            />
+            <img width="12" />
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+              height="30"
+              alt="firebase logo"
+              style="pointer-events: none"
+            />
+          </div>
+
+          <br />
+          <h4>Connect with Me</h4>
+          <br id="br2" />
+          <div class="connectWithMe" align="left">
+            <a href="https://www.youtube.com/@naarudecode" target="_blank">
+              <img
+                src="https://img.shields.io/static/v1?message=Youtube&logo=youtube&label=&color=FF0000&logoColor=white&labelColor=&style=for-the-badge"
+                height="35"
+                alt="youtube logo"
+              />
+            </a>
+            <a href="https://www.instagram.com/naaruchetri/" target="_blank">
+              <img
+                src="https://img.shields.io/static/v1?message=Instagram&logo=instagram&label=&color=E4405F&logoColor=white&labelColor=&style=for-the-badge"
+                height="35"
+                alt="instagram logo"
+              />
+            </a>
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=narayandhungana333@gmail.com"
+              target="_blank"
+            >
+              <img
+                src="https://img.shields.io/static/v1?message=Gmail&logo=gmail&label=&color=D14836&logoColor=white&labelColor=&style=for-the-badge"
+                height="35"
+                alt="gmail logo"
+              />
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/narayan-chetri/"
+              target="_blank"
+            >
+              <img
+                src="https://img.shields.io/static/v1?message=LinkedIn&logo=linkedin&label=&color=0077B5&logoColor=white&labelColor=&style=for-the-badge"
+                height="35"
+                alt="linkedin logo"
+              />
+            </a>
+          </div>
         </div>
-        <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-
-<br>
-        <h4> Languages & Tools </h4>
-        <br id="br1">
-<div class="icons" align="left">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" height="30" alt="java logo" style="pointer-events: none;" />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="30" alt="html5 logo" style="pointer-events: none;" />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height="30" alt="css3 logo" style="pointer-events: none;" />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="30" alt="javascript logo" style="pointer-events: none;" />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" height="30" alt="mysql logo" style="pointer-events: none;" />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" height="30" alt="git logo" style="pointer-events: none;" />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="30" alt="react logo" style="pointer-events: none;" />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" height="30" alt="c logo" style="pointer-events: none;" />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" height="30" alt="github logo" style="pointer-events: none;" />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" height="30" alt="linux logo" style="pointer-events: none;" />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" height="30" alt="firebase logo" style="pointer-events: none;" />
-
-</div>
-
-<br>
-<h4> Connect with Me </h4>
-<br id="br2">
-<div class="connectWithMe" align="left">
-  
-  <a href="https://www.youtube.com/@naarudecode" target="_blank">
-    <img src="https://img.shields.io/static/v1?message=Youtube&logo=youtube&label=&color=FF0000&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="youtube logo" />
-  </a>
-  <a href="https://www.instagram.com/naaruchetri/" target="_blank">
-    <img src="https://img.shields.io/static/v1?message=Instagram&logo=instagram&label=&color=E4405F&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="instagram logo" />
-  </a>
-  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=narayandhungana333@gmail.com" target="_blank">
-    <img src="https://img.shields.io/static/v1?message=Gmail&logo=gmail&label=&color=D14836&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="gmail logo" />
-</a>
-
-
-  <a href="https://www.linkedin.com/in/narayan-chetri/" target="_blank">
-    <img src="https://img.shields.io/static/v1?message=LinkedIn&logo=linkedin&label=&color=0077B5&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="linkedin logo" />
-  </a>
-
-
-</div>
-
-
-      </div>
-      <div class="right">
-        <div class="card">
-          <div class="info">
+        <div class="right">
+          <div class="card">
+            <div class="info">
               <div class="name">Narayan Chetri</div>
               <div class="title">Developer , Debugger and Cache Blamer</div>
               <div class="divider"></div>
-              <div class="bio">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, quaerat fugit! Distinctio iusto quod illo, consequatur, quis consequuntur repudiandae, officia aut quas facilis optio. Officia vero eveniet corrupti quae doloremque!</div>
-      
+              <div class="bio">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere,
+                quaerat fugit! Distinctio iusto quod illo, consequatur, quis
+                consequuntur repudiandae, officia aut quas facilis optio.
+                Officia vero eveniet corrupti quae doloremque!
+              </div>
+            </div>
+            <div class="contactButton">
+              <button>Download CV</button>
+            </div>
+            <div class="photo"></div>
           </div>
-          <div class="contactButton">
-              <button >Download CV</button>
-          </div>
-          <div class="photo"></div>
+        </div>
       </div>
-      
-
-
-      </div>
-    
-    </div>
-
-
-  </section>
+    </section>
     <!-- 
 *****************************************************
- ******************   Div2  ********************
- *****************************************************
+ ******************   Div2  *************************
+ ****************************************************
 -->
- <section id="About">
-  <h2 id="counterTxt">Total projects completed =><span id="proj-count">21</span></h2>
-    <div class="div2">
-      <h3 class="aboutMe">About Me</h3>
-  
+    <section id="About">
+      <h2 id="counterTxt">
+        Total projects completed =><span id="proj-count">21</span>
+      </h2>
+      <div class="div2">
+        <h3 class="aboutMe">About Me</h3>
+      </div>
+    </section>
 
-    </div>
-
-  </section>
-
-        <!-- 
+    <!--
 *****************************************************
- ******************  Scripts  ********************
- *****************************************************
+******************  Scripts  ************************
+*****************************************************
 -->
 
-    <script src="script.js"></script>
-
-
+                  <script src="script.js"></script>
+                  
   </body>
 </html>

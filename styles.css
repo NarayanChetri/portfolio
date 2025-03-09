@@ -28,31 +28,6 @@ body
     --bg-color: #0d1117;
     --text-color: #FAF7F0;
 }
-.preloader 
-{
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    z-index: 100;
-    height: 100vh;
-    width: 100%;
-    overflow: hidden;
-    background: rgb(0, 0, 0);
-
-}
-
-@keyframes skeleton {
-    0% {
-        background-position: -200% 0;
-    }
-    100% {
-        background-position: 200% 0;
-    }
-}
-
-
 
 /*****************************************************
  ******************   Nav Bar  ********************
@@ -124,7 +99,8 @@ nav ul li a:active
  *****************************************************/
 
 
- .sidebar {
+ .sidebar 
+{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -139,7 +115,8 @@ nav ul li a:active
 box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.788) , inset 5px 0px 10px rgba(255, 255, 255, 0.192) ;
 }
 
-.sidebar.slideleft {
+.sidebar.slideleft 
+{
     right: 0; /* Sidebar slides in from the right */
 }
 
@@ -368,17 +345,6 @@ bottom: 100%;
     flex-direction: column;
     align-items: center;
 
-}
-
-.div3
-{
-    height: 80svh;
-   background:var(--bg-color);
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-   align-items: center;
 }
 
 .left
