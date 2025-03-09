@@ -97,37 +97,7 @@ nav ul li a:active
 /*****************************************************
  ******************  Side Bar   ********************
  *****************************************************/
-#detail1
-{
-
-  width: 100%;
-  text-align: left;
-  padding: 20px 0px 5px 20px;
-  transition: 0.5s ease;
-  transition: max-height 0.3s ease-in-out;
-}
-#detail1 summary
-{
-font-weight: bold;
-transition: 0.5s ease;
-transition: max-height 0.3s ease-in-out;
-}
-#detail2
-{
-
-    width: 100%;
-    text-align: left;
-    padding: 10px 0px 5px 20px;
-    transition: 0.5s ease;
-    transition: max-height 0.3s ease-in-out;
-}
-.detail2 summary
-{
-    font-weight: bold;
-    transition: 0.5s ease;
-    transition: max-height 0.3s ease-in-out;
-}
-
+ 
  .sidebar 
 {
     display: flex;
@@ -590,7 +560,7 @@ to
 }
 .connectWithMe
 {
-    padding-left: 10px;
+    padding-left: 20px;
     padding-top: 10px;
 }
     .card:hover .photo
