@@ -117,6 +117,7 @@ box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.788) , inset 5px 0px 10px rgba(255, 255
 .sidebar.slideleft 
 {
     right: 0; /* Sidebar slides in from the right */
+
 }
 
 .sidebar li 
@@ -155,11 +156,14 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 
 #hamburger2 
 {
     height: 40px;
-
-    padding-right: 200px;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     outline: none;
     border: none;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    border-radius: 50%;
+    border: 2px solid wheat;
 
 }
 #ham2 
@@ -169,7 +173,6 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 
 box-shadow: none;
 background: transparent;
 outline: none;
-border-bottom: 2px solid white;
 margin-bottom: 10px;
 }
 .card
