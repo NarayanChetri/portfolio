@@ -40,3 +40,16 @@ loop :true
 
 });
 
+////////////////////////////////////////
+
+document.addEventListener("DOMContentLoaded", () => {
+    const elements = document.querySelectorAll(".fade-in");
+  
+    elements.forEach((el, index) => {
+      setTimeout(() => {
+        el.style.animationDelay = `${index * 200}ms`;
+        el.classList.add("popIn");
+      }, index * 200);
+    });
+  });
+  
