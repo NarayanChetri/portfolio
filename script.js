@@ -1,3 +1,8 @@
+// lazy load images ⬇️
+
+document.querySelectorAll("img").forEach(img => img.setAttribute("loading", "lazy"));
+
+
 /*****************************************************
  ******************  Nav bar ********************
  *****************************************************/
@@ -22,38 +27,6 @@ function hideSidebar ()
     }
 }
 
-
-
-/*****************************************************
- ******************  Project count timer  ********************
- *****************************************************/
-let projCount =document.querySelector("#proj-count");
-let countTotal=parseInt(projCount.innerText);
-let count = 0;
-function counter()
-{
-    if(countTotal>=count)
-    {
-        projCount.innerText=count;
-        count++;
-    }
-    else
-    {
-        clearInterval(projCountDelay);
-        repeatCounter();
-    }
-    
-}
-let projCountDelay = setInterval(counter,100);
-
-function repeatCounter()
-{
-    setTimeout(()=>{
-
-        count=0;
-        projCountDelay = setInterval(counter,100);
-    },2000)
-}
 
 /*****************************************************
  ******************  type animation ********************
