@@ -70,6 +70,7 @@ nav span
     cursor:default ;
     margin-left: 9%;
     margin-top: 20px;
+    width: max-content;
 }
 nav ul 
 {
@@ -235,6 +236,18 @@ transition: 0.5s ease-in;
     transition: 0.5s ease-in;
     animation: cloud 5s linear infinite;
   scale: 1;
+}
+.icons2
+{
+    transition: 0.2s ease;
+    padding-left: 5px;
+    
+}
+.icons2:hover
+{
+    scale: 1.1;
+    transform: translateY(-10px);
+
 }
 @keyframes cloud 
 {
