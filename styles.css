@@ -258,6 +258,21 @@ transition: 0.5s ease-in;
     transition-delay: 0.5s;
     transition: 0.6s ease-in ;
     transform: translateY(10px) ;
+    width: 100%;
+}
+.info h5
+{
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.info h5 a 
+{
+    color: aqua;
+}
+.cardText
+{
+    padding: 5px;
+    color: orange;
 }
 
 .card:hover .info
@@ -284,7 +299,7 @@ font-size: 25px;
 }
 .divider
 {
-    width: 80%;
+    width: 70%;
     height: 1.4px;
     border-bottom: 1px dotted white;
     margin-bottom: 10px;
@@ -293,6 +308,8 @@ font-size: 25px;
 {
     color: white;
     font-weight: 500;
+    width: 100%;
+    background: aqa;
 }
 .contactButton
 {

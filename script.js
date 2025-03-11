@@ -33,8 +33,8 @@ function hideSidebar ()
  *****************************************************/
 
  var typed = new Typed(".autoType",{
-    strings : ["Programmer ","web developer","Designer ","Youtuber "],
-typeSpeed :100,
+    strings : ["Programmer ","Software Developer","Youtuber "],
+typeSpeed :80,
 backSpeed :130,
 loop :true
 
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     elements.forEach((el, index) => {
       setTimeout(() => {
         el.classList.add("popIn");
-      }, index * 500); // Delay each element by 500ms
+      }, index * 10); // Delay each element by 500ms
     });
   });
   
