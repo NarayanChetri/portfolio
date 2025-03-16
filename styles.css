@@ -235,7 +235,7 @@ transition: 0.5s ease-in;
     left: 70%;
     transition: 0.5s ease-in;
     animation: cloud 5s linear infinite;
-  scale: 1;
+  scale: 0.6;
 }
 .icons2
 {
@@ -398,9 +398,12 @@ font-size: 25px;
    opacity: 0;
 left: 90%;
 bottom: 100%;
-scale: 0.5;
+scale: 0;
 }
-
+#leetcodeStats
+{
+    padding: 20px;
+}
 #download1
 {
     width: 100%;
@@ -424,14 +427,32 @@ scale: 0.5;
     text-decoration: none;
     
 }
+.icons1
+{
+   cursor: default;
 
+}
+.icons1:hover
+{
+   transform: scale(1.1)
+}
 .div1
 {
     height:85svh;
    background:var(--bg-color);
     width: 100%;
     display: flex;
+
 }
+/* .div2 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: max-content;
+    background: orange;
+} */
 .div1 h4 
 {
     width: 500px;
