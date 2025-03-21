@@ -52,7 +52,16 @@ body
 /*****************************************************
  ******************   Nav Bar  ********************
  *****************************************************/
-
+ .cursor {
+    width: 0px;
+    height: 0px;
+    background-color: cyan;
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0 0 250px 100px rgba(0, 255, 255, 0.301), 0 0 20px cyan;
+    pointer-events: none;
+    transition: transform 0s linear; 
+}
 nav 
 {
     display: flex;
