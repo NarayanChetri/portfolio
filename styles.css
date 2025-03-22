@@ -1004,3 +1004,13 @@ nav ul li
         --text-color: #333;
     }
 }
+
+ /*****************************************************
+ ******************   Media Queries For no cursor effect on tabl;et and smarphone ********************
+ *****************************************************/
+
+@media (hover: none) {
+    .cursor {
+        display: none !important;
+    }
+}
