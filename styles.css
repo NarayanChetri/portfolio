@@ -48,7 +48,10 @@ body
     --bg-color: #0d1117;
     --text-color: #FAF7F0;
 }
-
+.icons2 
+{
+    width: 40px;
+}
 /*****************************************************
  ******************   Nav Bar  ********************
  *****************************************************/
@@ -246,17 +249,25 @@ transition: 0.5s ease-in;
     animation: cloud 5s linear infinite;
   scale: 0.6;
 }
-.icons2
-{
-    transition: 0.2s ease;
-    padding-left: 5px;
-    
+.youtube-link,
+.instagram-link,
+.gmail-link,
+.linkedin-link,
+.x-link {
+  text-decoration: none;
+  margin-left: 20px;
 }
-.icons2:hover
+#connectMe
 {
-    scale: 1.1;
-    transform: translateY(-10px);
-
+    padding-right: 50px;
+width: 550px;
+max-width: 90%;
+}
+.myStats
+{
+    height: 170px;
+    margin-left: 30px;
+    max-width: 90%;
 }
 @keyframes cloud 
 {
@@ -392,10 +403,12 @@ font-size: 25px;
     position: absolute;
     bottom: 0.1%;
     right: 0.2%;
-  background-position: center;
    transition: 0.5s ease-in;
-
-
+   animation: changeImg 8s ease-in infinite;
+   border-radius: 50%;
+   box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px,inset 0px 0px 1px 12px #f9fae3;
+   
+   
 
 }
 .card:hover .photo
@@ -412,6 +425,8 @@ scale: 0;
 #leetcodeStats
 {
     padding: 20px;
+    height: 200px;
+
 }
 #download1
 {
@@ -447,21 +462,21 @@ scale: 0;
 }
 .div1
 {
-    height:85svh;
+    height:75svh;
    background:var(--bg-color);
     width: 100%;
     display: flex;
 
 }
-/* .div2 
+.div2 
 {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: max-content;
-    background: orange;
-} */
+    flex-wrap: wrap;
+}
 .div1 h4 
 {
     width: 500px;
@@ -513,14 +528,7 @@ scale: 0;
 
  
 }
-.photo 
-{
-animation: changeImg 8s ease-in infinite;
-border-radius: 50%;
-box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px,inset 0px 0px 1px 12px #f9fae3;
 
-
-}
 
 @keyframes changeImg {
     0% {
@@ -643,7 +651,11 @@ to
     {
         display: none;
     }
-
+    #connectMe
+    {
+        width: 100%;
+        padding:10px 30px 0px 0px;
+    }
  .card .photo
 {
 
@@ -654,22 +666,31 @@ to
     background-repeat: no-repeat;
     position: absolute;
     right: 0.2%;
-  background-position: center;
+    background-position-y: 8px;
    transition: 0.5s ease-in;
 
 
 
+}
+.myStats
+{
+    margin-left: 0;
+    margin-top: 10px;
+}
+.div2 
+{
+    flex-direction: column;
+}
+.icons2 
+{
+    width: 35px;
 }
 .autoType 
 {
     font-size: 20px;
     min-width: 100%;
 }
-.connectWithMe
-{
-    padding-left: 20px;
-    padding-top: 10px;
-}
+
     .card:hover .photo
     {
         transform: none;
@@ -709,10 +730,7 @@ to
  {
     display: none;
  }
- .connectWithMe
- {
-    
- }
+
  .titleTxt1
  {
     display: none;
@@ -818,7 +836,7 @@ text-align: left;
     justify-content: center;
     align-items: center;
     min-width: 100%;
-    height: 90svh;
+ height: 95svh;
 
    
 }
@@ -831,7 +849,11 @@ text-align: left;
     display: block;
     margin-top: 40px;
 }
+.titleTxt2
+{
+    padding-left: 20px;
 
+}
 .right 
 {
    position: absolute;
@@ -845,9 +867,9 @@ text-align: left;
 {
     justify-content: start;
     position: absolute;
-    top: 45%;
+    top: 48%;
   width: 100%;
- height: 50vh;
+ height: max-content;
 
    
 }
@@ -901,7 +923,10 @@ display: none;
  @media only screen and (min-width: 740px) and (max-width: 1199px)
  {
 
-
+    .div2 
+    {
+        flex-direction: column;
+    }
 .div1
 {
     flex-direction: column-reverse;
