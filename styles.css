@@ -468,7 +468,7 @@ scale: 0;
 }
 .div1
 {
-    height:75svh;
+    height:95svh;
    background:var(--bg-color);
     width: 100%;
     display: flex;
@@ -480,8 +480,10 @@ scale: 0;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: max-content;
+    height:50svh;
     flex-wrap: wrap;
+    background:  #1a1a1a ;
+    
 }
 .div1 h4 
 {
@@ -1045,3 +1047,10 @@ nav ul li
         display: none !important;
     }
 }
+
+
+
+
+
+
+
