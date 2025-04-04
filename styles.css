@@ -154,6 +154,104 @@ box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.788) , inset 5px 0px 10px rgba(255, 255
 
 }
 
+.cssbuttons-io-button {
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 13px;
+    padding: 0.8em 1.5em 0.8em 1.2em;
+    color: white;
+    background: #ad5389;
+    background: linear-gradient(
+      0deg,
+      rgba(77, 54, 208, 1) 0%,
+      rgba(132, 116, 254, 1) 100%
+    );
+    border: none;
+    box-shadow: 0 0.7em 1.5em -0.5em #4d36d0be;
+    letter-spacing: 0.05em;
+    border-radius: 20em;
+  }
+  
+  .cssbuttons-io-button svg {
+    margin-right: 8px;
+  }
+  
+  .cssbuttons-io-button:hover {
+    box-shadow: 0 0.5em 1.5em -0.5em #4d36d0be;
+  }
+  
+  .cssbuttons-io-button:active {
+    box-shadow: 0 0.3em 1em -0.5em #4d36d0be;
+  }
+  .animated-button span
+  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.animated-button {
+    position: relative;
+    display: inline-block;
+    padding: 12px 24px;
+    border: none;
+    font-size: 16px;
+    background-color: inherit;
+    border-radius: 100px;
+    font-weight: 600;
+    color: #ffffff40;
+    box-shadow: 0 0 0 2px #ffffff20;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+  
+  .animated-button span:last-child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: #2196F3;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+  
+  .animated-button span:first-child {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .animated-button:hover {
+    box-shadow: 0 0 0 5px #2195f360;
+    color: #ffffff;
+  }
+  
+  .animated-button:active {
+    scale: 0.95;
+  }
+  
+  .animated-button:hover span:last-child {
+    width: 250px;
+    height: 250px;
+    opacity: 1;
+  }
+  
+  #download1 
+  {
+    padding: 10px;
+    border-radius: 5px;
+    background: orange;
+    border: none;
+    color: black;
+    font-weight: bold;
+    display: none;
+  }
+  
 .sidebar li 
 {
 
@@ -233,22 +331,6 @@ transition: 0.5s ease-in;
 
 }
 
-.card::before
-{
-    content: "";
-    width: 150px;
-    height: 150px;
-    background: url(cloud.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: absolute;
-    z-index: 111;
-   bottom: 80%;
-    left: 70%;
-    transition: 0.5s ease-in;
-    animation: cloud 5s linear infinite;
-  scale: 0.6;
-}
 .youtube-link,
 .instagram-link,
 .gmail-link,
@@ -276,21 +358,7 @@ max-width: 90%;
     margin-left: 30px;
     max-width: 90%;
 }
-@keyframes cloud 
-{
-    0%
-    {
-        transform: rotate(10deg);
-    }
-    50% 
-    {
-        transform: rotate(20deg);
-    }
-    100%
-    {
-        transform: rotate(10deg);
-    }
-}
+
 .info
 {
     position: absolute;
@@ -375,22 +443,7 @@ font-size: 25px;
    
 
 }
-.contactButton button 
-{
-    background: orange;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: black;
-    font-weight: bold;
-    outline: none;
-    border: none;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 15px;
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(30px) scale(0.9);
-    transition: 0.5s ease;
-}
+
 .card:hover .contactButton button
 {
     transition-delay: 0.6s;
@@ -434,29 +487,10 @@ scale: 0;
     height: 200px;
 
 }
-#download1
-{
-    width: 100%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-    display: none;
-}
-#download1 button
-{
-    height: 50px;
-    width: 150px;
-  text-align: center;
-  color: black;
-  font-weight: bold;
-    background: orange;
-    border-radius: 10px;
-    padding: 10px;
-    text-decoration: none;
-    
-}
+
+
+
+
 .icons1
 {
    cursor: default;
@@ -468,7 +502,7 @@ scale: 0;
 }
 .div1
 {
-    height:95svh;
+    height:80svh;
    background:var(--bg-color);
     width: 100%;
     display: flex;
@@ -480,9 +514,9 @@ scale: 0;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height:50svh;
+    height:15svh;
     flex-wrap: wrap;
-    background:  #1a1a1a ;
+    /* background:  #1a1a1a ; */
     
 }
 .div1 h4 
@@ -512,7 +546,7 @@ scale: 0;
 }
 #description
 {
-    color: rgb(31, 196, 58);
+    color: #837979;
     padding-top: 10px;
 }
 #counterTxt
@@ -860,6 +894,7 @@ text-align: left;
 .titleTxt2
 {
     padding-left: 20px;
+
 
 }
 .right 

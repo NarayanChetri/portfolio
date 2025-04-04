@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     elements.forEach((el, index) => {
       setTimeout(() => {
         el.classList.add("popIn");
-      }, index * 150); // Delay each element by 500ms
+      }, index * 80); // Delay each element by 500ms
     });
   });
   
