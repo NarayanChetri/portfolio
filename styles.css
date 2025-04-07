@@ -59,7 +59,7 @@ section
     background: white;
     padding: 20px;
     border-radius: 10px;
-    background: url(bg.jpg);
+    background: #ffffe4;
     background-size: cover;
     background-repeat: no-repeat;
 }
