@@ -18,13 +18,14 @@
   </head>
 <body>
     <div class="container">
-        <div class="left scroll-element">
-        <div class="profileCard">
+
+        <div class="left scroll-element" >
+        <div class="profileCard" >
          
        <img src="pic1.jpg" alt="">
   
        <h2>Narayan Chetri</h2>
-       <br><br><br><br><br>
+       <br><br><br>
        <h4>Aspiring software developer, learning to build creative and useful solutions.</h4>
        <div class="links">
         <a href="https://www.linkedin.com/in/narayan-chetri/"><img src="icons8-linkedin-50.png" class="socialIcons" id="linkedin"></a>
@@ -34,8 +35,17 @@
        </div>
         </div>
     </div>
-    <div class="right">
-       <section class="about scroll-element"> <h1 id="software">SOFTWARE</h1> <h1 id="engineer" class="fadeText">ENGINEER</h1>
+    <div class="right" id="home" >
+      <div class="myNav" >
+        <a href="#home" id="navHome"><img src="icons8-home-48.png" class="navIcons"></a>
+        <a href="#tools" id="navTools"><img src="icons8-tools-50.png" class="navIcons"></a>
+        <a href="#project" id="navProject"><img src="icons8-projects-48.png" class="navIcons"></a>
+        <a href="#contact" id="navContact"><img src="icons8-contact-48.png" class="navIcons"></a>
+        
+        
+        
+              </div>
+       <section class="about scroll-element" > <h1 id="software">SOFTWARE</h1> <h1 id="engineer" class="fadeText" >ENGINEER</h1>
     <h4>I’m a BCA student who loves making simple and user-friendly designs. I enjoy turning ideas into useful and good-looking products.</h4>
 
 <div class="numbers">
@@ -56,7 +66,7 @@
 
 </section>
 
-<section class="statsLanguages "> <h1 class="scroll-element">STATS </h1> <h1  class="fadeText scroll-element">& LANGUAGES</h1>
+<section class="statsLanguages " id="tools"> <h1 class="scroll-element">STATS </h1> <h1  class="fadeText scroll-element">& LANGUAGES</h1>
   <div class="statsgraph scroll-element">
     <img src="https://github-readme-stats.vercel.app/api?username=NarayanChetri&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=dracula&locale=en&hide_border=false" height="150" alt="stats graph" id="stats1" />
 
@@ -83,7 +93,7 @@
 
 </section>
 
-<section class="project "> <h1 class="scroll-element"> RECENT</h1> <h1  class="fadeText scroll-element">PROJECTS</h1>
+<section class="project " id="project"> <h1 class="scroll-element"> RECENT</h1> <h1  class="fadeText scroll-element">PROJECTS</h1>
  
 <div class="projbox scroll-element"></div>
 <div class="projbox scroll-element"></div>
@@ -104,7 +114,7 @@
       ease: "power2.out",
       scrollTrigger: {
         trigger: el,
-        start: "top 75%",
+        start: "top 80%",
         toggleActions: "play reverse play reverse"
       }
     });

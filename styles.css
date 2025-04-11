@@ -16,6 +16,87 @@ body
     background: #151312;
 
 }
+#navHome
+{
+  position: relative;
+  transition: 0.5s ease-in;
+}
+#navHome::before
+{
+  content: "Home";
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.048);
+  top: 5px;
+  padding: 3px;
+  border-radius: 10px;
+  transition: 0.5s ease-in;
+  right: 40px;
+  z-index: 111;
+
+}
+#navTools::before
+{
+  content: "Tools";
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.048);
+  top: 110px;
+  padding: 3px;
+  border-radius: 10px;
+  transition: 0.5s ease-in;
+  right: 45px;
+  z-index: 111;
+
+}
+#navProject::before
+{
+  content: "Projects";
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.048);
+  top: 180px;
+  padding: 3px;
+  border-radius: 10px;
+  transition: 0.5s ease-in;
+  right: 45px;
+  z-index: 111;
+
+}
+#navContact::before
+{
+  content: "Contact";
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.048);
+  top: 250px;
+  padding: 3px;
+  border-radius: 10px;
+  transition: 0.5s ease-in;
+  right: 45px;
+  z-index: 111;
+
+}
+#navHome:hover::before,#navTools:hover::before,#navProject:hover::before,#navContact:hover::before
+{
+  display: flex;
+}
 .container
 {
     position: relative;
@@ -43,6 +124,31 @@ body
     /* overflow-y: auto; */
 }
 
+.myNav
+{
+  position: relative;
+  position: fixed;
+  display: flex;
+  padding: 3px;
+  justify-content: space-evenly;
+  align-items: center;
+flex-direction: column;
+  top: 40%;
+  left: 97%;
+
+  height: 320px;
+  width: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  z-index: 111;
+  border: 0.5px solid rgba(255, 255, 255, 0.164);
+}
+.navIcons
+{
+  height: 25px;
+  margin-top: 5px;
+}
 section 
 {
     margin-top: 200px;
@@ -54,7 +160,7 @@ section
     flex-direction: column;
     position: sticky;
     top: 23%;
-    width: 350px; /* or fixed like 300px */
+    width: 320px; /* or fixed like 300px */
     left: 18%;
     height: 600px; /* or a fixed height if needed */
     background: white;
@@ -66,8 +172,11 @@ section
 }
 .profileCard h2 
 {
-    color: rgba(0, 0, 0, 0.774);
+    color: rgba(0, 0, 0, 0.9);
+    font-size: 36px;
+    
 }
+
 .about
 {
   margin-top: 340px;
@@ -202,8 +311,8 @@ section
 }
 .profileCard img 
 {
-    width: 200px;
-    height: 250px;
+    width: 240px;
+    height: 284px;
     border-radius: 30px;
 
 }
@@ -213,6 +322,7 @@ section
     color: rgba(0, 0, 0, 0.637);
     width: 100%;
     text-align: center;
+
 }
 #linkedin
 {
@@ -338,6 +448,10 @@ max-width: 359.2px;
   }
   @media(max-width:1000px)
   {
+    .myNav
+    {
+      display: none;
+    }
 .container 
 {
   flex-direction: column;
@@ -430,19 +544,19 @@ max-width: 359.2px;
     }
     .profileCard
     {
-   height: 450px;
+   height: 550px;
    max-width: 80%;
    left: 0;
     }
     .profileCard h4 
     {
       position: relative;
-      bottom: 27%;
+      bottom: 10%;
     }
     .links
     {
       position: relative;
-      bottom: 28%; 
+      bottom: 10%; 
     }
     .left
     {
