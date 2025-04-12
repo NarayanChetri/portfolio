@@ -16,87 +16,56 @@ body
     background: #151312;
 
 }
-#navHome
-{
-  position: relative;
-  transition: 0.5s ease-in;
+#navHome::before,
+#navTools::before,
+#navProject::before,
+#navContact::before {
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.048);
+  padding: 3px;
+  border-radius: 10px;
+  transition: 0.2s ease;
+  opacity: 0;
+  transform: translateX(20px);
+  pointer-events: none;
+  text-align: center;
+  padding-bottom: 5px;
 }
-#navHome::before
-{
+
+#navHome::before {
   content: "Home";
-  position: absolute;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  width: 70px;
-  height: 20px;
-  background: rgba(255, 255, 255, 0.048);
-  top: 5px;
-  padding: 3px;
-  border-radius: 10px;
-  transition: 0.5s ease-in;
-  right: 40px;
-  z-index: 111;
+  top: 40px;
+  right: 50px;
 
 }
-#navTools::before
-{
+#navTools::before {
   content: "Tools";
-  position: absolute;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  width: 70px;
-  height: 20px;
-  background: rgba(255, 255, 255, 0.048);
   top: 110px;
-  padding: 3px;
-  border-radius: 10px;
-  transition: 0.5s ease-in;
   right: 45px;
-  z-index: 111;
-
 }
-#navProject::before
-{
+#navProject::before {
   content: "Projects";
-  position: absolute;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  width: 70px;
-  height: 20px;
-  background: rgba(255, 255, 255, 0.048);
   top: 180px;
-  padding: 3px;
-  border-radius: 10px;
-  transition: 0.5s ease-in;
   right: 45px;
-  z-index: 111;
-
 }
-#navContact::before
-{
+#navContact::before {
   content: "Contact";
-  position: absolute;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  width: 70px;
-  height: 20px;
-  background: rgba(255, 255, 255, 0.048);
   top: 250px;
-  padding: 3px;
-  border-radius: 10px;
-  transition: 0.5s ease-in;
   right: 45px;
-  z-index: 111;
+}
 
+#navHome:hover::before,
+#navTools:hover::before,
+#navProject:hover::before,
+#navContact:hover::before {
+  opacity: 1;
+  transform: translateX(0);
 }
-#navHome:hover::before,#navTools:hover::before,#navProject:hover::before,#navContact:hover::before
-{
-  display: flex;
-}
+
 .container
 {
     position: relative;
@@ -419,7 +388,10 @@ top: 5px;
 
   @media(max-width:1443px)
   {
-    
+    .myNav
+    {
+      left: 96%;
+    }
     .statsLanguages h1,.about h1,.project h1
     {
           font-size: 80px;
@@ -544,14 +516,24 @@ max-width: 359.2px;
     }
     .profileCard
     {
-   height: 550px;
+   height: 48%;
    max-width: 80%;
    left: 0;
+    }
+    .profileCard img 
+    {
+      height: 50%;
+      width: auto;
     }
     .profileCard h4 
     {
       position: relative;
       bottom: 10%;
+      font-size: 17px;
+    }
+    .profileCard h2 
+    {
+      font-size: 25px;
     }
     .links
     {
