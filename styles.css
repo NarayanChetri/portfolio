@@ -145,45 +145,38 @@ section
     font-size: 36px;
     
 }
-/* Git Pushes Section */
 .git-push-container {
-  background: #161b22;
-  border: 1px solid #30363d;
   padding: 20px;
-  border-radius: 12px;
-  margin-top: 40px;
+  background-color: #0d1117;
   color: #c9d1d9;
-  font-family: 'Fira Code', monospace;
-}
-
-.git-push-container h2 {
-  color: #58a6ff;
-  margin-bottom: 20px;
+  border-radius: 12px;
+  margin: 40px 0;
+  box-shadow: 0 0 10px #58a6ff;
 }
 
 #git-commits {
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .commit {
-  background: #21262d;
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  transition: background 0.3s;
+  background: #161b22;
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 4px solid #58a6ff;
+  animation: fadeIn 0.5s ease forwards;
+  opacity: 0;
 }
 
-.commit:hover {
-  background: #30363d;
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
 .loading {
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
+  font-style: italic;
 }
 
 .about
