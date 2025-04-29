@@ -145,39 +145,6 @@ section
     font-size: 36px;
     
 }
-.git-push-container {
-  padding: 20px;
-  background-color: #0d1117;
-  color: #c9d1d9;
-  border-radius: 12px;
-  margin: 40px 0;
-  box-shadow: 0 0 10px #58a6ff;
-}
-
-#git-commits {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.commit {
-  background: #161b22;
-  padding: 15px;
-  border-radius: 10px;
-  border-left: 4px solid #58a6ff;
-  animation: fadeIn 0.5s ease forwards;
-  opacity: 0;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-.loading {
-  font-style: italic;
-}
 
 .about
 {
