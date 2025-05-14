@@ -1,41 +1,19 @@
-const username = "narayan-dev"; // ✅ Fix: Added missing quote
+    const username = "narayan-dev";
+    const proxyUrl = `https://leetcode-api-proxy.vercel.app/api/leetcode?username=${username}`;
 
-async function fetchLeetCodeStats(username) {
-  const query = {
-    query: `
-      {
-        matchedUser(username: "${username}") {
-          submitStats {
-            acSubmissionNum {
-              difficulty
-              count
-            }
-          }
-        }
+    async function fetchLeetCodeStats() {
+      try {
+        const response = await fetch(proxyUrl);
+        const data = await response.json();
+
+        const stats = data?.data?.matchedUser?.submitStats?.acSubmissionNum;
+        const totalSolved = stats?.find(item => item.difficulty === "All")?.count || 0;
+
+        document.getElementById("leetcode-count").textContent = `LeetCode Solved: ${totalSolved}`;
+      } catch (error) {
+        document.getElementById("leetcode-count").textContent = "Error fetching LeetCode stats.";
+        console.error("Fetch error:", error);
       }
-    ` // ✅ Fix: Closed template literal correctly
-  };
+    }
 
-  try {
-    const response = await fetch("https://leetcode.com/graphql", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(query),
-    });
-
-    const data = await response.json();
-
-    // ✅ Safely access data
-    const stats = data?.data?.matchedUser?.submitStats?.acSubmissionNum;
-    const totalSolved = stats?.find(item => item.difficulty === "All")?.count || 0;
-
-    document.getElementById("leetcode-count").textContent = `LeetCode Solved: ${totalSolved}`;
-  } catch (error) {
-    document.getElementById("leetcode-count").textContent = ":-(";
-    console.error("Error:", error);
-  }
-}
-
-fetchLeetCodeStats(username);
+    fetchLeetCodeStats();

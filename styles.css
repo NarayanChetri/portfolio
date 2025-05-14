@@ -269,6 +269,27 @@ section
   height: 250px;
   opacity: 1;
 }
+
+.projbox2
+{
+height: 90%;
+width: 230px;
+border-radius: 20px;
+margin-left: 10px;
+background: url(projectImg.png);
+background-size: cover;
+background-position: center;
+
+}
+.projbox .textbox h2 
+{
+  color: #fc4000;
+}
+.projbox .textbox
+{
+  max-width: 50%;
+  margin-left: 30px;
+}
 #download1 
 {
     margin-top: 50px;
@@ -371,6 +392,10 @@ top: 5px;
   }
 .project .projbox
   {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
     width: 70%;
     max-width: 90%;
     border-radius: 20px;
