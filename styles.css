@@ -16,6 +16,10 @@ body
     background: #151312;
 
 }
+#navTools
+{
+  scroll-margin-top: 1000px;
+}
 #navHome::before,
 #navTools::before,
 #navProject::before,
@@ -65,11 +69,17 @@ body
   opacity: 1;
   transform: translateX(0);
 }
-
+#contact
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
 .container
 {
     position: relative;
-    height: 330vh;
+    height: 390vh;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -88,11 +98,73 @@ border-bottom: 2px solid white;
 .right
 {
     padding-left: 50px; 
-    /* height: 300vh; */
+    /* height: 450vh; */
     width: 60%;
     /* overflow-y: auto; */
 }
+#contactform
+{
 
+display: flex;
+justify-content: center;
+align-items: start;
+flex-direction: column;
+height: 400px;
+width: 700px;
+max-width: 90%;
+}
+#message {
+  width: 700px;
+  height: 200px;
+  border-radius: 10px;
+  background: #353334;
+  border: none;
+  margin-top: 10px;
+  max-width: 90%;
+  /* ✅ Ensure content starts top-left */
+  padding: 10px;
+  text-align: left;
+
+  /* ✅ Text wraps to next line */
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  /* Optional enhancements */
+  color: white;
+  font-size: 16px;
+  resize: none; /* Prevent resizing if not needed */
+}
+
+#message::placeholder {
+  text-align: left;
+  color: #aaa;
+}
+
+.formRow
+{
+  display: block;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.formRow2
+{
+  margin-top: 30px;
+}
+#name,#email
+{
+  margin-top: 10px;
+  background: #353334;
+  border: none;
+  outline: none;
+  height: 40px;
+  width: 338px;
+  max-width: 80%;
+  border-radius: 10px;
+  padding: 10px;
+  color: #7a7a7a;
+}
 .myNav
 {
   position: relative;
@@ -181,6 +253,7 @@ section
     opacity: 0.8;
     transition: 0.1s ease-in;
 }
+
 .links .socialIcons:hover 
 {
   scale: 1.1;
@@ -208,6 +281,16 @@ section
     align-items: center;
     text-align: center;
 
+}
+.contacth1
+{
+  font-size: 100px;
+  width: 100%;
+
+}
+.contacth2
+{
+font-size: 100px;
 }
 .numbers span h5 
 {
@@ -606,6 +689,31 @@ max-width: 359.2px;
   }
   @media(max-width:1000px)
   {
+    #contact
+    {
+      align-items: center;
+    }
+    .formRow
+    {
+      flex-direction: column;
+    width: 100%;
+    }
+    #contactform
+    {
+      overflow: auto;
+    }
+     #contactform h4
+     {
+      margin-top: 10px;
+     }
+.formRow2
+{
+  width: 100%;
+}
+#message
+{
+  width: 100%;
+}
     .myNav
     {
       display: none;
@@ -690,6 +798,14 @@ max-width: 359.2px;
 
   @media(max-width:625px)
   {
+    .contacth1
+    {
+      font-size: 55px;
+    }
+     .contacth2
+    {
+      font-size: 55px;
+    }
     .right
 {
 
