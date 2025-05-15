@@ -417,7 +417,7 @@ top: 5px;
 .scroll-content {
   display: flex;
   gap: 1rem;
-  animation: scroll-horizontal 10s linear infinite;
+  animation: scroll-horizontal 20s linear infinite;
   will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
