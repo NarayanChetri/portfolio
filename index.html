@@ -99,7 +99,7 @@
 <section class="project " id="project"> <h1 class="scroll-element"> RECENT</h1> <h1  class="fadeText scroll-element">PROJECTS</h1>
  
 <div class="projbox scroll-element">
-  <div class="projbox2"></div> <div class="textbox"><h2>THE DEVELOPER THEME <a href="#"><img src="icons8-arrow-30.png" alt=""></a></h2> <h4>a chrome extension for developers which focus on productivity and definetely has cool looks  too. </h4></div>
+  <div class="projbox2"></div> <div class="textbox"><h2>THE DEVELOPER THEME <a href="https://addons.mozilla.org/en-US/firefox/addon/the-developer-theme/"><img src="icons8-arrow-30.png" alt=""></a></h2> <h4>A Chrome extension for developers to get things done faster. It’s easy to use, actually helpful, and yes — it looks cool too </h4></div>
 </div>
 <div class="projbox scroll-element">
    <div class="projbox2"></div> <div class="textbox"><h2>THE DEVELOPER THEME <a href="#"><img src="icons8-arrow-30.png" alt=""></a></h2> <h4>a chrome extension for developers which focus on productivity and definetely has cool looks  too. </h4></div>
@@ -112,17 +112,29 @@
 <section id="contact">
   <h1 class="contacth1">Let's work</h1>
   <h1 class="fadeText contacth2">together</h1>
-  <form action="" id="contactform">
+  <form action="https://api.web3forms.com/submit" method="POST" id="contactform">
+    <input type="hidden" name="access_key" value="77afba8f-5f47-4ed0-82c1-1f7d86012ccb">
     <div class="formRow">
          <div class="input1"> <h4>Name</h4>
-<input type="text" placeholder="Your Name" id="name"></div>
+<input  type="text" name="name" placeholder="Your Name" id="name" required></div>
    <div class="input2">
 <h4>Email</h4>
-<input type="text" placeholder="your@gmail.com" id="email">
+<input type="text" name="email" placeholder="your@gmail.com" id="email" required>
    </div>
     </div>
  <div class="formRow2"> <div class="input3"><h4>Message</h4>
-<textarea id="message" placeholder="Your Message" wrap="soft"></textarea>
+<textarea id="message" name="message" placeholder="Your Message" wrap="soft" required></textarea>
+<!-- From Uiverse.io by vinodjangid07 --> 
+<!-- From Uiverse.io by alexmaracinaru --> 
+<button class="cta">
+  <span>Submit</span> 
+  <svg width="15px" height="10px" viewBox="0 0 13 10">
+    <path d="M1,5 L11,5"></path>
+    <polyline points="8 1 12 5 8 9"></polyline>
+  </svg>
+</button>
+
+
 </div>
 </div>
 
