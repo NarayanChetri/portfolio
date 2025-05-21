@@ -302,7 +302,7 @@ section
   display: block;
   border-radius: 50px;
   background: red;
-  width: 45px;
+  width: 50%;
   height: 45px;
   transition: all 0.3s ease;
 }
@@ -709,6 +709,10 @@ max-width: 359.2px;
 
   @media(max-width:625px)
   {
+  #tools h4
+    {
+      font-size: 40px;
+    }
     section 
     {
       margin-top: 100px;
