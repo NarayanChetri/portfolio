@@ -83,7 +83,7 @@ body
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
 border-bottom: 2px solid white;
 
 }
@@ -97,8 +97,9 @@ border-bottom: 2px solid white;
 }
 .right
 {
+
     padding-left: 50px; 
-    /* height: 450vh; */
+   height: 100%;
     width: 60%;
     /* overflow-y: auto; */
 }
@@ -220,7 +221,7 @@ section
 
 .about
 {
-  margin-top: 100px;
+  margin-top: 200px;
 }
 .about h1
 {
@@ -445,6 +446,7 @@ background-position: center;
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    
 }
 .profileCard img 
 {
