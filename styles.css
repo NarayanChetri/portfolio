@@ -12,7 +12,7 @@ html {
   
 body 
 {
-    min-height: 500vh;
+    min-height: 700vh;
     background: #151312;
 
 }
@@ -176,7 +176,7 @@ max-width: 90%;
   align-items: center;
 flex-direction: column;
   top: 40%;
-  left: 97%;
+  right: 2%;
 
   height: 320px;
   width: 40px;
@@ -204,7 +204,7 @@ section
     top: 23%;
     width: 320px; /* or fixed like 300px */
     left: 18%;
-    height: 600px; /* or a fixed height if needed */
+    height: max-content; /* or a fixed height if needed */
     background: white;
     padding: 20px;
     border-radius: 10px;
@@ -215,7 +215,7 @@ section
 .profileCard h2 
 {
     color: rgba(0, 0, 0, 0.9);
-    font-size: 36px;
+    font-size: 30px;
     
 }
 
