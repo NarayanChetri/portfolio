@@ -12,17 +12,17 @@ html {
   
 body 
 {
-    min-height: 700vh;
+ 
     background: #151312;
 
 }
-#map {
+/* #map {
   height: 400px;
   border-radius: 10px;
   margin-top: 20px;
   background:#090909  ;
   background-size: cover;
-width: 80%;
+width: 30%;
 
 }
 .mapBox
@@ -32,7 +32,7 @@ width: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 #navTools
 {
@@ -56,6 +56,63 @@ width: 80%;
   pointer-events: none;
   text-align: center;
   padding-bottom: 5px;
+}
+.projbox {
+      display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    width: 70%;
+    max-width: 90%;
+    border-radius: 20px;
+    margin-top: 20px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.034);
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+  border-radius: 16px;
+  transition: all 0.5s ease;
+}
+.projbox:hover
+{
+  cursor: pointer;
+scale: 1.02;
+}
+/* Both boxes stacked on top of each other */
+
+.featuresbox {
+  position: absolute;
+  top: 15%;
+ right: 27%;
+  transition: all 0.6s ease;
+  opacity: 1;
+}
+.textbox {
+  position: absolute;
+  top: 15%;
+  right: 20px;
+  right: 20px;
+  transition: all 0.6s ease;
+  opacity: 1;
+}
+
+/* Default states */
+.featuresbox {
+  opacity: 0;
+  transform: translateY(30px);
+  pointer-events: none;
+}
+
+.projbox:hover .textbox {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.projbox:hover .featuresbox {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 #navHome::before {
@@ -441,13 +498,13 @@ height: 90%;
 width: 230px;
 border-radius: 20px;
 margin-left: 10px;
-background: url(url\ shortner\ photo.png);
-background-size: cover;
 background-position: center;
+background-size: cover;
 background-repeat: no-repeat;
 
-box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.336);
+box-shadow: inset 0px 0px 10px rgb(255, 255, 255);
 }
+
 .projbox2
 {
 height: 90%;
@@ -576,19 +633,7 @@ top: 5px;
   {
     font-size: 110px;
   }
-.project .projbox
-  {
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-    width: 70%;
-    max-width: 90%;
-    border-radius: 20px;
-    margin-top: 20px;
-    height: 200px;
-    background: rgba(255, 255, 255, 0.034);
-  }
+
   .statsgraph 
   {
    display: flex;
@@ -853,8 +898,8 @@ height: auto;
     }
     .profileCard h4 
     {
-      position: relative;
-      bottom: 10%;
+      /* position: relative; */
+      /* bottom: 10%; */
       font-size: 17px;
     }
     .profileCard h2 
@@ -863,8 +908,8 @@ height: auto;
     }
     .links
     {
-      position: relative;
-      bottom: 10%; 
+      /* position: relative;
+      bottom: 10%;  */
     }
 
   .numbers .numbers2
