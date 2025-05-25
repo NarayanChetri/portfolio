@@ -78,14 +78,13 @@ body
 }
 .container
 {
+      background: #151312;
     position: relative;
     height: 435vh; 
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: start;
-border-bottom: 2px solid white;
-
 }
 .left
 {
@@ -418,6 +417,19 @@ font-size: 100px;
   font-family: poppins;
   font-weight: 100;
 }
+.projbox1
+{
+height: 90%;
+width: 230px;
+border-radius: 20px;
+margin-left: 10px;
+background: url(url\ shortner\ photo.png);
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+
+box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.336);
+}
 .projbox2
 {
 height: 90%;
@@ -427,16 +439,23 @@ margin-left: 10px;
 background: url(projectImg.png);
 background-size: cover;
 background-position: center;
-
+background-repeat: no-repeat;
+box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.336);
 }
+
 .projbox .textbox h2 
 {
   color: rgb(255, 114, 89);
 }
 .projbox .textbox
 {
-  max-width: 50%;
+  max-width: 60%; 
   margin-left: 30px;
+}
+.projbox .textbox h4
+{
+  font-size: 16px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 #download1 
 {
