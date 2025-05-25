@@ -16,6 +16,24 @@ body
     background: #151312;
 
 }
+#map {
+  height: 400px;
+  border-radius: 10px;
+  margin-top: 20px;
+  background:#090909  ;
+  background-size: cover;
+width: 80%;
+
+}
+.mapBox
+{
+  flex-direction: column;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 #navTools
 {
   scroll-margin-top: 1000px;

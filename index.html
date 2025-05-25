@@ -6,7 +6,7 @@
     <title>Portfolio ⚡</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="icons8-user-48.png" />
-    <script src="script.js"></script>
+   
   
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,6 +16,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet/dist/leaflet.css"
+/>
   </head>
 <body>
     <div class="container">
@@ -155,6 +159,25 @@
     </div>
     </div>
 
+
+<div class="mapBox">
+  <h1>How far i am from you !</h1>
+
+<div id="map" style="height: 400px;"></div>
+<p id="output">Calculating distance...</p>
+</div>
+
+
+<!-- Leaflet Map Library -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
+
+
+
+
+
     <script src="script.js"></script>
     
 <!-- GSAP ScrollTrigger Animation -->
@@ -175,6 +198,6 @@
     });
   });
 </script>
-
+ <script src="script.js"></script>
 </body>
 </html>
