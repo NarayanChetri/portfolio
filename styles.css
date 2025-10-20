@@ -16,23 +16,13 @@ body
     background: #151312;
 
 }
-/* #map {
-  height: 400px;
-  border-radius: 10px;
-  margin-top: 20px;
-  background:#090909  ;
-  background-size: cover;
-width: 30%;
-
-}
-.mapBox
+#successMessage
 {
-  flex-direction: column;
-  max-width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
+  display:none;
+   color: green; 
+   font-weight: bold; 
+   margin-top: 5px;
+}
 .input3
 {
   margin-top: 25px;
