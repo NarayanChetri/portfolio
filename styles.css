@@ -866,9 +866,9 @@ max-width: 359.2px;
   display: flex;
     flex-direction: column;
     height: max-content;
-    background: transparent;
-    max-width: none;
-    min-width: 100%;
+    background: rgba(255, 255, 255, 0.096);
+    max-width: 90%;
+   height: 170px;
 }
  .projbox .textbox
  {
@@ -1010,11 +1010,6 @@ height: auto;
     {
       font-size: 25px;
     }
-    .links
-    {
-      /* position: relative;
-      bottom: 10%;  */
-    }
 
   .numbers .numbers2
   {
@@ -1069,7 +1064,14 @@ height: auto;
     {
       max-width: 90%;
     }
-
+#email
+{
+  min-width: 90%;
+}
+#name
+{
+  min-width: 90%;
+}
   }
   @media(max-width:300px)
   {
