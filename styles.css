@@ -1,39 +1,91 @@
-*
-{
-    color: white;
-    box-sizing: border-box;
- padding: 0;
-    margin: 0;
-    font-family: "Poppins", sans-serif;
+/* =================================================================== */
+/* 1. GLOBAL STYLES & RESETS
+/* =================================================================== */
+* {
+  color: white;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  /* Removed tap highlight on mobile */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-html {
-    scroll-behavior: smooth;
-  }
-  
-body 
-{
- 
-    background: #151312;
 
+*:focus {
+  outline: none;
 }
-#successMessage
-{
-  display:none;
-   color: green; 
-   font-weight: bold; 
-   margin-top: 5px;
+
+html {
+  scroll-behavior: smooth;
 }
-.input3
-{
-  margin-top: 25px;
+
+body {
+  background: #151312;
+}
+
+section {
+  margin-top: 200px;
+}
+
+/* =================================================================== */
+/* 2. MAIN LAYOUT (DESKTOP)
+/* =================================================================== */
+.container {
+  background: #151312;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  max-width: 95%;
+  justify-content: center;
+ 
 }
-#navTools
-{
+
+.left {
+  display: flex;
+  justify-content: center;
+  width: 40%;
+}
+
+.right {
+  padding-left: 50px;
+  height: 100%;
+  width: 60%;
+}
+
+/* =================================================================== */
+/* 3. REUSABLE COMPONENTS (NAV, BUTTONS)
+/* =================================================================== */
+
+/* --- Side Navigation --- */
+.myNav {
+  box-shadow: inset 0px 0px 5px rgba(255, 255, 255, 0.096),
+    0px 0px 10px rgba(0, 0, 0, 0.219);
+  position: fixed; /* 'position: relative' was redundant */
+  display: flex;
+  padding: 3px;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  top: 40%;
+  right: 2%;
+  height: 320px;
+  width: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  z-index: 111;
+  border: 0.5px solid rgba(255, 255, 255, 0.082);
+}
+
+.navIcons {
+  height: 25px;
+  margin-top: 5px;
+}
+
+/* --- Nav Tooltips --- */
+#navTools {
   scroll-margin-top: 1000px;
 }
+
 #navHome::before,
 #navTools::before,
 #navProject::before,
@@ -52,79 +104,11 @@ body
   text-align: center;
   padding-bottom: 5px;
 }
-.projbox {
-      display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-    width: 800px;
-    max-width: 90%;
-    border-radius: 20px;
-    margin-top: 20px;
-    height: 200px;
-    background: rgba(255, 255, 255, 0.014);
-  position: relative;
-  overflow: hidden;
-  padding: 20px;
-  border-radius: 16px;
-  transition: all 0.5s ease;
-}
-
-
-/* Both boxes stacked on top of each other */
-
-.featuresbox {
-  position: absolute;
-  top: 15%;
- right: 27%;
-  transition: all 0.6s ease;
-  opacity: 1;
-}
-.textbox {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 60%;
-  max-height: 90%;
-  top: 20%; 
-  right: 20px;
-  transition: all 0.6s ease;
-  opacity: 1;
-
-}
-.featuresbox h3 
-{
-  color: white;
-
-}
-/* Default states */
-.featuresbox {
-  opacity: 0;
-  transform: translateY(30px);
-  pointer-events: none;
-}
-.featuresbox ul li 
-{
-  margin-top: 10px;
-  list-style:none;
-}
-.projbox:hover .textbox {
-  opacity: 0;
-  transform: translateY(-30px);
-}
-
-.projbox:hover .featuresbox {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
 
 #navHome::before {
   content: "Home";
   top: 40px;
   right: 50px;
-
 }
 #navTools::before {
   content: "Tools";
@@ -149,229 +133,67 @@ body
   opacity: 1;
   transform: translateX(0);
 }
-#contact
-{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-}
-.container
-{
-      background: #151312;
-    position: relative;
-    height: 435vh; 
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-}
-.left
-{
 
-    position:sticky;
-    height: 100%;
-    width: 40%;
-
-}
-.right
-{
-
-    padding-left: 50px; 
-   height: 100%;
-    width: 60%;
-    /* overflow-y: auto; */
-}
-#contactform
-{
-
-display: flex;
-justify-content: center;
-align-items: start;
-flex-direction: column;
-height: max-content;
-width: max-content;
-flex-wrap: wrap;
-max-width: 90%;
-padding-bottom: 30px;
-}
-#message {
-  width: 650px;
-  height: 200px;
-  border-radius: 10px;
-  background: #353334;
-  border: none;
-  margin-top: 10px;
-  max-width: 90%;
-  /* ✅ Ensure content starts top-left */
-  padding: 10px;
-  text-align: left;
-
-  /* ✅ Text wraps to next line */
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-
-  /* Optional enhancements */
-  color: white;
-  font-size: 16px;
-  resize: none; /* Prevent resizing if not needed */
-}
-
-#message::placeholder {
-  text-align: left;
-  color: #aaa;
-}
-
-.formRow
-{
-  display: block;
-  width: 100%;
-  flex-wrap: wrap;
-  display: flex;
-  justify-content: space-between;
-}
-.formRow2
-{
-  margin-top: 30px;
-  flex-wrap: wrap;
-}
-#name,#email
-{
-  margin-top: 10px;
-  background: #353334;
-  border: none;
-  outline: none;
-  height: 40px;
-  width: 338px;
-  max-width: 70%;
-  border-radius: 10px;
-  padding: 10px;
-  color: #7a7a7a;
-}
-.myNav
-{
-  box-shadow: inset 0px 0px 5px rgba(255, 255, 255, 0.096), 0px 0px 10px rgba(0, 0, 0, 0.219);
-
+/* --- Resume Button --- */
+.animated-button {
   position: relative;
-  position: fixed;
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  font-size: 16px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+  color: #ffffff40;
+  box-shadow: 0 0 0 2px #ffffff20;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button span {
   display: flex;
-  padding: 3px;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-flex-direction: column;
-  top: 40%;
-  right: 2%;
-  height: 320px;
-  width: 40px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
-  z-index: 111;
-  border: 0.5px solid rgba(255, 255, 255, 0.082);
-}
-.navIcons
-{
-  height: 25px;
-  margin-top: 5px;
-}
-section 
-{
-    margin-top: 200px;
-}
-.profileCard {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-    position: sticky;
-    top: 10svh;
-    width: 320px; /* or fixed like 300px */
-    left: 18%;
-    height: max-content; /* or a fixed height if needed */
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    background: #ffffe4;
-
-   
-}
-.profileCard h2 
-{
-    color: rgba(0, 0, 0, 0.9);
-    font-size: 30px;
-    
 }
 
-.about
-{
-  margin-top: 7svh;
-}
-.about h1
-{
-    font-size:110px;
-    padding-left: 20px;
-   width: fit-content;
-   max-width: 90%;
-}
-.fadeText
-{
-    position: relative;
-    bottom: 20px;
-    color: rgba(255, 255, 255, 0.2);
-}
-.about h4
-{
-    position: relative;
-    bottom: 10px;
-    width: 550px;
-    color: rgba(255, 255, 255, 0.637);
-    padding-left: 30px;
-    font-size: 20px;
-    font-weight: 300;
-}
-.links .socialIcons 
-{
-    height: 40px;
-    width: 40px;
-    padding: 5px;
-    opacity: 0.8;
-    transition: 0.1s ease-in;
+.animated-button span:last-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: #2196f3;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.links .socialIcons:hover 
-{
-  scale: 1.1;
-}
-.numbers 
-{
-    width: 460px;
-    display: flex;  
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 20px;
-}
-.numbers span h1 
-{
-    font-size: 60px;
-    padding: 0;
-  
-}
-.numbers span 
-{
-    width: 150px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
+.animated-button span:first-child {
+  position: relative;
+  z-index: 1;
 }
 
-/* From Uiverse.io by alexmaracinaru */ 
+.animated-button:hover {
+  box-shadow: 0 0 0 5px #2195f360;
+  color: #ffffff;
+}
+
+.animated-button:active {
+  scale: 0.95;
+}
+
+.animated-button:hover span:last-child {
+  width: 250px;
+  height: 250px;
+  opacity: 1;
+}
+
+/* --- Form Submit Button --- */
 .cta {
   position: relative;
- margin-top: 20px;
+  margin-top: 20px;
   padding: 12px 18px;
   transition: all 0.2s ease;
   border: none;
@@ -428,733 +250,772 @@ section
   transform: scale(0.95);
 }
 
-.contacth1
-{
-  font-size: 100px;
-  width: 100%;
+/* =================================================================== */
+/* 4. LEFT COLUMN (PROFILE CARD)
+/* =================================================================== */
+.profileCard {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: sticky;
+  top: 10svh;
+  width: 320px;
+  height: max-content;
+  background: #ffffe4;
+  padding: 20px;
+  border-radius: 10px;
+}
 
+.profileCard img {
+  width: 240px;
+  height: 284px;
+  border-radius: 30px;
 }
-.contacth2
-{
-font-size: 100px;
+
+.profileCard h2 {
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 30px;
 }
-.numbers span h5 
-{
-    font-weight: 400;
-    font-size: 15px;
-    color: rgba(255, 255, 255, 0.63);
+
+.profileCard h4 {
+  color: rgba(0, 0, 0, 0.637);
+  width: 100%;
+  text-align: center;
 }
-.animated-button span
-{
+
+.links .socialIcons {
+  height: 40px;
+  width: 40px;
+  padding: 5px;
+  opacity: 0.8;
+  transition: 0.1s ease-in;
+}
+
+.links .socialIcons:hover {
+  scale: 1.1;
+}
+
+#linkedin {
+  height: 50px;
+  width: 50px;
+  position: relative;
+  top: 5px;
+}
+
+#insta {
+  height: 45px;
+  width: 45px;
+  position: relative;
+  top: 3px;
+}
+
+/* =================================================================== */
+/* 5. RIGHT COLUMN (SECTIONS)
+/* =================================================================== */
+
+/* --- 5.1 About Section --- */
+.about {
+  margin-top: 7svh;
+}
+
+.about h1 {
+  font-size: 110px;
+  padding-left: 20px;
+  width: fit-content;
+  max-width: 90%;
+}
+
+.fadeText {
+  position: relative;
+  bottom: 20px;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.about h4 {
+  position: relative;
+  bottom: 10px;
+  width: 550px;
+  color: rgba(255, 255, 255, 0.637);
+  padding-left: 30px;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.numbers {
+  width: 460px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.numbers span {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.numbers span h1 {
+  font-size: 60px;
+  padding: 0;
+}
+
+.numbers span h5 {
+  font-weight: 400;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.63);
+}
+
+#download1 {
+  margin-top: 50px;
+  width: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
 }
-.animated-button {
-  position: relative;
-  display: inline-block;
-  padding: 12px 24px;
-  border: none;
-  font-size: 16px;
-  background-color: inherit;
-  border-radius: 100px;
-  font-weight: 600;
-  color: #ffffff40;
-  box-shadow: 0 0 0 2px #ffffff20;
+
+/* --- 5.2 Tech Stacks Section --- */
+.statsLanguages h1 {
+  font-size: 110px;
+}
+
+.statsLanguages h2 {
+  margin-top: 40px;
+}
+
+.statsgraph {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 25px;
+  max-width: 800px;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.skill {
   cursor: pointer;
-  overflow: hidden;
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: #ffffffef;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease;
 }
 
-.animated-button span:last-child {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 20px;
-  height: 20px;
-  background-color: #2196F3;
-  border-radius: 50%;
-  opacity: 0;
-  transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+.skill:hover {
+  transform: translateY(-5px);
 }
 
-.animated-button span:first-child {
+.skill img {
+  width: 30px;
+  height: 30px;
+  padding-right: 10px;
+}
+
+.skill span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #555; /* Overrides global '*' reset */
+}
+
+/* --- 5.3 Projects Section --- */
+.projectSec h1 {
+  font-size: 110px;
+}
+
+.projbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  width: 800px;
+  max-width: 90%;
+  border-radius: 20px;
+  margin-top: 20px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.014);
   position: relative;
-  z-index: 1;
+  overflow: hidden;
+  padding: 20px;
+  border-radius: 16px;
+  transition: all 0.5s ease;
 }
 
-.animated-button:hover {
-  box-shadow: 0 0 0 5px #2195f360;
-  color: #ffffff;
-}
-
-.animated-button:active {
-  scale: 0.95;
-}
-.projbox h2
-{
+.projbox h2 {
   font-size: 20px;
   color: white;
 }
-.animated-button:hover span:last-child {
-  width: 250px;
-  height: 250px;
-  opacity: 1;
-}
-.projbox h4 
-{
+
+.projbox h4 {
   font-family: poppins;
   font-weight: 100;
 }
-.projbox1
-{
-height: 90%;
-width: 220px;
-border-radius: 20px;
-margin-left: 10px;
-background-position: center;
-background-size: cover;
-background-repeat: no-repeat;
-border: 2px solid white;
-transition: 0.3s ease;
-box-shadow: inset 0px 0px 10px rgb(255, 255, 255);
-}
-.projbox1:hover
-{
-scale: 1.05;
-}
-.projbox2
-{
-height: 90%;
-width: 230px;
-border-radius: 20px;
-margin-left: 10px;
-background: url(projectImg.png);
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.336);
+
+/* Project box image placeholders */
+.projbox1 {
+  height: 90%;
+  width: 220px;
+  border-radius: 20px;
+  margin-left: 10px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 2px solid white;
+  transition: 0.3s ease;
+  box-shadow: inset 0px 0px 10px rgb(255, 255, 255);
 }
 
+.projbox1:hover {
+  scale: 1.05;
+}
 
-.projbox .textbox
-{
-  max-width: 60%; 
+.projbox2 {
+  height: 90%;
+  width: 230px;
+  border-radius: 20px;
+  margin-left: 10px;
+  background: url(projectImg.png); /* Note: This file must exist */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.336);
+}
+
+/* Project box hover effect */
+.projbox .textbox {
+  max-width: 60%;
   margin-left: 30px;
+  position: absolute; /* Added this for clarity, though it's in your original */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 60%;
+  max-height: 90%;
+  top: 20%;
+  right: 20px;
+  transition: all 0.6s ease;
+  opacity: 1;
 }
-.projbox .textbox h4
-{
+
+.projbox .textbox h4 {
   font-size: 17px;
   color: rgba(255, 255, 255, 0.658);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-#download1 
-{
-    margin-top: 50px;
-    width: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    
-}
-.profileCard img 
-{
-    width: 240px;
-    height: 284px;
-    border-radius: 30px;
-
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-.profileCard h4 
-{
-    color: rgba(0, 0, 0, 0.637);
-    width: 100%;
-    text-align: center;
-
-}
-#linkedin
-{
-    height: 50px;
-    width: 50px;
-position: relative;
-top: 5px;
-}
-#insta
-{
-    height: 45px;
-    width: 45px;
-    position: relative;
-    top: 3px;
+.featuresbox {
+  position: absolute;
+  top: 15%;
+  right: 27%;
+  transition: all 0.6s ease;
+  opacity: 0; /* Default state: hidden */
+  transform: translateY(30px);
+  pointer-events: none;
 }
 
-.skills-section {
-    text-align: center;
-    padding: 40px 20px;
-    background: #f9f9f9;
-  }
-  
-  .skills-section h2 {
-    font-size: 2rem;
-    margin-bottom: 30px;
-    color: #333;
-  }
-  
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 25px;
-    max-width: 800px;
-    margin-top: 20px;
-    padding: 20px;
-  }
-  
-  .skill {
-    cursor: pointer;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 10px; 
-    background: #ffffffef;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-    transition: transform 0.2s ease;
-  }
-  
-  .skill:hover {
-    transform: translateY(-5px);
-  }
-  
-  .skill img {
-    width: 30px;
-    height: 30px;
-   padding-right: 10px;
-  }
-  
-  .skill span {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #555;
-  }
-  .statsLanguages h1 
-  {
-    font-size: 110px;
-  }
-  .statsLanguages h2 
-  {
-    margin-top: 40px;
-  }
-.projectSec h1
-  {
-    font-size: 110px;
-  }
+.featuresbox h3 {
+  color: white;
+}
 
-  .statsgraph 
-  {
-   display: flex;
-    justify-content: flex-start;
-     align-items: center;
+.featuresbox ul li {
+  margin-top: 10px;
+  list-style: none;
+}
 
-  }
-.input1
-{
+.projbox:hover .textbox {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.projbox:hover .featuresbox {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* --- 5.4 Contact Section --- */
+#contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+.contacth1 {
+  font-size: 100px;
+  width: 100%;
+}
+
+.contacth2 {
+  font-size: 100px;
+}
+
+#contactform {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  height: max-content;
+  width: max-content;
+  flex-wrap: wrap;
+  max-width: 90%;
+  padding-bottom: 30px;
+}
+
+.formRow {
+  display: block;
+  width: 100%;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input1 {
   margin-bottom: 20px;
 }
-  @media(max-width:1443px)
-  {
- .projbox1 
- {
-  width: 180px;
-  position: relative;
-  right: 8%;
- }
-    .textbox 
-    {
+
+.input3 {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  max-width: 95%;
+}
+
+#name,
+#email {
+  margin-top: 10px;
+  background: #353334;
+  border: none;
+  outline: none;
+  height: 40px;
+  width: 338px;
+  max-width: 70%;
+  border-radius: 10px;
+  padding: 10px;
+  color: #7a7a7a;
+}
+
+#message {
+  width: 650px;
+  height: 200px;
+  border-radius: 10px;
+  background: #353334;
+  border: none;
+  margin-top: 10px;
+  max-width: 90%;
+  padding: 10px;
+  text-align: left;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  color: white;
+  font-size: 16px;
+  resize: none;
+}
+
+#message::placeholder {
+  text-align: left;
+  color: #aaa;
+}
+
+#successMessage {
+  display: none;
+  color: green;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+/* =================================================================== */
+/* 6. MEDIA QUERIES (RESPONSIVE DESIGN)
+/* =================================================================== */
+
+/* --- 6.1 Large Tablet / Small Laptop --- */
+@media (max-width: 1443px) {
+  .projbox1 {
+    width: 180px;
+    position: relative;
+    right: 8%;
+  }
+
+  .textbox {
     top: 0%;
     right: 2%;
     height: 90%;
     justify-content: center;
     width: 55%;
-    }
-   .projbox .textbox h4
-   {
+  }
+
+  .projbox .textbox h4 {
     font-size: 15px;
-   }
-    .myNav
-    {
-      left: 96%;
-    }
-    .statsLanguages h1,.about h1,.projectSec h1
-    {
-          font-size: 80px;
-    }
-    .statsgraph 
-    {
- flex-direction: column;
- align-items: flex-start;
- justify-content: center;
-       
-    }
-    .skills-grid
-{
-  min-width: 90%;
-  max-width: 90%;
-}
-    #stats2 
-    {
-
-   padding: 0;
-margin-top: 20px;
-position: relative;
-right: 5px;
-max-width: 359.2px;
-    }
-  }
-  @media(max-width:1000px)
-  {
-     .projectSec
-    {
-  
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      align-items: center;
-      justify-content: center;
-
-    }
-    .featuresbox
-    {
-      display: none;
-    }
-    .textbox
-    {
-      height: 90%;
-      width: 60%;
-    
-    }
-    .projbox1
-    {
-      width: 180px;
-    }
-   .projbox .textbox h4 
-    {
-      font-size: 15px;
-      margin-top: 10px;
-    }
-    .projbox .textbox h2
-    {
-      font-size: 20px;
-    }
-    #contact
-    {
-      align-items: center;
-    }
-    .formRow
-    {
-      flex-direction: column;
-    width: 100%;
-    }
-  
-     #contactform h4
-     {
-      margin-top: 10px;
-     }
-
-#message
-{
-  width: 100%;
-}
-    .myNav
-    {
-      display: none;
-    }
-.container 
-{
-  height: 500vh;
-  justify-content: start;
-  align-items: center;
-  flex-direction: column;
-}
-#contactform
-{
-  height: max-content;
-  width: 90%;
-}
-.input3
-{
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content:center ;
-}
-.skills-grid
-{
-  min-width: 99%;
-  max-width: 90%;
-}
-.right 
-{
-  width: 100%;
-  text-align: center;
-  overflow-y: visible;
-  margin: 0;
-  padding: 0;
-  height: 300vh;
-}
-.left
-{
-  margin-top: 50px;
-  height: max-content;
-  position: relative;
- width: 100%;
- display: flex;
- align-items: center;
- justify-content: center;
-}
-.profileCard 
-{
- position: none;
- width: 400px;
-
-
-}
-.about
-{
-  margin: 0;
-}
-.statsgraph 
-{
-  align-items: center;
-}
-
-.about 
-{
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-#software,.fadeText
-{
-  min-width: 100%;
-  padding: 0;
-}
-.about h4 
-{
-  width: 100%;
-}
-.numbers 
-{
-  width: 100%;
-}
-#download1 
-{
-  width: 100%;
-}
-.about h4 
-{
-  padding: 0;
-}
-
   }
 
-  @media(max-width:625px)
-  {
-    #message
-    {
-      max-width: none;
-      width: 99%;
-      margin: 10px 0px;
-    }
-    .formRow
-    {
-      align-items: center;
-    }
-    #tools h1
-    {
-     
-      font-size: 50px;
-    }
-    .numbers{
-      width: 90%;
-    }
-.projbox
-{
-  display: flex;
+  .myNav {
+    left: 96%;
+  }
+
+  .statsLanguages h1,
+  .about h1,
+  .projectSec h1 {
+    font-size: 80px;
+  }
+
+  .statsgraph {
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .skills-grid {
+    min-width: 90%;
+    max-width: 90%;
+  }
+
+  #stats2 {
+    padding: 0;
+    margin-top: 20px;
+    position: relative;
+    right: 5px;
+    max-width: 359.2px;
+  }
+}
+
+/* --- 6.2 Tablet --- */
+@media (max-width: 1000px) {
+  /* Switch to single-column layout */
+  .container {
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .left {
+    margin-top: 50px;
     height: max-content;
-    background: rgba(255, 255, 255, 0.096);
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .right {
+    width: 100%;
+    text-align: center;
+    overflow-y: visible;
+    margin: 0;
+    padding: 0;
+    /* height: 300vh; */ /* <-- FIXED: Removed bad fixed height */
+  }
+
+  /* --- Remove sticky behavior from profile card --- */
+  .profileCard {
+    position: static; /* <-- FIXED: Was 'none', which is invalid */
+    width: 400px;
+  }
+
+  .myNav {
+    display: none;
+  }
+
+  .about {
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  #software,
+  .fadeText {
+    min-width: 100%;
+    padding: 0;
+  }
+  .about h4 {
+    width: 100%;
+    padding: 0;
+  }
+  .numbers {
+    width: 100%;
+  }
+  #download1 {
+    width: 100%;
+  }
+
+  .statsgraph {
+    align-items: center;
+  }
+
+  .skills-grid {
+    min-width: 99%;
     max-width: 90%;
-   height: 170px;
-}
-.about
-{
-  display: flex;
-  flex-direction: column;
-}
- .projbox .textbox
- {
-  position: unset;
-  height: max-content;
- width: 100%;
- max-width: none;
- margin: 0;
+  }
 
- }
- .projbox .textbox h4
- {
- font-size: 15px;
- }
- .projbox .textbox h2 
- {
-  margin-top: 10px;
-  font-size: 20px;
-  color: white;
+  .projectSec {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .featuresbox {
+    display: none;
+  }
+  .textbox {
+    height: 90%;
+    width: 60%;
+  }
+  .projbox1 {
+    width: 180px;
+  }
+  .projbox .textbox h4 {
+    font-size: 15px;
+    margin-top: 10px;
+  }
+  .projbox .textbox h2 {
+    font-size: 20px;
+  }
 
- }
-.projbox1
-{
-  position: unset;
-  width: 300px;
-  height: 170px;
-}
-
-  #tools h4
-    {
-      font-size: 40px;
-    }
-    section 
-    {
-      margin-top: 100px;
-    }
-    .contacth1
-    {
-      font-size: 55px;
-    }
-     .contacth2
-    {
-      font-size: 55px;
-    }
-    .cta {
-  position: relative;
- margin-top: 20px;
-  padding: 12px 18px;
-  transition: all 0.2s ease;
-  border: none;
-  background: none;
-  cursor: pointer;
+  #contact {
+    align-items: center;
+  }
+  .formRow {
+    flex-direction: column;
+    width: 100%;
+  }
+  #contactform {
+    height: max-content;
+    width: 90%;
+  }
+  #contactform h4 {
+    margin-top: 10px;
+  }
+  #message {
+    width: 100%;
+  }
+  .input3 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
-.cta:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  border-radius: 50px;
-  background: #234567;
-  width: 100%;
-  height: 45px;
-  transition: all 0.3s ease;
-}
+/* --- 6.3 Large Phone --- */
+@media (max-width: 625px) {
 
-.cta span {
-  position: relative;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: white;
-}
+  .left {
+    height: max-content;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+  }
 
-.cta svg {
-  position: relative;
-  top: 0;
-  margin-left: 10px;
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke: #ff0000;
-  stroke-width: 2;
-  transform: translateX(0px);
-  transition: all 0.3s ease;
-}
+  .profileCard {
+    position: unset; /* This is also a good value to use! */
+    height: min-content;
+    max-width: 80%;
+    left: 0;
+  }
 
-    .right
-{
-
-    height: 300vh;
-}
-    .about h4 
-    {
-    
-      max-width: 90%;
-    }
-        .left
-    {
-     height: max-content;
-     margin-top: 30px;
-     display: flex;
-     flex-direction: column;
-      align-items: center;
-      justify-content: start;
-      
-  
-    }
-    .container
-    {
-      height: 420vh;
-    }
-    #contactform
-    {
-      height: max-content;
-      align-items: center;
-   
-    }
-    .profileCard
-    {
-      position:unset;
-   height: min-content;
-   max-width: 80%;
-   left: 0;
-    }
-    .profileCard img 
-    {
-      height: 40%;
+  .profileCard img {
+    height: 40%;
     max-width: 90%;
-height: auto;
-    }
-    .profileCard h4 
-    {
-      /* position: relative; */
-      /* bottom: 10%; */
-      font-size: 17px;
-    }
-    .profileCard h2 
-    {
-      font-size: 25px;
-    }
+    height: auto;
+  }
+  .profileCard h4 {
+    font-size: 17px;
+  }
+  .profileCard h2 {
+    font-size: 25px;
+  }
 
-  .numbers .numbers2
-  {
+  section {
+    margin-top: 100px;
+  }
+
+  .about {
+    display: flex;
+    flex-direction: column;
+  }
+  .about h4 {
+    max-width: 90%;
+  }
+  .about h1,
+  .projectSec h1 {
+    font-size: 55px;
+  }
+  .about #engineer {
+    padding: 0;
+  }
+
+  .numbers {
+    width: 90%;
+  }
+  .numbers .numbers2 {
     font-size: 40px;
   }
-  
-      .about h1,.projectSec h1 
-      {
-        font-size: 55px;
-      }
-      .projbox 
-      {
-          max-width: 90%;
-          
-      }
-    
-   
-    .about #engineer
-    {
-     padding: 0;
-    }
- /* Removes tap highlight on mobile */
-* {
-  -webkit-tap-highlight-color: transparent;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* for some browsers */
-}
 
-/* Also prevent outline on focus/click if needed */
-*:focus {
-  outline: none;
-}
-#stats1,#stats2
-{
-  max-width: 90%;
-}
-  .skill
-  {
-    width: 100px;
+  #tools h1 {
+    font-size: 50px;
   }
- .skills-grid {
-    display: grid;
+  #tools h4 {
+    font-size: 40px;
+  }
+
+  #stats1,
+  #stats2 {
+    max-width: 90%;
+  }
+
+  .skills-grid {
     grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
     gap: 25px;
     max-width: 800px;
     margin-top: 20px;
     padding: 20px;
   }
-    .featuresbox
-    {
-      display: none;
-    }
-.input1,.input2,.input3
-    {
-      max-width: 90%;
-    }
-#email
-{
-  min-width: 90%;
-}
-#name
-{
-  min-width: 90%;
-}
+  .skill {
+    width: 100px;
   }
-  @media(max-width:300px)
-  {
-    .projbox1
-    {
-      max-width: 90%;
-    }
-      .featuresbox
-    {
-      display: none;
-    }
-    .about h1,.projectSec h1 
-    {
-      font-size: 20px;
-      
-    }
-.statsLanguages h1
-{
-  font-size: 20px;
 
-}
-.fadeText
-{
-  margin-top: 20px
-}
-    .links
-    {
-      display: none;
-    }
-    .numbers .numbers2
-    {
-      font-size: 20px;
-    }
-    .profileCard
-    {
-      height: 550px;
-    }
-    .profileCard h2
-    {
-      font-size: 15px;
-    }
-    .profileCard img
-    {
-      max-width: 90%;
-    }
-    .numbers
-    {
-      height: 400px;
-      display: flex;
-      flex-direction: column;
-    }
-    .input1,.input2,.input3
-    {
-      max-width: 90%;
-    }
-    .contacth1,.contacth2
-    {
-      font-size: 30px;
-    }
+  .projbox {
+    display: flex;
+    flex-direction: column;
+    height: 170px; /* Note: This fixed height might be trouble */
+    background: rgba(255, 255, 255, 0.096);
+    max-width: 90%;
   }
+  .projbox .textbox {
+    position: unset;
+    height: max-content;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+  .projbox .textbox h4 {
+    font-size: 15px;
+  }
+  .projbox .textbox h2 {
+    margin-top: 10px;
+    font-size: 20px;
+    color: white;
+  }
+  .projbox1 {
+    position: unset;
+    width: 300px;
+    height: 170px;
+  }
+
+  .contacth1 {
+    font-size: 55px;
+  }
+  .contacth2 {
+    font-size: 55px;
+  }
+
+  #contactform {
+    height: max-content;
+    align-items: center;
+  }
+  .formRow {
+    align-items: center;
+  }
+  #message {
+    max-width: none;
+    width: 99%;
+    margin: 10px 0px;
+  }
+  .input1,
+  .input2,
+  .input3 {
+    max-width: 90%;
+  }
+  #email {
+    min-width: 90%;
+  }
+  #name {
+    min-width: 90%;
+  }
+
+  /* Mobile Submit Button Style */
+  .cta {
+    position: relative;
+    margin-top: 20px;
+    padding: 12px 18px;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  .cta:before {
+    background: #234567;
+    width: 100%;
+  }
+  .cta svg {
+    stroke: #ff0000;
+    transform: translateX(0px);
+  }
+}
+
+/* --- 6.4 Small Phone --- */
+@media (max-width: 300px) {
+  .about h1,
+  .projectSec h1,
+  .statsLanguages h1 {
+    font-size: 20px;
+  }
+
+  .fadeText {
+    margin-top: 20px;
+  }
+
+  .profileCard h2 {
+    font-size: 15px;
+  }
+  .profileCard img {
+    max-width: 90%;
+  }
+
+  .links {
+    display: none; /* Good idea to hide clutter */
+  }
+
+  .numbers {
+    height: 400px; /* Note: fixed height */
+    display: flex;
+    flex-direction: column;
+  }
+  .numbers .numbers2 {
+    font-size: 20px;
+  }
+
+  .projbox1 {
+    max-width: 90%;
+  }
+
+  .contacth1,
+  .contacth2 {
+    font-size: 30px;
+  }
+
+  .input1,
+  .input2,
+  .input3 {
+    max-width: 90%;
+  }
+}
