@@ -285,7 +285,7 @@ section
     justify-content: flex-start;
     flex-direction: column;
     position: sticky;
-    top: 23%;
+    top: 10svh;
     width: 320px; /* or fixed like 300px */
     left: 18%;
     height: max-content; /* or a fixed height if needed */
@@ -293,8 +293,8 @@ section
     padding: 20px;
     border-radius: 10px;
     background: #ffffe4;
-    background-size: cover;
-    background-repeat: no-repeat;
+
+   
 }
 .profileCard h2 
 {
@@ -305,7 +305,7 @@ section
 
 .about
 {
-  margin-top: 200px;
+  margin-top: 7svh;
 }
 .about h1
 {
@@ -861,6 +861,24 @@ max-width: 359.2px;
 
   @media(max-width:625px)
   {
+    #message
+    {
+      max-width: none;
+      width: 99%;
+      margin: 10px 0px;
+    }
+    .formRow
+    {
+      align-items: center;
+    }
+    #tools h1
+    {
+     
+      font-size: 50px;
+    }
+    .numbers{
+      width: 90%;
+    }
 .projbox
 {
   display: flex;
@@ -869,6 +887,11 @@ max-width: 359.2px;
     background: rgba(255, 255, 255, 0.096);
     max-width: 90%;
    height: 170px;
+}
+.about
+{
+  display: flex;
+  flex-direction: column;
 }
  .projbox .textbox
  {
@@ -965,8 +988,8 @@ max-width: 359.2px;
 }
     .about h4 
     {
-      max-width: 98%;
-      max-width: 98%;
+    
+      max-width: 90%;
     }
         .left
     {
@@ -986,11 +1009,13 @@ max-width: 359.2px;
     #contactform
     {
       height: max-content;
+      align-items: center;
+   
     }
     .profileCard
     {
       position:unset;
-   height: 500px;
+   height: min-content;
    max-width: 80%;
    left: 0;
     }
@@ -1015,7 +1040,8 @@ height: auto;
   {
     font-size: 40px;
   }
-      .about h1,.statsLanguages h1,.projectSec h1 
+  
+      .about h1,.projectSec h1 
       {
         font-size: 55px;
       }
