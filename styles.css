@@ -436,87 +436,68 @@ section {
 .projectSec h1 {
   font-size: 110px;
 }
-
-.projbox {
+.projectSec a 
+{
   display: flex;
-  flex-direction: row;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
-  width: 800px;
+  width: 650px;
   max-width: 90%;
-  border-radius: 20px;
-  margin-top: 20px;
+  border-radius: 10px;
   height: 200px;
-  background: rgba(255, 255, 255, 0.014);
+  margin-top: 20px;
+}
+.projbox
+{
   position: relative;
-  overflow: hidden;
-  padding: 20px;
-  border-radius: 16px;
-  transition: all 0.5s ease;
-}
-
-.projbox h2 {
-  font-size: 20px;
-  color: white;
-}
-
-.projbox h4 {
-  font-family: poppins;
-  font-weight: 100;
-}
-
-/* Project box image placeholders */
-.projbox1 {
-  height: 90%;
-  width: 220px;
-  border-radius: 20px;
-  margin-left: 10px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  border: 2px solid white;
-  transition: 0.3s ease;
-  box-shadow: inset 0px 0px 10px rgb(255, 255, 255);
-}
-
-.projbox1:hover {
-  scale: 1.05;
-}
-
-.projbox2 {
-  height: 90%;
-  width: 230px;
-  border-radius: 20px;
-  margin-left: 10px;
-  background: url(projectImg.png); /* Note: This file must exist */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.336);
-}
-
-/* Project box hover effect */
-.projbox .textbox {
-  max-width: 60%;
-  margin-left: 30px;
-  position: absolute; /* Added this for clarity, though it's in your original */
+  width: 98%;
+  height: 98%;
+  border-radius: 10px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 60%;
-  max-height: 90%;
-  top: 20%;
-  right: 20px;
-  transition: all 0.6s ease;
-  opacity: 1;
+  justify-content: center;
+  align-items: center;
+ 
+}
+.proj-txt
+{
+padding: 10px;
+}
+.projbox:hover
+{
+  background: rgba(255, 255, 255, 0.06);
+}
+.projbox:hover #arrow
+{
+  top: 15px;
+  right: 15px;
+}
+.projectSec a
+{
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.projbox .textbox h4 {
-  font-size: 17px;
-  color: rgba(255, 255, 255, 0.658);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+#arrow
+{
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  transition: 0.3s ease-in;
 }
+
+#ambu-proj
+{
+  height: 134px;
+  width: 130px;
+  border-radius: 10px;
+  padding: 5px;
+}
+.proj-txt p
+{
+opacity: 0.5;
+font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
 
 .featuresbox {
   position: absolute;
@@ -535,17 +516,6 @@ section {
 .featuresbox ul li {
   margin-top: 10px;
   list-style: none;
-}
-
-.projbox:hover .textbox {
-  opacity: 0;
-  transform: translateY(-30px);
-}
-
-.projbox:hover .featuresbox {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
 }
 
 /* --- 5.4 Contact Section --- */
@@ -646,11 +616,7 @@ section {
 
 /* --- 6.1 Large Tablet / Small Laptop --- */
 @media (max-width: 1443px) {
-  .projbox1 {
-    width: 180px;
-    position: relative;
-    right: 8%;
-  }
+
 
   .textbox {
     top: 0%;
@@ -660,9 +626,6 @@ section {
     width: 55%;
   }
 
-  .projbox .textbox h4 {
-    font-size: 15px;
-  }
 
   .myNav {
     left: 96%;
@@ -777,16 +740,6 @@ section {
     height: 90%;
     width: 60%;
   }
-  .projbox1 {
-    width: 180px;
-  }
-  .projbox .textbox h4 {
-    font-size: 15px;
-    margin-top: 10px;
-  }
-  .projbox .textbox h2 {
-    font-size: 20px;
-  }
 
   #contact {
     align-items: center;
@@ -816,6 +769,10 @@ section {
 /* --- 6.3 Large Phone --- */
 @media (max-width: 625px) {
 
+.projbox
+{
+background: rgba(255, 255, 255, 0.014);
+}
   .left {
     height: max-content;
     margin-top: 30px;
@@ -892,35 +849,19 @@ section {
   .skill {
     width: 100px;
   }
-
-  .projbox {
-    display: flex;
-    flex-direction: column;
-    height: 170px; /* Note: This fixed height might be trouble */
-    background: rgba(255, 255, 255, 0.096);
-    max-width: 90%;
+.projectSec
+{
+  max-width: 99%;
+}
+ 
+ .projbox .proj-txt h3
+ {
+  font-size: 15px;
+ }
+  .projbox .proj-txt p
+  {
+    font-size: 12px;
   }
-  .projbox .textbox {
-    position: unset;
-    height: max-content;
-    width: 100%;
-    max-width: none;
-    margin: 0;
-  }
-  .projbox .textbox h4 {
-    font-size: 15px;
-  }
-  .projbox .textbox h2 {
-    margin-top: 10px;
-    font-size: 20px;
-    color: white;
-  }
-  .projbox1 {
-    position: unset;
-    width: 300px;
-    height: 170px;
-  }
-
   .contacth1 {
     font-size: 55px;
   }
@@ -1004,9 +945,7 @@ section {
     font-size: 20px;
   }
 
-  .projbox1 {
-    max-width: 90%;
-  }
+
 
   .contacth1,
   .contacth2 {
