@@ -189,7 +189,11 @@ section {
   height: 250px;
   opacity: 1;
 }
-
+#stats1
+{
+  width: 500px;
+  max-width: 95%;
+}
 /* --- Form Submit Button --- */
 .cta {
   position: relative;
@@ -648,13 +652,7 @@ font-family:Georgia, 'Times New Roman', Times, serif;
     max-width: 90%;
   }
 
-  #stats2 {
-    padding: 0;
-    margin-top: 20px;
-    position: relative;
-    right: 5px;
-    max-width: 359.2px;
-  }
+
 }
 
 /* --- 6.2 Tablet --- */
@@ -832,11 +830,6 @@ background: rgba(255, 255, 255, 0.014);
   }
   #tools h4 {
     font-size: 40px;
-  }
-
-  #stats1,
-  #stats2 {
-    max-width: 90%;
   }
 
   .skills-grid {
