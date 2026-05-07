@@ -7,7 +7,6 @@
   padding: 0;
   margin: 0;
   font-family: "Poppins", sans-serif;
-  /* Removed tap highlight on mobile */
   -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -36,7 +35,6 @@ section {
   width: 100%;
   display: flex;
   justify-content: center;
- 
 }
 
 .left {
@@ -59,7 +57,7 @@ section {
 .myNav {
   box-shadow: inset 0px 0px 5px rgba(255, 255, 255, 0.096),
     0px 0px 10px rgba(0, 0, 0, 0.219);
-  position: fixed; /* 'position: relative' was redundant */
+  position: fixed;
   display: flex;
   padding: 3px;
   justify-content: space-evenly;
@@ -67,7 +65,7 @@ section {
   flex-direction: column;
   top: 40%;
   right: 2%;
-  height: 320px;
+  height: 360px;
   width: 40px;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
@@ -82,18 +80,15 @@ section {
 }
 
 /* --- Nav Tooltips --- */
-#navTools {
-  scroll-margin-top: 1000px;
-}
-
 #navHome::before,
+#navOs::before,
 #navTools::before,
 #navProject::before,
 #navContact::before {
   position: absolute;
   justify-content: center;
   align-items: center;
-  width: 70px;
+  width: 80px;
   height: 20px;
   padding: 3px;
   border-radius: 10px;
@@ -105,28 +100,14 @@ section {
   padding-bottom: 5px;
 }
 
-#navHome::before {
-  content: "Home";
-  top: 40px;
-  right: 50px;
-}
-#navTools::before {
-  content: "Tools";
-  top: 110px;
-  right: 45px;
-}
-#navProject::before {
-  content: "Projects";
-  top: 180px;
-  right: 45px;
-}
-#navContact::before {
-  content: "Contact";
-  top: 250px;
-  right: 45px;
-}
+#navHome::before   { content: "Home";       top: 30px;  right: 50px; }
+#navOs::before     { content: "OS Cheat";   top: 95px;  right: 45px; }
+#navTools::before  { content: "Tools";      top: 160px; right: 45px; }
+#navProject::before{ content: "Projects";   top: 225px; right: 45px; }
+#navContact::before{ content: "Contact";    top: 290px; right: 45px; }
 
 #navHome:hover::before,
+#navOs:hover::before,
 #navTools:hover::before,
 #navProject:hover::before,
 #navContact:hover::before {
@@ -189,8 +170,8 @@ section {
   height: 250px;
   opacity: 1;
 }
-#stats1
-{
+
+#stats1 {
   width: 500px;
   max-width: 95%;
 }
@@ -270,7 +251,7 @@ section {
   background: #ffffe4;
   padding: 20px;
   border-radius: 10px;
-box-shadow: rgba(255, 255, 255, 0.1) 0px 20px 25px -5px, rgba(255, 255, 255, 0.04) 0px 10px 10px -5px;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 20px 25px -5px, rgba(255, 255, 255, 0.04) 0px 10px 10px -5px;
 }
 
 .profileCard img {
@@ -319,6 +300,192 @@ box-shadow: rgba(255, 255, 255, 0.1) 0px 20px 25px -5px, rgba(255, 255, 255, 0.0
 /* =================================================================== */
 /* 5. RIGHT COLUMN (SECTIONS)
 /* =================================================================== */
+
+/* --- 5.0 OS Cheat Sheet Section --- */
+.osCheat {
+  margin-top: 5svh;
+}
+
+.osCheat h1 {
+  font-size: 110px;
+  padding-left: 20px;
+  width: fit-content;
+  max-width: 90%;
+}
+
+.osCheat-desc {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+  padding-left: 5px;
+  margin-top: 8px;
+  margin-bottom: 24px;
+  font-weight: 300;
+}
+
+/* Tabs */
+.cheat-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding-left: 2px;
+}
+
+.cheat-tab {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.5);
+  padding: 8px 20px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  letter-spacing: 0.03em;
+}
+
+.cheat-tab:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.cheat-tab.active {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+}
+
+/* Cards container — only active card shown */
+.cheat-cards {
+  position: relative;
+  max-width: 700px;
+}
+
+.cheat-card {
+  display: none;
+  flex-direction: column;
+  background: #1e1c1b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  animation: fadeInCard 0.3s ease;
+}
+
+.cheat-card.active {
+  display: flex;
+}
+
+@keyframes fadeInCard {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+/* Card header */
+.cheat-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  background: #252321;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cheat-algo-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-right: 10px;
+}
+
+.cheat-badge {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 100px;
+  background: rgba(33, 150, 243, 0.15);
+  color: #64b5f6;
+  border: 1px solid rgba(33, 150, 243, 0.3);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cheat-badge.preemptive {
+  background: rgba(156, 39, 176, 0.15);
+  color: #ce93d8;
+  border-color: rgba(156, 39, 176, 0.3);
+}
+
+/* Copy button */
+.copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.65);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.copy-btn svg {
+  stroke: rgba(255, 255, 255, 0.65);
+  flex-shrink: 0;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.copy-btn:hover svg {
+  stroke: #ffffff;
+}
+
+.copy-btn.copied {
+  background: rgba(76, 175, 80, 0.15);
+  border-color: rgba(76, 175, 80, 0.4);
+  color: #81c784;
+}
+
+.copy-btn.copied svg {
+  stroke: #81c784;
+}
+
+/* Code block */
+.cheat-code {
+  margin: 0;
+  padding: 20px 24px;
+  overflow-x: auto;
+  background: #151312;
+}
+
+.cheat-code code {
+  font-family: "Fira Code", monospace;
+  font-size: 13px;
+  color: #cdd6f4;
+  line-height: 1.7;
+  white-space: pre;
+}
+
+/* Custom scrollbar for code block */
+.cheat-code::-webkit-scrollbar {
+  height: 5px;
+}
+.cheat-code::-webkit-scrollbar-track {
+  background: #151312;
+}
+.cheat-code::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+}
 
 /* --- 5.1 About Section --- */
 .about {
@@ -435,15 +602,15 @@ box-shadow: rgba(255, 255, 255, 0.1) 0px 20px 25px -5px, rgba(255, 255, 255, 0.0
 .skill span {
   font-size: 0.9rem;
   font-weight: 500;
-  color: #555; /* Overrides global '*' reset */
+  color: #555;
 }
 
 /* --- 5.3 Projects Section --- */
 .projectSec h1 {
   font-size: 110px;
 }
-.projectSec a 
-{
+
+.projectSec a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -452,10 +619,10 @@ box-shadow: rgba(255, 255, 255, 0.1) 0px 20px 25px -5px, rgba(255, 255, 255, 0.0
   border-radius: 10px;
   height: 200px;
   margin-top: 20px;
-  transition:0.2s ease;
+  transition: 0.2s ease;
 }
-.projbox
-{
+
+.projbox {
   position: relative;
   width: 98%;
   height: 98%;
@@ -463,66 +630,44 @@ box-shadow: rgba(255, 255, 255, 0.1) 0px 20px 25px -5px, rgba(255, 255, 255, 0.0
   display: flex;
   justify-content: center;
   align-items: center;
- transition:0.6s ease;
+  transition: 0.6s ease;
 }
-.proj-txt
-{
-padding: 10px;
+
+.proj-txt {
+  padding: 10px;
 }
-.projbox:hover
-{
+
+.projbox:hover {
   background: rgba(255, 255, 255, 0.02);
 }
-.projbox:hover #arrow
-{
+
+.projbox:hover #arrow {
   top: 15px;
   right: 15px;
 }
-.projectSec a
-{
+
+.projectSec a {
   text-decoration: none;
   cursor: pointer;
 }
 
-#arrow
-{
+#arrow {
   position: absolute;
   top: 25px;
   right: 25px;
   transition: 0.3s ease-in;
 }
 
-#ambu-proj
-{
+#ambu-proj {
   height: 134px;
   width: 130px;
   border-radius: 10px;
   padding: 5px;
 }
-.proj-txt p
-{
-opacity: 0.5;
-font-family:Georgia, 'Times New Roman', Times, serif;
-}
 
-
-.featuresbox {
-  position: absolute;
-  top: 15%;
-  right: 27%;
-  transition: all 0.6s ease;
-  opacity: 0; /* Default state: hidden */
-  transform: translateY(30px);
-  pointer-events: none;
-}
-
-.featuresbox h3 {
-  color: white;
-}
-
-.featuresbox ul li {
-  margin-top: 10px;
-  list-style: none;
+.proj-txt p {
+  opacity: 0.5;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 /* --- 5.4 Contact Section --- */
@@ -555,11 +700,10 @@ font-family:Georgia, 'Times New Roman', Times, serif;
 }
 
 .formRow {
-  display: block;
-  width: 100%;
-  flex-wrap: wrap;
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 .input1 {
@@ -623,24 +767,14 @@ font-family:Georgia, 'Times New Roman', Times, serif;
 
 /* --- 6.1 Large Tablet / Small Laptop --- */
 @media (max-width: 1443px) {
-
-
-  .textbox {
-    top: 0%;
-    right: 2%;
-    height: 90%;
-    justify-content: center;
-    width: 55%;
-  }
-
-
   .myNav {
     left: 96%;
   }
 
   .statsLanguages h1,
   .about h1,
-  .projectSec h1 {
+  .projectSec h1,
+  .osCheat h1 {
     font-size: 80px;
   }
 
@@ -655,12 +789,13 @@ font-family:Georgia, 'Times New Roman', Times, serif;
     max-width: 90%;
   }
 
-
+  .cheat-cards {
+    max-width: 95%;
+  }
 }
 
 /* --- 6.2 Tablet --- */
 @media (max-width: 1000px) {
-  /* Switch to single-column layout */
   .container {
     justify-content: start;
     align-items: center;
@@ -683,17 +818,48 @@ font-family:Georgia, 'Times New Roman', Times, serif;
     overflow-y: visible;
     margin: 0;
     padding: 0;
-    /* height: 300vh; */ /* <-- FIXED: Removed bad fixed height */
   }
 
-  /* --- Remove sticky behavior from profile card --- */
   .profileCard {
-    position: static; /* <-- FIXED: Was 'none', which is invalid */
+    position: static;
     width: 400px;
   }
 
   .myNav {
     display: none;
+  }
+
+  /* OS Cheat section centering */
+  .osCheat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .osCheat h1 {
+    padding: 0;
+    min-width: 100%;
+  }
+
+  .osCheat-desc {
+    padding: 0;
+    text-align: center;
+  }
+
+  .cheat-tabs {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .cheat-cards {
+    max-width: 95%;
+    width: 95%;
+  }
+
+  .cheat-card-header {
+    flex-direction: row;
+    align-items: center;
   }
 
   .about {
@@ -702,18 +868,22 @@ font-family:Georgia, 'Times New Roman', Times, serif;
     justify-content: center;
     text-align: center;
   }
+
   #software,
   .fadeText {
     min-width: 100%;
     padding: 0;
   }
+
   .about h4 {
     width: 100%;
     padding: 0;
   }
+
   .numbers {
     width: 100%;
   }
+
   #download1 {
     width: 100%;
   }
@@ -734,31 +904,29 @@ font-family:Georgia, 'Times New Roman', Times, serif;
     align-items: center;
     justify-content: center;
   }
-  .featuresbox {
-    display: none;
-  }
-  .textbox {
-    height: 90%;
-    width: 60%;
-  }
 
   #contact {
     align-items: center;
   }
+
   .formRow {
     flex-direction: column;
     width: 100%;
   }
+
   #contactform {
     height: max-content;
     width: 90%;
   }
+
   #contactform h4 {
     margin-top: 10px;
   }
+
   #message {
     width: 100%;
   }
+
   .input3 {
     width: 100%;
     display: flex;
@@ -769,11 +937,10 @@ font-family:Georgia, 'Times New Roman', Times, serif;
 
 /* --- 6.3 Large Phone --- */
 @media (max-width: 625px) {
+  .projbox {
+    background: rgba(255, 255, 255, 0.02);
+  }
 
-.projbox
-{
-background: rgba(255, 255, 255, 0.02);
-}
   .left {
     height: max-content;
     margin-top: 30px;
@@ -784,20 +951,21 @@ background: rgba(255, 255, 255, 0.02);
   }
 
   .profileCard {
-    position: unset; /* This is also a good value to use! */
+    position: unset;
     height: min-content;
     max-width: 80%;
     left: 0;
   }
 
   .profileCard img {
-    height: 40%;
     max-width: 90%;
     height: auto;
   }
+
   .profileCard h4 {
     font-size: 17px;
   }
+
   .profileCard h2 {
     font-size: 25px;
   }
@@ -810,13 +978,17 @@ background: rgba(255, 255, 255, 0.02);
     display: flex;
     flex-direction: column;
   }
+
   .about h4 {
     max-width: 90%;
   }
+
   .about h1,
-  .projectSec h1 {
+  .projectSec h1,
+  .osCheat h1 {
     font-size: 55px;
   }
+
   .about #engineer {
     padding: 0;
   }
@@ -824,6 +996,7 @@ background: rgba(255, 255, 255, 0.02);
   .numbers {
     width: 90%;
   }
+
   .numbers .numbers2 {
     font-size: 40px;
   }
@@ -831,8 +1004,37 @@ background: rgba(255, 255, 255, 0.02);
   #tools h1 {
     font-size: 50px;
   }
-  #tools h4 {
-    font-size: 40px;
+
+  /* OS Cheat mobile */
+  .cheat-tabs {
+    gap: 6px;
+  }
+
+  .cheat-tab {
+    padding: 7px 14px;
+    font-size: 12px;
+  }
+
+  .cheat-card-header {
+    padding: 12px 14px;
+    gap: 8px;
+  }
+
+  .cheat-algo-name {
+    font-size: 13px;
+  }
+
+  .cheat-code {
+    padding: 14px 16px;
+  }
+
+  .cheat-code code {
+    font-size: 11.5px;
+  }
+
+  .copy-btn {
+    font-size: 12px;
+    padding: 5px 10px;
   }
 
   .skills-grid {
@@ -842,25 +1044,27 @@ background: rgba(255, 255, 255, 0.02);
     margin-top: 20px;
     padding: 20px;
   }
+
   .skill {
     width: 100px;
   }
-.projectSec
-{
-  max-width: 99%;
-}
- 
- .projbox .proj-txt h3
- {
-  font-size: 15px;
- }
-  .projbox .proj-txt p
-  {
+
+  .projectSec {
+    max-width: 99%;
+  }
+
+  .projbox .proj-txt h3 {
+    font-size: 15px;
+  }
+
+  .projbox .proj-txt p {
     font-size: 12px;
   }
+
   .contacth1 {
     font-size: 55px;
   }
+
   .contacth2 {
     font-size: 55px;
   }
@@ -869,27 +1073,31 @@ background: rgba(255, 255, 255, 0.02);
     height: max-content;
     align-items: center;
   }
+
   .formRow {
     align-items: center;
   }
+
   #message {
     max-width: none;
     width: 99%;
     margin: 10px 0px;
   }
+
   .input1,
   .input2,
   .input3 {
     max-width: 90%;
   }
+
   #email {
     min-width: 90%;
   }
+
   #name {
     min-width: 90%;
   }
 
-  /* Mobile Submit Button Style */
   .cta {
     position: relative;
     margin-top: 20px;
@@ -899,10 +1107,12 @@ background: rgba(255, 255, 255, 0.02);
     background: none;
     cursor: pointer;
   }
+
   .cta:before {
     background: #234567;
     width: 100%;
   }
+
   .cta svg {
     stroke: #ff0000;
     transform: translateX(0px);
@@ -913,7 +1123,8 @@ background: rgba(255, 255, 255, 0.02);
 @media (max-width: 300px) {
   .about h1,
   .projectSec h1,
-  .statsLanguages h1 {
+  .statsLanguages h1,
+  .osCheat h1 {
     font-size: 20px;
   }
 
@@ -924,24 +1135,24 @@ background: rgba(255, 255, 255, 0.02);
   .profileCard h2 {
     font-size: 15px;
   }
+
   .profileCard img {
     max-width: 90%;
   }
 
   .links {
-    display: none; /* Good idea to hide clutter */
+    display: none;
   }
 
   .numbers {
-    height: 400px; /* Note: fixed height */
+    height: 400px;
     display: flex;
     flex-direction: column;
   }
+
   .numbers .numbers2 {
     font-size: 20px;
   }
-
-
 
   .contacth1,
   .contacth2 {
@@ -952,5 +1163,10 @@ background: rgba(255, 255, 255, 0.02);
   .input2,
   .input3 {
     max-width: 90%;
+  }
+
+  .cheat-tab {
+    font-size: 10px;
+    padding: 5px 10px;
   }
 }

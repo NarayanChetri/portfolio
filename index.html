@@ -2,8 +2,6 @@
 <html lang="en">
 
 <head>
-  <!-- G-Tag and Meta Information -->
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RL436L9NNG"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -16,20 +14,16 @@
   <title>Narayan Chetri | Portfolio</title>
   <meta name="description" content="Welcome to my portfolio. Explore my projects, skills, and resume.">
 
-  <!-- Stylesheets and Favicon -->
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="icons8-avatar-48.png" />
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Titillium+Web&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
-  
-  <!-- Leaflet CSS -->
+
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  
-  <!-- JavaScript Libraries -->
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
@@ -44,7 +38,6 @@
       <div class="profileCard">
         <img src="pic1.jpg" alt="Profile picture of Narayan Chetri" />
         <h2>Narayan Chetri</h2>
-      
         <h4>MCA | TEZPUR UNIVERSITY | LEARNING DSA AND FULL STACK DEVELOPMENT</h4>
         <div class="links">
           <a href="https://www.linkedin.com/in/narayan-chetri/"><img src="icons8-linkedin-50.png" class="socialIcons" id="linkedin" alt="LinkedIn" /></a>
@@ -59,20 +52,269 @@
     <!-- ============= RIGHT PANEL (MAIN CONTENT) ============= -->
     <!-- ====================================================== -->
     <div class="right" id="home">
-      
+
       <!-- ================ NAVIGATION ================ -->
       <div class="myNav">
         <a href="#home" id="navHome"><img src="icons8-home-48.png" class="navIcons" alt="Home" /></a>
+        <a href="#oscheat" id="navOs"><img src="icons8-tools-50.png" class="navIcons" alt="OS Cheat" /></a>
         <a href="#tools" id="navTools"><img src="icons8-tools-50.png" class="navIcons" alt="Tools" /></a>
         <a href="#project" id="navProject"><img src="icons8-projects-48.png" class="navIcons" alt="Projects" /></a>
         <a href="#contact" id="navContact"><img src="icons8-contact-48.png" class="navIcons" alt="Contact" /></a>
       </div>
 
+
+<!-- ================ OS CHEAT SHEET SECTION ============== -->
+<!-- ====================================================== -->
+<section class="osCheat scroll-element" id="oscheat">
+  <h1 class="scroll-element">OS</h1>
+  <h1 class="fadeText scroll-element">CHEAT SHEET</h1>
+  <p class="osCheat-desc scroll-element">CPU Scheduling Algorithms in C++ — tap any tab to view the code.</p>
+
+  <div class="cheat-tabs scroll-element">
+    <button class="cheat-tab active" data-tab="fcfs">FCFS</button>
+    <button class="cheat-tab" data-tab="sjf">SJF</button>
+    <button class="cheat-tab" data-tab="srtf">SRTF</button>
+    <button class="cheat-tab" data-tab="rr">Round Robin</button>
+  </div>
+
+  <div class="cheat-cards">
+
+    <!-- FCFS -->
+    <div class="cheat-card active" id="tab-fcfs">
+      <div class="cheat-card-header">
+        <div>
+          <span class="cheat-algo-name">First Come First Serve</span>
+          <span class="cheat-badge">Non-Preemptive</span>
+        </div>
+        <button class="copy-btn" onclick="copyCode('code-fcfs', this)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Copy
+        </button>
+      </div>
+      <pre class="cheat-code" id="code-fcfs"><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n;
+    float avgwt = 0, avgtat = 0;
+    cout &lt;&lt; "Enter number of processes: ";
+    cin &gt;&gt; n;
+    int at[10], bt[10], wt[10], tat[10], ct[10], p[10];
+    for(int i=0; i&lt;n; i++) {
+        p[i] = i + 1;
+        cout &lt;&lt; "\nP" &lt;&lt; p[i] &lt;&lt; endl;
+        cout &lt;&lt; "AT: "; cin &gt;&gt; at[i];
+        cout &lt;&lt; "BT: "; cin &gt;&gt; bt[i];
+    }
+    // Sort by Arrival Time
+    for(int i=0; i&lt;n-1; i++)
+        for(int j=i+1; j&lt;n; j++)
+            if(at[i] &gt; at[j]) {
+                swap(at[i],at[j]); swap(bt[i],bt[j]); swap(p[i],p[j]);
+            }
+    // FCFS Calculation
+    ct[0] = at[0] + bt[0];
+    tat[0] = ct[0] - at[0];
+    wt[0] = tat[0] - bt[0];
+    for(int i=1; i&lt;n; i++) {
+        ct[i]  = (ct[i-1] &lt; at[i]) ? at[i]+bt[i] : ct[i-1]+bt[i];
+        tat[i] = ct[i] - at[i];
+        wt[i]  = tat[i] - bt[i];
+    }
+    // Re-sort by Process Number
+    for(int i=0; i&lt;n-1; i++)
+        for(int j=i+1; j&lt;n; j++)
+            if(p[i] &gt; p[j]) {
+                swap(p[i],p[j]); swap(at[i],at[j]); swap(bt[i],bt[j]);
+                swap(wt[i],wt[j]); swap(tat[i],tat[j]);
+            }
+    cout &lt;&lt; "\nP\tAT\tBT\tWT\tTAT\n";
+    for(int i=0; i&lt;n; i++) {
+        cout &lt;&lt; "P"&lt;&lt;p[i]&lt;&lt;"\t"&lt;&lt;at[i]&lt;&lt;"\t"&lt;&lt;bt[i]&lt;&lt;"\t"&lt;&lt;wt[i]&lt;&lt;"\t"&lt;&lt;tat[i]&lt;&lt;"\n";
+        avgwt += wt[i]; avgtat += tat[i];
+    }
+    cout &lt;&lt; "\nAverage WT  = " &lt;&lt; avgwt/n;
+    cout &lt;&lt; "\nAverage TAT = " &lt;&lt; avgtat/n;
+    return 0;
+}</code></pre>
+    </div>
+
+    <!-- SJF -->
+    <div class="cheat-card" id="tab-sjf">
+      <div class="cheat-card-header">
+        <div>
+          <span class="cheat-algo-name">Shortest Job First</span>
+          <span class="cheat-badge">Non-Preemptive</span>
+        </div>
+        <button class="copy-btn" onclick="copyCode('code-sjf', this)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Copy
+        </button>
+      </div>
+      <pre class="cheat-code" id="code-sjf"><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n, at[10], bt[10], wt[10], tat[10], ct[10], p[10];
+    bool done[10] = {};
+    float avgwt=0, avgtat=0;
+    cout &lt;&lt; "Enter number of processes: "; cin &gt;&gt; n;
+    for(int i=0; i&lt;n; i++) {
+        p[i]=i+1;
+        cout &lt;&lt; "\nP"&lt;&lt;p[i]&lt;&lt;" AT: "; cin &gt;&gt; at[i];
+        cout &lt;&lt; "P"&lt;&lt;p[i]&lt;&lt;" BT: "; cin &gt;&gt; bt[i];
+    }
+    int time=0, completed=0;
+    while(completed &lt; n) {
+        int idx=-1, minbt=9999;
+        for(int i=0; i&lt;n; i++)
+            if(!done[i] &amp;&amp; at[i]&lt;=time &amp;&amp; bt[i]&lt;minbt)
+                { minbt=bt[i]; idx=i; }
+        if(idx==-1) { time++; continue; }
+        time += bt[idx];
+        ct[idx]  = time;
+        tat[idx] = ct[idx] - at[idx];
+        wt[idx]  = tat[idx] - bt[idx];
+        done[idx]=true; completed++;
+    }
+    cout &lt;&lt; "\nP\tAT\tBT\tWT\tTAT\n";
+    for(int i=0; i&lt;n; i++) {
+        cout &lt;&lt; "P"&lt;&lt;p[i]&lt;&lt;"\t"&lt;&lt;at[i]&lt;&lt;"\t"&lt;&lt;bt[i]&lt;&lt;"\t"&lt;&lt;wt[i]&lt;&lt;"\t"&lt;&lt;tat[i]&lt;&lt;"\n";
+        avgwt+=wt[i]; avgtat+=tat[i];
+    }
+    cout &lt;&lt; "\nAverage WT  = " &lt;&lt; avgwt/n;
+    cout &lt;&lt; "\nAverage TAT = " &lt;&lt; avgtat/n;
+    return 0;
+}</code></pre>
+    </div>
+
+    <!-- SRTF -->
+    <div class="cheat-card" id="tab-srtf">
+      <div class="cheat-card-header">
+        <div>
+          <span class="cheat-algo-name">Shortest Remaining Time First</span>
+          <span class="cheat-badge preemptive">Preemptive</span>
+        </div>
+        <button class="copy-btn" onclick="copyCode('code-srtf', this)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Copy
+        </button>
+      </div>
+      <pre class="cheat-code" id="code-srtf"><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n, at[10], bt[10], rem[10], ct[10], wt[10], tat[10], p[10];
+    bool done[10]={};
+    float avgwt=0, avgtat=0;
+    cout &lt;&lt; "Enter number of processes: "; cin &gt;&gt; n;
+    for(int i=0; i&lt;n; i++) {
+        p[i]=i+1;
+        cout &lt;&lt; "\nP"&lt;&lt;p[i]&lt;&lt;" AT: "; cin &gt;&gt; at[i];
+        cout &lt;&lt; "P"&lt;&lt;p[i]&lt;&lt;" BT: "; cin &gt;&gt; bt[i];
+        rem[i]=bt[i];
+    }
+    int time=0, completed=0;
+    while(completed &lt; n) {
+        int idx=-1, minrem=9999;
+        for(int i=0; i&lt;n; i++)
+            if(!done[i] &amp;&amp; at[i]&lt;=time &amp;&amp; rem[i]&lt;minrem)
+                { minrem=rem[i]; idx=i; }
+        if(idx==-1) { time++; continue; }
+        rem[idx]--; time++;
+        if(rem[idx]==0) {
+            ct[idx]=time;
+            tat[idx]=ct[idx]-at[idx];
+            wt[idx]=tat[idx]-bt[idx];
+            done[idx]=true; completed++;
+        }
+    }
+    cout &lt;&lt; "\nP\tAT\tBT\tWT\tTAT\n";
+    for(int i=0; i&lt;n; i++) {
+        cout &lt;&lt; "P"&lt;&lt;p[i]&lt;&lt;"\t"&lt;&lt;at[i]&lt;&lt;"\t"&lt;&lt;bt[i]&lt;&lt;"\t"&lt;&lt;wt[i]&lt;&lt;"\t"&lt;&lt;tat[i]&lt;&lt;"\n";
+        avgwt+=wt[i]; avgtat+=tat[i];
+    }
+    cout &lt;&lt; "\nAverage WT  = " &lt;&lt; avgwt/n;
+    cout &lt;&lt; "\nAverage TAT = " &lt;&lt; avgtat/n;
+    return 0;
+}</code></pre>
+    </div>
+
+    <!-- Round Robin -->
+    <div class="cheat-card" id="tab-rr">
+      <div class="cheat-card-header">
+        <div>
+          <span class="cheat-algo-name">Round Robin</span>
+          <span class="cheat-badge preemptive">Preemptive</span>
+        </div>
+        <button class="copy-btn" onclick="copyCode('code-rr', this)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Copy
+        </button>
+      </div>
+      <pre class="cheat-code" id="code-rr"><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n, tq, at[10], bt[10], rem[10], ct[10], wt[10], tat[10], p[10];
+    float avgwt=0, avgtat=0;
+    cout &lt;&lt; "Enter number of processes: "; cin &gt;&gt; n;
+    cout &lt;&lt; "Time Quantum: ";              cin &gt;&gt; tq;
+    for(int i=0; i&lt;n; i++) {
+        p[i]=i+1;
+        cout &lt;&lt; "\nP"&lt;&lt;p[i]&lt;&lt;" AT: "; cin &gt;&gt; at[i];
+        cout &lt;&lt; "P"&lt;&lt;p[i]&lt;&lt;" BT: "; cin &gt;&gt; bt[i];
+        rem[i]=bt[i];
+    }
+    // Sort by arrival time
+    for(int i=0; i&lt;n-1; i++)
+        for(int j=i+1; j&lt;n; j++)
+            if(at[i]&gt;at[j]) {
+                swap(at[i],at[j]); swap(bt[i],bt[j]);
+                swap(rem[i],rem[j]); swap(p[i],p[j]);
+            }
+    int queue[50], front=0, rear=0, inQ[10]={};
+    int time=0, completed=0;
+    queue[rear++]=0; inQ[0]=1;
+    while(completed &lt; n) {
+        if(front==rear) { time++; // idle
+            for(int i=0; i&lt;n; i++)
+                if(!inQ[i] &amp;&amp; rem[i]&gt;0 &amp;&amp; at[i]&lt;=time)
+                    { queue[rear++]=i; inQ[i]=1; }
+            continue;
+        }
+        int idx=queue[front++];
+        int exec=(rem[idx]&lt;tq)?rem[idx]:tq;
+        rem[idx]-=exec; time+=exec;
+        for(int i=0; i&lt;n; i++)
+            if(!inQ[i] &amp;&amp; rem[i]&gt;0 &amp;&amp; at[i]&lt;=time)
+                { queue[rear++]=i; inQ[i]=1; }
+        if(rem[idx]==0) {
+            ct[idx]=time; tat[idx]=ct[idx]-at[idx];
+            wt[idx]=tat[idx]-bt[idx]; completed++;
+        } else queue[rear++]=idx;
+    }
+    // Re-sort by process number
+    for(int i=0; i&lt;n-1; i++)
+        for(int j=i+1; j&lt;n; j++)
+            if(p[i]&gt;p[j]) {
+                swap(p[i],p[j]); swap(at[i],at[j]); swap(bt[i],bt[j]);
+                swap(wt[i],wt[j]); swap(tat[i],tat[j]);
+            }
+    cout &lt;&lt; "\nP\tAT\tBT\tWT\tTAT\n";
+    for(int i=0; i&lt;n; i++) {
+        cout &lt;&lt; "P"&lt;&lt;p[i]&lt;&lt;"\t"&lt;&lt;at[i]&lt;&lt;"\t"&lt;&lt;bt[i]&lt;&lt;"\t"&lt;&lt;wt[i]&lt;&lt;"\t"&lt;&lt;tat[i]&lt;&lt;"\n";
+        avgwt+=wt[i]; avgtat+=tat[i];
+    }
+    cout &lt;&lt; "\nAverage WT  = " &lt;&lt; avgwt/n;
+    cout &lt;&lt; "\nAverage TAT = " &lt;&lt; avgtat/n;
+    return 0;
+}</code></pre>
+    </div>
+
+  </div><!-- end cheat-cards -->
+</section>
       <!-- ================ HOME/ABOUT SECTION ================ -->
       <section class="about scroll-element">
         <h1 id="software">SOFTWARE</h1>
         <h1 id="engineer" class="fadeText">ENGINEER</h1>
-        <h4>I’m a MCA student who loves making simple and user-friendly websites. At the moment i'm caught up with the college work :-^</h4>
+        <h4>I'm a MCA student who loves making simple and user-friendly websites. At the moment i'm caught up with the college work :-^</h4>
 
         <div class="numbers">
           <span>
@@ -107,9 +349,7 @@
         <h2 id="leetStats" class="scroll-element">🚀 Leetcode stats</h2>
         <br>
         <div class="statsgraph scroll-element">
-       
-           <img id="stats1" src="https://leetcard.jacoblin.cool/narayan-dev?theme=dark&font=Poppins&ext=activity" alt="LeetCode Stats" class="scroll-element" />
-        
+          <img id="stats1" src="https://leetcard.jacoblin.cool/narayan-dev?theme=dark&font=Poppins&ext=activity" alt="LeetCode Stats" class="scroll-element" />
         </div>
 
         <h2 class="scroll-element">🚀 Languages & Tools</h2>
@@ -133,35 +373,32 @@
       <section class="projectSec" id="project">
         <h1 class="scroll-element">RECENT</h1>
         <h1 class="fadeText scroll-element">PROJECTS</h1>
-   <a href="https://jorhatambulance.com" class="scroll-element">     <div class="projbox">
-          <!-- Project content goes here -->
-           <img src="ambu-proj.jpg" alt="ambulance image" id="ambu-proj">
-           <div class="proj-txt">
-            <h3>Ambulance Service</h3>
-            <p>Made a simple,fast and static website for an ambulance service in jorhat</p>
-           </div>
-           <img src="icons8-arrow-30.png" alt="arrow png" id="arrow">
-        </div></a>
-       <a href="#"class="scroll-element"> <div class="projbox">
-          <!-- Project content goes here -->
-           coming soon !
+        <a href="https://jorhatambulance.com" class="scroll-element">
+          <div class="projbox">
+            <img src="ambu-proj.jpg" alt="ambulance image" id="ambu-proj">
+            <div class="proj-txt">
+              <h3>Ambulance Service</h3>
+              <p>Made a simple, fast and static website for an ambulance service in jorhat</p>
+            </div>
             <img src="icons8-arrow-30.png" alt="arrow png" id="arrow">
-        </div></a>
-      <a href="#"class="scroll-element">  <div class="projbox">
-          <!-- Project content goes here -->
-           coming soon !
-            <img src="icons8-arrow-30.png" alt="arrow png" id="arrow">
-        </div></a>
+          </div>
+        </a>
+        <a href="#" class="scroll-element">
+          <div class="projbox">coming soon !<img src="icons8-arrow-30.png" alt="arrow png" id="arrow"></div>
+        </a>
+        <a href="#" class="scroll-element">
+          <div class="projbox">coming soon !<img src="icons8-arrow-30.png" alt="arrow png" id="arrow"></div>
+        </a>
       </section>
 
       <!-- ================ CONTACT SECTION ================ -->
       <section id="contact">
         <h1 class="contacth1 scroll-element">Let's work</h1>
         <h1 class="fadeText contacth2">together</h1>
-        
+
         <form id="contactform">
           <input type="hidden" name="access_key" value="77afba8f-5f47-4ed0-82c1-1f7d86012ccb" />
-          
+
           <div class="formRow">
             <div class="input1">
               <h4>Name</h4>
@@ -172,7 +409,7 @@
               <input type="email" name="email" placeholder="your@gmail.com" id="email" required />
             </div>
           </div>
-          
+
           <div class="input3">
             <h4>Message</h4>
             <textarea id="message" name="message" placeholder="Your Message" required></textarea>
@@ -186,14 +423,11 @@
           </div>
         </form>
 
-        <!-- Success message -->
-        <div id="successMessage">
-          Form submitted successfully!
-        </div>
+        <div id="successMessage">Form submitted successfully!</div>
       </section>
 
-    </div> <!-- Closing tag for div.right -->
-  </div> <!-- Closing tag for div.container -->
+    </div><!-- end .right -->
+  </div><!-- end .container -->
 
   <!-- ====================================================== -->
   <!-- ======================= SCRIPTS ====================== -->
@@ -203,7 +437,6 @@
   <!-- GSAP ScrollTrigger Animation -->
   <script>
     gsap.registerPlugin(ScrollTrigger);
-
     gsap.utils.toArray(".scroll-element").forEach(el => {
       gsap.from(el, {
         y: -20,
@@ -218,9 +451,32 @@
       });
     });
   </script>
+
+  <!-- OS Cheat Tab Switching + Copy -->
+  <script>
+    // Tab switching
+    document.querySelectorAll('.cheat-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.cheat-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.cheat-card').forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Copy button
+    function copyCode(codeId, btn) {
+      const text = document.getElementById(codeId).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.classList.add('copied');
+        btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!`;
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy`;
+        }, 2000);
+      });
+    }
+  </script>
+
 </body>
-
 </html>
-
-
-
