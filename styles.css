@@ -465,13 +465,14 @@ section {
   padding: 20px 24px;
   overflow-x: auto;
   background: #151312;
+  text-align: left;
 }
 
 .cheat-code code {
   font-family: "Fira Code", monospace;
   font-size: 13px;
   color: #cdd6f4;
-  line-height: 1.7;
+  line-height: 1;
   white-space: pre;
 }
 
