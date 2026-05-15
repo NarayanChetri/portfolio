@@ -475,7 +475,25 @@ section {
   line-height: 1;
   white-space: pre;
 }
+/* Group labels above each tab row */
+.cheat-group-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 28px;
+  margin-bottom: 8px;
+  padding-left: 2px;
+}
 
+/* Mobile: center group labels */
+@media (max-width: 1000px) {
+  .cheat-group-label {
+    text-align: center;
+    padding: 0;
+  }
+}
 /* Custom scrollbar for code block */
 .cheat-code::-webkit-scrollbar {
   height: 5px;

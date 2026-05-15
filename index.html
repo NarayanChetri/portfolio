@@ -54,39 +54,52 @@
     <div class="right" id="home">
 
       <!-- ================ NAVIGATION ================ -->
-      <div class="myNav">
+      <!-- <div class="myNav">
         <a href="#home" id="navHome"><img src="icons8-home-48.png" class="navIcons" alt="Home" /></a>
         <a href="#oscheat" id="navOs"><img src="icons8-tools-50.png" class="navIcons" alt="OS Cheat" /></a>
         <a href="#tools" id="navTools"><img src="icons8-tools-50.png" class="navIcons" alt="Tools" /></a>
         <a href="#project" id="navProject"><img src="icons8-projects-48.png" class="navIcons" alt="Projects" /></a>
         <a href="#contact" id="navContact"><img src="icons8-contact-48.png" class="navIcons" alt="Contact" /></a>
-      </div>
+      </div> -->
 
 
 <!-- ================ OS CHEAT SHEET SECTION ============== -->
-<!-- ====================================================== -->
 <section class="osCheat scroll-element" id="oscheat">
   <h1 class="scroll-element">OS</h1>
   <h1 class="fadeText scroll-element">CHEAT SHEET</h1>
-  <p class="osCheat-desc scroll-element">CPU Scheduling Algorithms in C++ — tap any tab to view the code.</p>
+  <p class="osCheat-desc scroll-element">CPU Scheduling, Memory Management & Deadlock Algorithms in C++</p>
 
-  <div class="cheat-tabs scroll-element">
+  <p class="cheat-group-label scroll-element">⚙️ CPU Scheduling</p>
+  <div class="cheat-tabs scroll-element" id="group-cpu">
     <button class="cheat-tab active" data-tab="fcfs">FCFS</button>
     <button class="cheat-tab" data-tab="sjf">SJF</button>
     <button class="cheat-tab" data-tab="srtf">SRTF</button>
     <button class="cheat-tab" data-tab="rr">Round Robin</button>
+    <button class="cheat-tab" data-tab="priority">Priority</button>
+  </div>
+
+  <p class="cheat-group-label scroll-element">🔒 Deadlock Avoidance</p>
+  <div class="cheat-tabs scroll-element" id="group-deadlock">
+    <button class="cheat-tab" data-tab="bankers">Banker's Algo</button>
+  </div>
+
+  <p class="cheat-group-label scroll-element">📄 Page Replacement</p>
+  <div class="cheat-tabs scroll-element" id="group-page">
+    <button class="cheat-tab" data-tab="fifo">FIFO</button>
+    <button class="cheat-tab" data-tab="lru">LRU</button>
+    <button class="cheat-tab" data-tab="optimal">Optimal</button>
   </div>
 
   <div class="cheat-cards">
 
-    <!-- FCFS -->
+    <!-- ========== FCFS ========== -->
     <div class="cheat-card active" id="tab-fcfs">
       <div class="cheat-card-header">
         <div>
           <span class="cheat-algo-name">First Come First Serve</span>
           <span class="cheat-badge">Non-Preemptive</span>
         </div>
-        <button class="copy-btn" onclick="copyCode('code-fcfs', this)">
+        <button class="copy-btn" onclick="copyCode('code-fcfs',this)">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
           Copy
         </button>
@@ -95,57 +108,52 @@
 using namespace std;
 int main() {
     int n;
-    float avgwt = 0, avgtat = 0;
-    cout &lt;&lt; "Enter number of processes: ";
-    cin &gt;&gt; n;
-    int at[10], bt[10], wt[10], tat[10], ct[10], p[10];
-    for(int i=0; i&lt;n; i++) {
-        p[i] = i + 1;
-        cout &lt;&lt; "\nP" &lt;&lt; p[i] &lt;&lt; endl;
-        cout &lt;&lt; "AT: "; cin &gt;&gt; at[i];
-        cout &lt;&lt; "BT: "; cin &gt;&gt; bt[i];
+    float avgwt=0, avgtat=0;
+    cout &lt;&lt; "Enter number of processes: "; cin &gt;&gt; n;
+    int at[10],bt[10],wt[10],tat[10],ct[10],p[10];
+    for(int i=0;i&lt;n;i++) {
+        p[i]=i+1;
+        cout &lt;&lt; "\nP"&lt;&lt;p[i]&lt;&lt;"\nAT: "; cin &gt;&gt; at[i];
+        cout &lt;&lt; "BT: ";                   cin &gt;&gt; bt[i];
     }
     // Sort by Arrival Time
-    for(int i=0; i&lt;n-1; i++)
-        for(int j=i+1; j&lt;n; j++)
-            if(at[i] &gt; at[j]) {
+    for(int i=0;i&lt;n-1;i++)
+        for(int j=i+1;j&lt;n;j++)
+            if(at[i]&gt;at[j]) {
                 swap(at[i],at[j]); swap(bt[i],bt[j]); swap(p[i],p[j]);
             }
-    // FCFS Calculation
-    ct[0] = at[0] + bt[0];
-    tat[0] = ct[0] - at[0];
-    wt[0] = tat[0] - bt[0];
-    for(int i=1; i&lt;n; i++) {
-        ct[i]  = (ct[i-1] &lt; at[i]) ? at[i]+bt[i] : ct[i-1]+bt[i];
-        tat[i] = ct[i] - at[i];
-        wt[i]  = tat[i] - bt[i];
+    // FCFS
+    ct[0]=at[0]+bt[0]; tat[0]=ct[0]-at[0]; wt[0]=tat[0]-bt[0];
+    for(int i=1;i&lt;n;i++) {
+        ct[i]  = (ct[i-1]&lt;at[i]) ? at[i]+bt[i] : ct[i-1]+bt[i];
+        tat[i] = ct[i]-at[i];
+        wt[i]  = tat[i]-bt[i];
     }
     // Re-sort by Process Number
-    for(int i=0; i&lt;n-1; i++)
-        for(int j=i+1; j&lt;n; j++)
-            if(p[i] &gt; p[j]) {
+    for(int i=0;i&lt;n-1;i++)
+        for(int j=i+1;j&lt;n;j++)
+            if(p[i]&gt;p[j]) {
                 swap(p[i],p[j]); swap(at[i],at[j]); swap(bt[i],bt[j]);
                 swap(wt[i],wt[j]); swap(tat[i],tat[j]);
             }
     cout &lt;&lt; "\nP\tAT\tBT\tWT\tTAT\n";
-    for(int i=0; i&lt;n; i++) {
+    for(int i=0;i&lt;n;i++) {
         cout &lt;&lt; "P"&lt;&lt;p[i]&lt;&lt;"\t"&lt;&lt;at[i]&lt;&lt;"\t"&lt;&lt;bt[i]&lt;&lt;"\t"&lt;&lt;wt[i]&lt;&lt;"\t"&lt;&lt;tat[i]&lt;&lt;"\n";
-        avgwt += wt[i]; avgtat += tat[i];
+        avgwt+=wt[i]; avgtat+=tat[i];
     }
-    cout &lt;&lt; "\nAverage WT  = " &lt;&lt; avgwt/n;
-    cout &lt;&lt; "\nAverage TAT = " &lt;&lt; avgtat/n;
+    cout &lt;&lt; "\nAvg WT="&lt;&lt;avgwt/n &lt;&lt; "  Avg TAT="&lt;&lt;avgtat/n;
     return 0;
 }</code></pre>
     </div>
 
-    <!-- SJF -->
+    <!-- ========== SJF ========== -->
     <div class="cheat-card" id="tab-sjf">
       <div class="cheat-card-header">
         <div>
           <span class="cheat-algo-name">Shortest Job First</span>
           <span class="cheat-badge">Non-Preemptive</span>
         </div>
-        <button class="copy-btn" onclick="copyCode('code-sjf', this)">
+        <button class="copy-btn" onclick="copyCode('code-sjf',this)">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
           Copy
         </button>
@@ -153,47 +161,43 @@ int main() {
       <pre class="cheat-code" id="code-sjf"><code>#include &lt;iostream&gt;
 using namespace std;
 int main() {
-    int n, at[10], bt[10], wt[10], tat[10], ct[10], p[10];
-    bool done[10] = {};
-    float avgwt=0, avgtat=0;
+    int n,at[10],bt[10],wt[10],tat[10],ct[10],p[10];
+    bool done[10]={};
+    float avgwt=0,avgtat=0;
     cout &lt;&lt; "Enter number of processes: "; cin &gt;&gt; n;
-    for(int i=0; i&lt;n; i++) {
+    for(int i=0;i&lt;n;i++) {
         p[i]=i+1;
         cout &lt;&lt; "\nP"&lt;&lt;p[i]&lt;&lt;" AT: "; cin &gt;&gt; at[i];
         cout &lt;&lt; "P"&lt;&lt;p[i]&lt;&lt;" BT: "; cin &gt;&gt; bt[i];
     }
-    int time=0, completed=0;
-    while(completed &lt; n) {
-        int idx=-1, minbt=9999;
-        for(int i=0; i&lt;n; i++)
-            if(!done[i] &amp;&amp; at[i]&lt;=time &amp;&amp; bt[i]&lt;minbt)
-                { minbt=bt[i]; idx=i; }
+    int time=0,completed=0;
+    while(completed&lt;n) {
+        int idx=-1,minbt=9999;
+        for(int i=0;i&lt;n;i++)
+            if(!done[i]&amp;&amp;at[i]&lt;=time&amp;&amp;bt[i]&lt;minbt) { minbt=bt[i]; idx=i; }
         if(idx==-1) { time++; continue; }
-        time += bt[idx];
-        ct[idx]  = time;
-        tat[idx] = ct[idx] - at[idx];
-        wt[idx]  = tat[idx] - bt[idx];
+        time+=bt[idx];
+        ct[idx]=time; tat[idx]=ct[idx]-at[idx]; wt[idx]=tat[idx]-bt[idx];
         done[idx]=true; completed++;
     }
     cout &lt;&lt; "\nP\tAT\tBT\tWT\tTAT\n";
-    for(int i=0; i&lt;n; i++) {
+    for(int i=0;i&lt;n;i++) {
         cout &lt;&lt; "P"&lt;&lt;p[i]&lt;&lt;"\t"&lt;&lt;at[i]&lt;&lt;"\t"&lt;&lt;bt[i]&lt;&lt;"\t"&lt;&lt;wt[i]&lt;&lt;"\t"&lt;&lt;tat[i]&lt;&lt;"\n";
         avgwt+=wt[i]; avgtat+=tat[i];
     }
-    cout &lt;&lt; "\nAverage WT  = " &lt;&lt; avgwt/n;
-    cout &lt;&lt; "\nAverage TAT = " &lt;&lt; avgtat/n;
+    cout &lt;&lt; "\nAvg WT="&lt;&lt;avgwt/n &lt;&lt; "  Avg TAT="&lt;&lt;avgtat/n;
     return 0;
 }</code></pre>
     </div>
 
-    <!-- SRTF -->
+    <!-- ========== SRTF ========== -->
     <div class="cheat-card" id="tab-srtf">
       <div class="cheat-card-header">
         <div>
           <span class="cheat-algo-name">Shortest Remaining Time First</span>
           <span class="cheat-badge preemptive">Preemptive</span>
         </div>
-        <button class="copy-btn" onclick="copyCode('code-srtf', this)">
+        <button class="copy-btn" onclick="copyCode('code-srtf',this)">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
           Copy
         </button>
@@ -201,50 +205,46 @@ int main() {
       <pre class="cheat-code" id="code-srtf"><code>#include &lt;iostream&gt;
 using namespace std;
 int main() {
-    int n, at[10], bt[10], rem[10], ct[10], wt[10], tat[10], p[10];
+    int n,at[10],bt[10],rem[10],ct[10],wt[10],tat[10],p[10];
     bool done[10]={};
-    float avgwt=0, avgtat=0;
+    float avgwt=0,avgtat=0;
     cout &lt;&lt; "Enter number of processes: "; cin &gt;&gt; n;
-    for(int i=0; i&lt;n; i++) {
+    for(int i=0;i&lt;n;i++) {
         p[i]=i+1;
         cout &lt;&lt; "\nP"&lt;&lt;p[i]&lt;&lt;" AT: "; cin &gt;&gt; at[i];
         cout &lt;&lt; "P"&lt;&lt;p[i]&lt;&lt;" BT: "; cin &gt;&gt; bt[i];
         rem[i]=bt[i];
     }
-    int time=0, completed=0;
-    while(completed &lt; n) {
-        int idx=-1, minrem=9999;
-        for(int i=0; i&lt;n; i++)
-            if(!done[i] &amp;&amp; at[i]&lt;=time &amp;&amp; rem[i]&lt;minrem)
-                { minrem=rem[i]; idx=i; }
+    int time=0,completed=0;
+    while(completed&lt;n) {
+        int idx=-1,minrem=9999;
+        for(int i=0;i&lt;n;i++)
+            if(!done[i]&amp;&amp;at[i]&lt;=time&amp;&amp;rem[i]&lt;minrem) { minrem=rem[i]; idx=i; }
         if(idx==-1) { time++; continue; }
         rem[idx]--; time++;
         if(rem[idx]==0) {
-            ct[idx]=time;
-            tat[idx]=ct[idx]-at[idx];
-            wt[idx]=tat[idx]-bt[idx];
+            ct[idx]=time; tat[idx]=ct[idx]-at[idx]; wt[idx]=tat[idx]-bt[idx];
             done[idx]=true; completed++;
         }
     }
     cout &lt;&lt; "\nP\tAT\tBT\tWT\tTAT\n";
-    for(int i=0; i&lt;n; i++) {
+    for(int i=0;i&lt;n;i++) {
         cout &lt;&lt; "P"&lt;&lt;p[i]&lt;&lt;"\t"&lt;&lt;at[i]&lt;&lt;"\t"&lt;&lt;bt[i]&lt;&lt;"\t"&lt;&lt;wt[i]&lt;&lt;"\t"&lt;&lt;tat[i]&lt;&lt;"\n";
         avgwt+=wt[i]; avgtat+=tat[i];
     }
-    cout &lt;&lt; "\nAverage WT  = " &lt;&lt; avgwt/n;
-    cout &lt;&lt; "\nAverage TAT = " &lt;&lt; avgtat/n;
+    cout &lt;&lt; "\nAvg WT="&lt;&lt;avgwt/n &lt;&lt; "  Avg TAT="&lt;&lt;avgtat/n;
     return 0;
 }</code></pre>
     </div>
 
-    <!-- Round Robin -->
+    <!-- ========== ROUND ROBIN ========== -->
     <div class="cheat-card" id="tab-rr">
       <div class="cheat-card-header">
         <div>
           <span class="cheat-algo-name">Round Robin</span>
           <span class="cheat-badge preemptive">Preemptive</span>
         </div>
-        <button class="copy-btn" onclick="copyCode('code-rr', this)">
+        <button class="copy-btn" onclick="copyCode('code-rr',this)">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
           Copy
         </button>
@@ -252,58 +252,321 @@ int main() {
       <pre class="cheat-code" id="code-rr"><code>#include &lt;iostream&gt;
 using namespace std;
 int main() {
-    int n, tq, at[10], bt[10], rem[10], ct[10], wt[10], tat[10], p[10];
-    float avgwt=0, avgtat=0;
-    cout &lt;&lt; "Enter number of processes: "; cin &gt;&gt; n;
-    cout &lt;&lt; "Time Quantum: ";              cin &gt;&gt; tq;
-    for(int i=0; i&lt;n; i++) {
+    int n,tq,at[10],bt[10],rem[10],ct[10],wt[10],tat[10],p[10];
+    float avgwt=0,avgtat=0;
+    cout &lt;&lt; "Processes: "; cin &gt;&gt; n;
+    cout &lt;&lt; "Time Quantum: "; cin &gt;&gt; tq;
+    for(int i=0;i&lt;n;i++) {
         p[i]=i+1;
         cout &lt;&lt; "\nP"&lt;&lt;p[i]&lt;&lt;" AT: "; cin &gt;&gt; at[i];
         cout &lt;&lt; "P"&lt;&lt;p[i]&lt;&lt;" BT: "; cin &gt;&gt; bt[i];
         rem[i]=bt[i];
     }
-    // Sort by arrival time
-    for(int i=0; i&lt;n-1; i++)
-        for(int j=i+1; j&lt;n; j++)
+    for(int i=0;i&lt;n-1;i++)
+        for(int j=i+1;j&lt;n;j++)
             if(at[i]&gt;at[j]) {
                 swap(at[i],at[j]); swap(bt[i],bt[j]);
                 swap(rem[i],rem[j]); swap(p[i],p[j]);
             }
-    int queue[50], front=0, rear=0, inQ[10]={};
-    int time=0, completed=0;
-    queue[rear++]=0; inQ[0]=1;
-    while(completed &lt; n) {
-        if(front==rear) { time++; // idle
-            for(int i=0; i&lt;n; i++)
-                if(!inQ[i] &amp;&amp; rem[i]&gt;0 &amp;&amp; at[i]&lt;=time)
-                    { queue[rear++]=i; inQ[i]=1; }
+    int q[50],front=0,rear=0,inQ[10]={},time=0,completed=0;
+    q[rear++]=0; inQ[0]=1;
+    while(completed&lt;n) {
+        if(front==rear) {
+            time++;
+            for(int i=0;i&lt;n;i++)
+                if(!inQ[i]&amp;&amp;rem[i]&gt;0&amp;&amp;at[i]&lt;=time) { q[rear++]=i; inQ[i]=1; }
             continue;
         }
-        int idx=queue[front++];
-        int exec=(rem[idx]&lt;tq)?rem[idx]:tq;
-        rem[idx]-=exec; time+=exec;
-        for(int i=0; i&lt;n; i++)
-            if(!inQ[i] &amp;&amp; rem[i]&gt;0 &amp;&amp; at[i]&lt;=time)
-                { queue[rear++]=i; inQ[i]=1; }
+        int idx=q[front++];
+        int ex=(rem[idx]&lt;tq)?rem[idx]:tq;
+        rem[idx]-=ex; time+=ex;
+        for(int i=0;i&lt;n;i++)
+            if(!inQ[i]&amp;&amp;rem[i]&gt;0&amp;&amp;at[i]&lt;=time) { q[rear++]=i; inQ[i]=1; }
         if(rem[idx]==0) {
-            ct[idx]=time; tat[idx]=ct[idx]-at[idx];
-            wt[idx]=tat[idx]-bt[idx]; completed++;
-        } else queue[rear++]=idx;
+            ct[idx]=time; tat[idx]=ct[idx]-at[idx]; wt[idx]=tat[idx]-bt[idx]; completed++;
+        } else q[rear++]=idx;
     }
-    // Re-sort by process number
-    for(int i=0; i&lt;n-1; i++)
-        for(int j=i+1; j&lt;n; j++)
+    for(int i=0;i&lt;n-1;i++)
+        for(int j=i+1;j&lt;n;j++)
             if(p[i]&gt;p[j]) {
                 swap(p[i],p[j]); swap(at[i],at[j]); swap(bt[i],bt[j]);
                 swap(wt[i],wt[j]); swap(tat[i],tat[j]);
             }
     cout &lt;&lt; "\nP\tAT\tBT\tWT\tTAT\n";
-    for(int i=0; i&lt;n; i++) {
+    for(int i=0;i&lt;n;i++) {
         cout &lt;&lt; "P"&lt;&lt;p[i]&lt;&lt;"\t"&lt;&lt;at[i]&lt;&lt;"\t"&lt;&lt;bt[i]&lt;&lt;"\t"&lt;&lt;wt[i]&lt;&lt;"\t"&lt;&lt;tat[i]&lt;&lt;"\n";
         avgwt+=wt[i]; avgtat+=tat[i];
     }
-    cout &lt;&lt; "\nAverage WT  = " &lt;&lt; avgwt/n;
-    cout &lt;&lt; "\nAverage TAT = " &lt;&lt; avgtat/n;
+    cout &lt;&lt; "\nAvg WT="&lt;&lt;avgwt/n &lt;&lt; "  Avg TAT="&lt;&lt;avgtat/n;
+    return 0;
+}</code></pre>
+    </div>
+
+    <!-- ========== PRIORITY PREEMPTIVE ========== -->
+    <div class="cheat-card" id="tab-priority">
+      <div class="cheat-card-header">
+        <div>
+          <span class="cheat-algo-name">Priority Scheduling</span>
+          <span class="cheat-badge preemptive">Preemptive</span>
+        </div>
+        <button class="copy-btn" onclick="copyCode('code-priority',this)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Copy
+        </button>
+      </div>
+      <pre class="cheat-code" id="code-priority"><code>#include &lt;iostream&gt;
+using namespace std;
+// Lower priority number = Higher priority
+int main() {
+    int n,at[10],bt[10],rem[10],pr[10],ct[10],wt[10],tat[10],p[10];
+    bool done[10]={};
+    float avgwt=0,avgtat=0;
+    cout &lt;&lt; "Enter number of processes: "; cin &gt;&gt; n;
+    for(int i=0;i&lt;n;i++) {
+        p[i]=i+1;
+        cout &lt;&lt; "\nP"&lt;&lt;p[i]&lt;&lt;" AT: ";       cin &gt;&gt; at[i];
+        cout &lt;&lt; "P"&lt;&lt;p[i]&lt;&lt;" BT: ";       cin &gt;&gt; bt[i];
+        cout &lt;&lt; "P"&lt;&lt;p[i]&lt;&lt;" Priority: "; cin &gt;&gt; pr[i];
+        rem[i]=bt[i];
+    }
+    int time=0,completed=0;
+    while(completed&lt;n) {
+        int idx=-1,minpr=9999;
+        for(int i=0;i&lt;n;i++)
+            if(!done[i]&amp;&amp;at[i]&lt;=time&amp;&amp;pr[i]&lt;minpr) { minpr=pr[i]; idx=i; }
+        if(idx==-1) { time++; continue; }
+        rem[idx]--; time++;
+        if(rem[idx]==0) {
+            ct[idx]=time; tat[idx]=ct[idx]-at[idx]; wt[idx]=tat[idx]-bt[idx];
+            done[idx]=true; completed++;
+        }
+    }
+    cout &lt;&lt; "\nP\tAT\tBT\tPR\tWT\tTAT\n";
+    for(int i=0;i&lt;n;i++) {
+        cout &lt;&lt; "P"&lt;&lt;p[i]&lt;&lt;"\t"&lt;&lt;at[i]&lt;&lt;"\t"&lt;&lt;bt[i]&lt;&lt;"\t"&lt;&lt;pr[i]&lt;&lt;"\t"&lt;&lt;wt[i]&lt;&lt;"\t"&lt;&lt;tat[i]&lt;&lt;"\n";
+        avgwt+=wt[i]; avgtat+=tat[i];
+    }
+    cout &lt;&lt; "\nAvg WT="&lt;&lt;avgwt/n &lt;&lt; "  Avg TAT="&lt;&lt;avgtat/n;
+    return 0;
+}</code></pre>
+    </div>
+
+    <!-- ========== BANKER'S ALGORITHM ========== -->
+    <div class="cheat-card" id="tab-bankers">
+      <div class="cheat-card-header">
+        <div>
+          <span class="cheat-algo-name">Banker's Algorithm</span>
+          <span class="cheat-badge" style="background:rgba(255,167,38,0.15);color:#ffb74d;border-color:rgba(255,167,38,0.3);">Deadlock Avoidance</span>
+        </div>
+        <button class="copy-btn" onclick="copyCode('code-bankers',this)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Copy
+        </button>
+      </div>
+      <pre class="cheat-code" id="code-bankers"><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n,m;
+    cout &lt;&lt; "Processes: "; cin &gt;&gt; n;
+    cout &lt;&lt; "Resources: "; cin &gt;&gt; m;
+
+    int alloc[10][10],maxR[10][10],avail[10],need[10][10];
+    cout &lt;&lt; "Allocation matrix:\n";
+    for(int i=0;i&lt;n;i++)
+        for(int j=0;j&lt;m;j++) cin &gt;&gt; alloc[i][j];
+    cout &lt;&lt; "Max matrix:\n";
+    for(int i=0;i&lt;n;i++)
+        for(int j=0;j&lt;m;j++) cin &gt;&gt; maxR[i][j];
+    cout &lt;&lt; "Available resources:\n";
+    for(int j=0;j&lt;m;j++) cin &gt;&gt; avail[j];
+
+    // Need = Max - Allocation
+    for(int i=0;i&lt;n;i++)
+        for(int j=0;j&lt;m;j++)
+            need[i][j]=maxR[i][j]-alloc[i][j];
+
+    bool finish[10]={};
+    int safeSeq[10],count=0;
+
+    while(count&lt;n) {
+        bool found=false;
+        for(int i=0;i&lt;n;i++) {
+            if(finish[i]) continue;
+            bool canRun=true;
+            for(int j=0;j&lt;m;j++)
+                if(need[i][j]&gt;avail[j]) { canRun=false; break; }
+            if(canRun) {
+                for(int j=0;j&lt;m;j++) avail[j]+=alloc[i][j];
+                safeSeq[count++]=i;
+                finish[i]=true;
+                found=true;
+            }
+        }
+        if(!found) { cout &lt;&lt; "\nNot in Safe State (Deadlock Risk)!\n"; return 0; }
+    }
+    cout &lt;&lt; "\nSystem is in SAFE STATE.\nSafe Sequence: ";
+    for(int i=0;i&lt;n;i++) cout &lt;&lt; "P"&lt;&lt;safeSeq[i] &lt;&lt; (i&lt;n-1?" -> ":"\n");
+    return 0;
+}</code></pre>
+    </div>
+
+    <!-- ========== PAGE REPLACEMENT: FIFO ========== -->
+    <div class="cheat-card" id="tab-fifo">
+      <div class="cheat-card-header">
+        <div>
+          <span class="cheat-algo-name">FIFO Page Replacement</span>
+          <span class="cheat-badge" style="background:rgba(38,198,218,0.12);color:#4dd0e1;border-color:rgba(38,198,218,0.3);">Page Replacement</span>
+        </div>
+        <button class="copy-btn" onclick="copyCode('code-fifo',this)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Copy
+        </button>
+      </div>
+      <pre class="cheat-code" id="code-fifo"><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n,frames,pageFaults=0;
+    cout &lt;&lt; "Reference string length: "; cin &gt;&gt; n;
+    int pages[50];
+    cout &lt;&lt; "Enter reference string: ";
+    for(int i=0;i&lt;n;i++) cin &gt;&gt; pages[i];
+    cout &lt;&lt; "Number of frames: "; cin &gt;&gt; frames;
+
+    int frame[10],ptr=0,hits=0;
+    fill(frame,frame+frames,-1);
+
+    cout &lt;&lt; "\nPage\tFrames\t\t\tFault\n";
+    for(int i=0;i&lt;n;i++) {
+        bool found=false;
+        for(int j=0;j&lt;frames;j++)
+            if(frame[j]==pages[i]) { found=true; hits++; break; }
+        if(!found) {
+            frame[ptr]=pages[i];
+            ptr=(ptr+1)%frames;
+            pageFaults++;
+            cout &lt;&lt; pages[i] &lt;&lt; "\t";
+            for(int j=0;j&lt;frames;j++) cout &lt;&lt; (frame[j]==-1?"-":to_string(frame[j])) &lt;&lt; " ";
+            cout &lt;&lt; "\t\tFAULT\n";
+        } else {
+            cout &lt;&lt; pages[i] &lt;&lt; "\t";
+            for(int j=0;j&lt;frames;j++) cout &lt;&lt; (frame[j]==-1?"-":to_string(frame[j])) &lt;&lt; " ";
+            cout &lt;&lt; "\t\tHIT\n";
+        }
+    }
+    cout &lt;&lt; "\nPage Faults: "&lt;&lt;pageFaults &lt;&lt; "  Hits: "&lt;&lt;hits;
+    return 0;
+}</code></pre>
+    </div>
+
+    <!-- ========== PAGE REPLACEMENT: LRU ========== -->
+    <div class="cheat-card" id="tab-lru">
+      <div class="cheat-card-header">
+        <div>
+          <span class="cheat-algo-name">LRU Page Replacement</span>
+          <span class="cheat-badge" style="background:rgba(38,198,218,0.12);color:#4dd0e1;border-color:rgba(38,198,218,0.3);">Page Replacement</span>
+        </div>
+        <button class="copy-btn" onclick="copyCode('code-lru',this)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Copy
+        </button>
+      </div>
+      <pre class="cheat-code" id="code-lru"><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n,frames,pageFaults=0,hits=0;
+    cout &lt;&lt; "Reference string length: "; cin &gt;&gt; n;
+    int pages[50];
+    cout &lt;&lt; "Enter reference string: ";
+    for(int i=0;i&lt;n;i++) cin &gt;&gt; pages[i];
+    cout &lt;&lt; "Number of frames: "; cin &gt;&gt; frames;
+
+    int frame[10],lastUsed[10],size=0;
+    fill(frame,frame+frames,-1);
+    fill(lastUsed,lastUsed+frames,-1);
+
+    cout &lt;&lt; "\nPage\tFrames\t\t\tFault\n";
+    for(int i=0;i&lt;n;i++) {
+        bool found=false;
+        for(int j=0;j&lt;frames;j++)
+            if(frame[j]==pages[i]) { found=true; lastUsed[j]=i; hits++; break; }
+        if(!found) {
+            int idx;
+            if(size&lt;frames) idx=size++;
+            else {
+                int lru=lastUsed[0],lruIdx=0;
+                for(int j=1;j&lt;frames;j++) if(lastUsed[j]&lt;lru) { lru=lastUsed[j]; lruIdx=j; }
+                idx=lruIdx;
+            }
+            frame[idx]=pages[i]; lastUsed[idx]=i; pageFaults++;
+            cout &lt;&lt; pages[i] &lt;&lt; "\t";
+            for(int j=0;j&lt;frames;j++) cout &lt;&lt; (frame[j]==-1?"-":to_string(frame[j])) &lt;&lt; " ";
+            cout &lt;&lt; "\t\tFAULT\n";
+        } else {
+            cout &lt;&lt; pages[i] &lt;&lt; "\t";
+            for(int j=0;j&lt;frames;j++) cout &lt;&lt; (frame[j]==-1?"-":to_string(frame[j])) &lt;&lt; " ";
+            cout &lt;&lt; "\t\tHIT\n";
+        }
+    }
+    cout &lt;&lt; "\nPage Faults: "&lt;&lt;pageFaults &lt;&lt; "  Hits: "&lt;&lt;hits;
+    return 0;
+}</code></pre>
+    </div>
+
+    <!-- ========== PAGE REPLACEMENT: OPTIMAL ========== -->
+    <div class="cheat-card" id="tab-optimal">
+      <div class="cheat-card-header">
+        <div>
+          <span class="cheat-algo-name">Optimal Page Replacement</span>
+          <span class="cheat-badge" style="background:rgba(38,198,218,0.12);color:#4dd0e1;border-color:rgba(38,198,218,0.3);">Page Replacement</span>
+        </div>
+        <button class="copy-btn" onclick="copyCode('code-optimal',this)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          Copy
+        </button>
+      </div>
+      <pre class="cheat-code" id="code-optimal"><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n,frames,pageFaults=0,hits=0;
+    cout &lt;&lt; "Reference string length: "; cin &gt;&gt; n;
+    int pages[50];
+    cout &lt;&lt; "Enter reference string: ";
+    for(int i=0;i&lt;n;i++) cin &gt;&gt; pages[i];
+    cout &lt;&lt; "Number of frames: "; cin &gt;&gt; frames;
+
+    int frame[10],size=0;
+    fill(frame,frame+frames,-1);
+
+    cout &lt;&lt; "\nPage\tFrames\t\t\tFault\n";
+    for(int i=0;i&lt;n;i++) {
+        bool found=false;
+        for(int j=0;j&lt;frames;j++)
+            if(frame[j]==pages[i]) { found=true; hits++; break; }
+        if(!found) {
+            int idx;
+            if(size&lt;frames) idx=size++;
+            else {
+                // Find page used farthest in future (or never used)
+                int farthest=-1,replIdx=0;
+                for(int j=0;j&lt;frames;j++) {
+                    int nextUse=99999;
+                    for(int k=i+1;k&lt;n;k++)
+                        if(pages[k]==frame[j]) { nextUse=k; break; }
+                    if(nextUse&gt;farthest) { farthest=nextUse; replIdx=j; }
+                }
+                idx=replIdx;
+            }
+            frame[idx]=pages[i]; pageFaults++;
+            cout &lt;&lt; pages[i] &lt;&lt; "\t";
+            for(int j=0;j&lt;frames;j++) cout &lt;&lt; (frame[j]==-1?"-":to_string(frame[j])) &lt;&lt; " ";
+            cout &lt;&lt; "\t\tFAULT\n";
+        } else {
+            cout &lt;&lt; pages[i] &lt;&lt; "\t";
+            for(int j=0;j&lt;frames;j++) cout &lt;&lt; (frame[j]==-1?"-":to_string(frame[j])) &lt;&lt; " ";
+            cout &lt;&lt; "\t\tHIT\n";
+        }
+    }
+    cout &lt;&lt; "\nPage Faults: "&lt;&lt;pageFaults &lt;&lt; "  Hits: "&lt;&lt;hits;
     return 0;
 }</code></pre>
     </div>
@@ -453,30 +716,30 @@ int main() {
   </script>
 
   <!-- OS Cheat Tab Switching + Copy -->
-  <script>
-    // Tab switching
-    document.querySelectorAll('.cheat-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.cheat-tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.cheat-card').forEach(c => c.classList.remove('active'));
-        tab.classList.add('active');
-        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
-      });
+<!-- OS Cheat Tab Switching + Copy -->
+<script>
+  // All tabs across all groups switch the same card area
+  document.querySelectorAll('.cheat-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.cheat-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.cheat-card').forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
     });
+  });
 
-    // Copy button
-    function copyCode(codeId, btn) {
-      const text = document.getElementById(codeId).innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        btn.classList.add('copied');
-        btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!`;
-        setTimeout(() => {
-          btn.classList.remove('copied');
-          btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy`;
-        }, 2000);
-      });
-    }
-  </script>
+  function copyCode(codeId, btn) {
+    const text = document.getElementById(codeId).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      btn.classList.add('copied');
+      btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!`;
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy`;
+      }, 2000);
+    });
+  }
+</script>
 
 </body>
 </html>
