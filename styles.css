@@ -647,7 +647,7 @@ section {
   height: 98%;
   border-radius: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   transition: 0.6s ease;
 }
@@ -683,7 +683,12 @@ section {
   border-radius: 10px;
   padding: 5px;
 }
-
+#github-proj {
+  height: 100px;
+  width: 100px;
+  border-radius: 10px;
+  padding: 5px;
+}
 .proj-txt p {
   opacity: 0.5;
   font-family: Georgia, 'Times New Roman', Times, serif;
