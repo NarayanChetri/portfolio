@@ -195,7 +195,7 @@ section {
   left: 0;
   display: block;
   border-radius: 50px;
-  background: red;
+  background: #2196f3;
   width: 50%;
   height: 45px;
   transition: all 0.3s ease;
@@ -217,7 +217,7 @@ section {
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke: #234567;
+  stroke: white;
   stroke-width: 2;
   transform: translateX(-5px);
   transition: all 0.3s ease;
@@ -225,7 +225,7 @@ section {
 
 .cta:hover:before {
   width: 100%;
-  background: rgb(119, 0, 255);
+  background: #1565c0;
 }
 
 .cta:hover svg {
@@ -248,7 +248,7 @@ section {
   top: 10svh;
   width: 320px;
   height: max-content;
-  background: #ffffe4;
+  background: #FFFFFF ;
   padding: 20px;
   border-radius: 10px;
   box-shadow: rgba(255, 255, 255, 0.1) 0px 20px 25px -5px, rgba(255, 255, 255, 0.04) 0px 10px 10px -5px;
@@ -586,42 +586,43 @@ section {
   align-items: center;
 }
 
+/* Compact skill chips */
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 25px;
-  max-width: 800px;
-  margin-top: 20px;
-  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 620px;
+  margin-top: 16px;
 }
 
 .skill {
-  cursor: pointer;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  padding: 10px;
-  background: #ffffffef;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  transition: transform 0.2s ease;
+  gap: 8px;
+  padding: 7px 14px;
+  background: #1e1c1b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  transition: border-color 0.2s ease, color 0.2s ease;
+  cursor: default;
 }
 
 .skill:hover {
-  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .skill img {
-  width: 30px;
-  height: 30px;
-  padding-right: 10px;
+  width: 18px;
+  height: 18px;
 }
 
 .skill span {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #555;
+  font-size: 13px;
+  font-weight: 400;
+  color: inherit;
 }
 
 /* --- 5.3 Projects Section --- */
@@ -1061,17 +1062,29 @@ section {
     padding: 5px 10px;
   }
 
-  .skills-grid {
-    grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
-    gap: 25px;
-    max-width: 800px;
-    margin-top: 20px;
-    padding: 20px;
-  }
+.skills-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 620px;
+  margin-top: 16px;
+}
 
-  .skill {
-    width: 100px;
-  }
+.skill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  background: #1e1c1b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  transition: border-color 0.2s ease, color 0.2s ease;
+  cursor: default;
+}
 
   .projectSec {
     max-width: 99%;
@@ -1104,7 +1117,7 @@ section {
 
   #message {
     max-width: none;
-    width: 99%;
+    width: 100%;
     margin: 10px 0px;
   }
 
