@@ -52,15 +52,6 @@
     <!-- ============= RIGHT PANEL (MAIN CONTENT) ============= -->
     <!-- ====================================================== -->
     <div class="right" id="home">
-
-      <!-- ================ NAVIGATION ================ -->
-      <div class="myNav">
-        <a href="#home" id="navHome"><img src="icons8-home-48.png" class="navIcons" alt="Home" /></a>
-        <a href="#tools" id="navTools"><img src="icons8-tools-50.png" class="navIcons" alt="Tools" /></a>
-        <a href="#project" id="navProject"><img src="icons8-projects-48.png" class="navIcons" alt="Projects" /></a>
-        <a href="#contact" id="navContact"><img src="icons8-contact-48.png" class="navIcons" alt="Contact" /></a>
-      </div>
-
       <!-- ================ HOME/ABOUT SECTION ================ -->
       <section class="about scroll-element">
         <h1 id="software">SOFTWARE</h1>
@@ -120,46 +111,97 @@
         </div>
       </section>
 
-<!-- ================ PROJECTS SECTION ================ -->
-      <section class="projectSec" id="project">
-        <h1 class="scroll-element">RECENT</h1>
-        <h1 class="fadeText scroll-element">PROJECTS</h1>
-        <a href="https://jorhatambulance.com" class="scroll-element">
-          <div class="projbox">
-            <img src="ambu-proj.jpg" alt="ambulance image" id="ambu-proj">
-            <div class="proj-txt">
-              <h3>Ambulance Service</h3>
-              <p>Made a simple, fast and static website for an ambulance service in jorhat</p>
-            </div>
-            <img src="icons8-arrow-30.png" alt="arrow png" id="arrow">
-          </div>
-        </a>
-           <!-- coming soon project-->
-                    <a href="https://github.com/NarayanChetri" class="scroll-element">
-          <div class="projbox">
-            <img src="icons8-github-100.png" alt="ambulance image" id="github-proj">
-            <div class="proj-txt">
-              <h3>More projects in progress</h3>
-              <p>Check my GitHub for what I'm currently building</p>
-            </div>
-            <img src="icons8-arrow-30.png" alt="arrow png" id="arrow">
-          </div>
-        </a>
+      <!-- ================ PROJECTS SECTION ================ -->
+    <!-- ================ PROJECTS SECTION ================ -->
+<section class="projectSec" id="project">
+  <h1 class="scroll-element">RECENT</h1>
+  <h1 class="fadeText scroll-element">PROJECTS</h1>
 
-        <!-- ================ DOWNLOAD SECTION ================ -->
-        <div class="download-section scroll-element">
-          <div class="download-container">
-            <h2>Download Project File</h2>
-            <p class="file-info">Get the complete project documentation and resources</p>
-            <a href="CSM2502X.zip" download="CSM2502X.zip" class="download-btn">
-              <span class="download-icon">⬇</span>
-              Download Extension
-            </a>
-            <p class="file-name">CSM2502X</p>
-          </div>
+  <div class="proj-grid">
+
+    <!-- Ambulance Service -->
+    <a href="https://jorhatambulance.com" class="proj-card proj-blue scroll-element" target="_blank" rel="noopener">
+      <div class="proj-icon proj-icon-blue">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="7" width="20" height="14" rx="2"/>
+          <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+          <line x1="12" y1="12" x2="12" y2="16"/>
+          <line x1="10" y1="14" x2="14" y2="14"/>
+        </svg>
+      </div>
+      <div class="proj-body">
+        <div class="proj-header">
+          <h3 class="proj-title">Ambulance Service</h3>
+          <span class="proj-badge badge-live">Live</span>
         </div>
+        <p class="proj-desc">Fast, static website for an ambulance service in Jorhat — built for speed and clarity in urgent situations.</p>
+        <div class="proj-stack">
+          <span class="stack-tag">HTML</span>
+          <span class="stack-tag">CSS</span>
+          <span class="stack-tag">JavaScript</span>
+        </div>
+      </div>
+      <div class="proj-arrow">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17L17 7M7 7h10v10"/>
+        </svg>
+      </div>
+    </a>
 
-      </section>
+    <!-- Google Form Solver -->
+    <a href="https://github.com/NarayanChetri/Auto-Form-Solver" class="proj-card proj-purple scroll-element" target="_blank" rel="noopener">
+      <div class="proj-icon proj-icon-purple">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9" stroke="#a78bfa"/>
+          <path d="M9 9a3 3 0 0 1 6 0c0 2-3 3-3 3" stroke="#a78bfa"/>
+          <circle cx="12" cy="17" r="0.5" fill="#a78bfa" stroke="#a78bfa"/>
+        </svg>
+      </div>
+      <div class="proj-body">
+        <div class="proj-header">
+          <h3 class="proj-title">Google Form Solver</h3>
+          <span class="proj-badge badge-ai">Gemini AI</span>
+        </div>
+        <p class="proj-desc">An AI-powered tool that uses the Gemini API to automatically analyze and solve Google Forms</p>
+        <div class="proj-stack">
+          <span class="stack-tag">Gemini API</span>
+          <span class="stack-tag">JavaScript</span>
+          <span class="stack-tag">Google Forms</span>
+        </div>
+      </div>
+      <div class="proj-arrow">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17L17 7M7 7h10v10"/>
+        </svg>
+      </div>
+    </a>
+
+    <!-- More projects -->
+    <a href="https://github.com/NarayanChetri" class="proj-card proj-green scroll-element" target="_blank" rel="noopener">
+      <div class="proj-icon proj-icon-green">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6ee7b7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+        </svg>
+      </div>
+      <div class="proj-body">
+        <div class="proj-header">
+          <h3 class="proj-title">More projects in progress</h3>
+          <span class="proj-badge badge-wip">In Progress</span>
+        </div>
+        <p class="proj-desc">Currently building more — check my GitHub to see what's cooking.</p>
+        <div class="proj-stack">
+          <span class="stack-tag">GitHub</span>
+        </div>
+      </div>
+      <div class="proj-arrow">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17L17 7M7 7h10v10"/>
+        </svg>
+      </div>
+    </a>
+
+  </div>
+</section>
 
       <!-- ================ CONTACT SECTION ================ -->
       <section id="contact">
