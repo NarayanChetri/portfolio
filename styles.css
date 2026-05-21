@@ -258,9 +258,9 @@ section {
 }
 
 .links .socialIcons {
-  height: 45px;
-  width: 45px;
-  padding: 9px;
+  height: 35px;
+  width: 35px;
+  padding: 2px;
   box-sizing: border-box;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.08);
