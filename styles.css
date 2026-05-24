@@ -347,63 +347,118 @@ section {
 }
 
 /* --- 5.2 Tech Stacks Section --- */
-.statsLanguages h1 {
-  font-size: 110px;
+/* Base Section Styling */
+
+
+.statsLanguages {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.statsLanguages h1{
+font-size: 80px;
+
 }
 
 .statsLanguages h2 {
-  margin-top: 40px;
+  margin-top: 50px;
+  margin-bottom: 25px;
+  font-size: 28px;
+  color: #ffffff;
 }
 
+/* LeetCode Graph Styling */
 .statsgraph {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 #stats1 {
-  width: 500px;
+  width: 450px;
   max-width: 95%;
+  transition: transform 0.3s ease;
 }
 
+#stats1:hover {
+  transform: translateY(-4px);
+}
+
+/* Tech Categories Grid Container */
+.tech-categories-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  padding: 15px;
+}
+
+/* Individual Category Cards */
+.skills-category {
+  background: rgba(30, 28, 27, 0.4); /* Slight transparency for depth */
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.skills-category:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.skills-category h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Inner Skills Grid */
 .skills-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  max-width: 620px;
-  margin-top: 16px;
+  gap: 12px;
 }
 
+/* Individual Skill Pills */
 .skill {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 7px 14px;
+  gap: 10px;
+  padding: 8px 16px;
   background: #1e1c1b;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  font-size: 13px;
+  border-radius: 10px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.75);
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition: all 0.25s ease;
   cursor: default;
 }
 
 .skill:hover {
-  border-color: rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.95);
+  background: #2a2726; /* Slightly lighter on hover */
+  border-color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 1);
+  transform: scale(1.05); /* Gentle pop effect */
 }
 
 .skill img {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 
 .skill span {
-  font-size: 13px;
-  font-weight: 400;
-  color: inherit;
+  font-weight: 500;
+  letter-spacing: 0.3px;
 }
-
 /* --- 5.3 Projects Section --- */
 .projectSec {
   display: flex;
@@ -763,11 +818,31 @@ section {
 
 /* --- 6.3 Large Phone --- */
 @media (max-width: 625px) {
+  *, *::before, *::after {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+.links .socialIcons:hover {
+  scale: 1;
+  background:none;
+  border-color:none;
+  box-shadow: none;
+}
+
+
   .proj-grid { max-width: 95%; margin: 24px auto 0; }
   .proj-card { padding: 16px; gap: 14px; }
   .proj-icon { width: 48px; height: 48px; }
   .proj-title { font-size: 14px; }
   .proj-desc { font-size: 12px; }
+
+.profileCard::before
+{
+  display: none;
+}
 
   .left {
     height: max-content;
@@ -778,6 +853,10 @@ section {
     justify-content: start;
   }
 
+  .links .socialIcons
+  {
+    width: 40px;
+  }
   .profileCard {
     position: unset;
     height: min-content;
