@@ -26,6 +26,18 @@ section {
   margin-top: 100px;
 }
 
+.terminal {
+    font-family: "Fira Code", monospace;
+    color: #00ff66;
+    font-size: 14px;
+    font-weight: 500;
+  margin-top: 0px;
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: -3%;
+    left: 2%;
+}
+
 /* =================================================================== */
 /* 2. MAIN LAYOUT (DESKTOP)                                            */
 /* =================================================================== */
@@ -46,6 +58,15 @@ section {
   padding-left: 50px;
   height: 100%;
   width: 60%;
+}
+
+/* Social icon glyph color */
+#linkedin-icon,
+#github-icon,
+#leetcode-icon,
+#email-icon {
+  font-size: 30px;
+  color: orange;
 }
 
 /* =================================================================== */
@@ -78,7 +99,104 @@ section {
   position: relative;
   z-index: 1;
 }
+.bc {
+    display: flex;
+    gap: 30px;
+    justify-content: flex-start; 
+    padding-right: 30px;
+}
 
+.resumeBox,
+.pBox {
+    width:350px;
+    height: 250px;
+    margin-top: 40px;
+    position: relative;
+    border-radius: 20px;
+    transition: 0.35s ease;
+    max-width: 50%;
+    min-width: 20%;
+
+}
+.resumeBox {
+    background: url('box1.jpg');
+    background-size: cover;
+        background-repeat: no-repeat;
+}
+
+.pBox {
+    background:url('box2.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+}
+
+/* Hover Animation */
+.resumeBox:hover,
+.pBox:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Click animation */
+.resumeBox:active,
+.pBox:active {
+    transform: translateY(-6px);
+}
+
+.bc h2 {
+    font-size: 35px;
+    line-height: 1.2;
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    width: 80%;
+    z-index: 2;
+}
+
+#layer,
+#picon {
+    font-size: 40px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 2;
+}
+
+#arrow {
+    font-size: 40px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+/* Move arrow slightly on hover */
+.resumeBox:hover #arrow,
+.pBox:hover #arrow {
+    transform: translateX(6px);
+}
+
+/* Full-card clickable link */
+.resumeBox a,
+.pBox a {
+    position: absolute;
+    inset: 0;
+    display: block;
+    z-index: 3;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Keep arrow above overlay */
+.resumeBox a i,
+.pBox a i {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    font-size: 40px;
+}
+/* Circular fill that expands on hover */
 .animated-button span:last-child {
   position: absolute;
   top: 50%;
@@ -171,6 +289,7 @@ section {
 /* 4. LEFT COLUMN (PROFILE CARD)                                       */
 /* =================================================================== */
 .profileCard {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -178,38 +297,12 @@ section {
   position: sticky;
   top: 10svh;
   width: 320px;
-  height: max-content;
+  height: 600px;
   padding: 28px 20px 24px;
   border-radius: 24px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: #FAF9F6;
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(255, 255, 255, 0.05);
-}
-
-.profileCard::before {
-  content: '';
-  position: absolute;
-  top: -60px;
-  right: -60px;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: rgba(147, 112, 219, 0.15);
-  pointer-events: none;
-}
-
-.profileCard::after {
-  content: '';
-  position: absolute;
-  bottom: -40px;
-  left: -40px;
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: rgba(64, 169, 255, 0.1);
-  pointer-events: none;
 }
 
 .profileCard img {
@@ -221,21 +314,31 @@ section {
 }
 
 .profileCard h2 {
-  color: #ffffff;
-  font-size: 26px;
-  font-weight: 600;
+  color: rgba(0, 0, 0, 0.884);
+  font-size: 28px;
+  font-weight: bold;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
   letter-spacing: 0.3px;
   margin: 16px 0 6px;
 }
 
 .profileCard h4 {
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(0, 0, 0, 0.61);
   width: 100%;
   text-align: center;
-  font-size: 11.5px;
-  font-weight: 400;
   line-height: 1.5;
+  font-size: 16px;
+  margin-top: 100px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#fire {
+  position: absolute;
+  bottom: 24%;
+  left: -3%;
+  outline: none;
+  height: 120px;
+  width: auto;
 }
 
 .links {
@@ -243,9 +346,9 @@ section {
   align-items: center;
   gap: 17px;
   padding-top: 18px;
-  position: relative;
 }
 
+/* Thin divider line above the social icons row */
 .links::before {
   content: '';
   position: absolute;
@@ -254,27 +357,7 @@ section {
   transform: translateX(-50%);
   width: 60%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-}
-
-.links .socialIcons {
-  height: 35px;
-  width: 35px;
-  padding: 2px;
-  box-sizing: border-box;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  opacity: 1;
-  transition: all 0.2s ease;
-  filter: brightness(0) invert(1);
-}
-
-.links .socialIcons:hover {
-  scale: 1.1;
-  background: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
 }
 
 /* =================================================================== */
@@ -283,14 +366,18 @@ section {
 
 /* --- 5.1 About Section --- */
 .about {
-  margin-top: 5svh;
+  margin-top: 12svh;
+  height: 100svh;
 }
 
+
 .about h1 {
-  font-size: 110px;
+  font-size: 80px;
   padding-left: 20px;
   width: fit-content;
   max-width: 90%;
+  line-height: 1.3;
+  letter-spacing: -2px;
 }
 
 .fadeText {
@@ -307,6 +394,11 @@ section {
   padding-left: 30px;
   font-size: 20px;
   font-weight: 300;
+  margin-top: 30px;
+}
+
+#software {
+  margin-top: 60px;
 }
 
 .numbers {
@@ -338,27 +430,23 @@ section {
 }
 
 #download1 {
+  display: none;
   margin-top: 50px;
   width: 500px;
-  display: flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
 }
 
 /* --- 5.2 Tech Stacks Section --- */
-/* Base Section Styling */
-
-
 .statsLanguages {
   display: flex;
   flex-direction: column;
   padding: 20px 0;
 }
 
-.statsLanguages h1{
-font-size: 80px;
-
+.statsLanguages h1 {
+  font-size: 80px;
 }
 
 .statsLanguages h2 {
@@ -374,18 +462,27 @@ font-size: 80px;
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 20px;
+  gap: 30px;
+  padding: 20px;
+  flex-wrap: wrap;
 }
 
 #stats1 {
-  width: 450px;
+  width: 490px;
   max-width: 95%;
   transition: transform 0.3s ease;
 }
-
+#stats2 {
+  width: 490px;
+  max-width: 95%;
+  transition: transform 0.3s ease;
+}
 #stats1:hover {
   transform: translateY(-4px);
 }
-
+#stats2:hover {
+  transform: translateY(-4px);
+}
 /* Tech Categories Grid Container */
 .tech-categories-container {
   display: grid;
@@ -397,7 +494,7 @@ font-size: 80px;
 
 /* Individual Category Cards */
 .skills-category {
-  background: rgba(30, 28, 27, 0.4); /* Slight transparency for depth */
+  background: rgba(30, 28, 27, 0.4); /* slight transparency for depth */
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 16px;
   padding: 24px;
@@ -443,10 +540,10 @@ font-size: 80px;
 }
 
 .skill:hover {
-  background: #2a2726; /* Slightly lighter on hover */
+  background: #2a2726; /* slightly lighter on hover */
   border-color: rgba(255, 255, 255, 0.25);
   color: rgba(255, 255, 255, 1);
-  transform: scale(1.05); /* Gentle pop effect */
+  transform: scale(1.05); /* gentle pop effect */
 }
 
 .skill img {
@@ -459,6 +556,7 @@ font-size: 80px;
   font-weight: 500;
   letter-spacing: 0.3px;
 }
+
 /* --- 5.3 Projects Section --- */
 .projectSec {
   display: flex;
@@ -468,8 +566,8 @@ font-size: 80px;
   position: relative;
 }
 
-.projectSec h1 { 
-  font-size: 110px;
+.projectSec h1 {
+  font-size: 80px;
   width: 100%;
 }
 
@@ -487,7 +585,7 @@ font-size: 80px;
   align-items: center;
   gap: 20px;
   background: #1c1a19;
-  border: 1px solid rgba(255,255,255,0.07);
+  border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 16px;
   padding: 22px 24px;
   text-decoration: none;
@@ -507,16 +605,19 @@ font-size: 80px;
 }
 
 .proj-card:hover {
-  border-color: rgba(255,255,255,0.18);
+  border-color: rgba(255, 255, 255, 0.18);
   background: #222020;
   transform: translateY(-2px);
 }
 
-.proj-card:hover::before { opacity: 1; }
+.proj-card:hover::before {
+  opacity: 1;
+}
 
-.proj-blue::before { background: radial-gradient(ellipse at top left, rgba(33,150,243,0.1) 0%, transparent 60%); }
-.proj-purple::before { background: radial-gradient(ellipse at top left, rgba(167,139,250,0.1) 0%, transparent 60%); }
-.proj-green::before { background: radial-gradient(ellipse at top left, rgba(52,211,153,0.1) 0%, transparent 60%); }
+/* Per-card accent glow color */
+.proj-blue::before { background: radial-gradient(ellipse at top left, rgba(33, 150, 243, 0.1) 0%, transparent 60%); }
+.proj-purple::before { background: radial-gradient(ellipse at top left, rgba(167, 139, 250, 0.1) 0%, transparent 60%); }
+.proj-green::before { background: radial-gradient(ellipse at top left, rgba(52, 211, 153, 0.1) 0%, transparent 60%); }
 
 .proj-icon {
   width: 58px;
@@ -528,11 +629,14 @@ font-size: 80px;
   flex-shrink: 0;
 }
 
-.proj-icon-blue { background: rgba(33,150,243,0.12); border: 1px solid rgba(33,150,243,0.2); }
-.proj-icon-purple { background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.2); }
-.proj-icon-green { background: rgba(52,211,153,0.12); border: 1px solid rgba(52,211,153,0.2); }
+.proj-icon-blue { background: rgba(33, 150, 243, 0.12); border: 1px solid rgba(33, 150, 243, 0.2); }
+.proj-icon-purple { background: rgba(167, 139, 250, 0.12); border: 1px solid rgba(167, 139, 250, 0.2); }
+.proj-icon-green { background: rgba(52, 211, 153, 0.12); border: 1px solid rgba(52, 211, 153, 0.2); }
 
-.proj-body { flex: 1; min-width: 0; }
+.proj-body {
+  flex: 1;
+  min-width: 0;
+}
 
 .proj-header {
   display: flex;
@@ -559,13 +663,13 @@ font-size: 80px;
   white-space: nowrap;
 }
 
-.badge-live { background: rgba(52,211,153,0.12); color: #6ee7b7; border: 1px solid rgba(52,211,153,0.25); }
-.badge-ai { background: rgba(167,139,250,0.12); color: #c4b5fd; border: 1px solid rgba(167,139,250,0.25); }
-.badge-wip { background: rgba(251,191,36,0.1); color: #fbbf24; border: 1px solid rgba(251,191,36,0.2); }
+.badge-live { background: rgba(52, 211, 153, 0.12); color: #6ee7b7; border: 1px solid rgba(52, 211, 153, 0.25); }
+.badge-ai { background: rgba(167, 139, 250, 0.12); color: #c4b5fd; border: 1px solid rgba(167, 139, 250, 0.25); }
+.badge-wip { background: rgba(251, 191, 36, 0.1); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.2); }
 
 .proj-desc {
   font-size: 13px;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255, 255, 255, 0.45);
   font-weight: 300;
   margin: 0;
   line-height: 1.5;
@@ -580,9 +684,9 @@ font-size: 80px;
 
 .stack-tag {
   font-size: 11px;
-  color: rgba(255,255,255,0.35);
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.07);
+  color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
   padding: 2px 9px;
   border-radius: 6px;
 }
@@ -627,6 +731,11 @@ font-size: 80px;
   flex-wrap: wrap;
   max-width: 90%;
   padding-bottom: 30px;
+    background: #1c1a19;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 22px 24px;
+  margin-bottom: 30px;
 }
 
 .formRow {
@@ -702,11 +811,12 @@ font-size: 80px;
   .projectSec h1 {
     font-size: 80px;
   }
-  
+
   .statsgraph {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+
   }
 
   .skills-grid {
@@ -722,19 +832,22 @@ font-size: 80px;
     align-items: center;
     flex-direction: column;
   }
-
+.terminal {
+  left: 28%;
+  top: 5%;
+}
   .projectSec {
     align-items: center;
   }
 
   .left {
-    margin-top: 50px;
-    height: max-content;
+    padding: 0;
     position: relative;
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
+    height: max-content;
   }
 
   .right {
@@ -746,14 +859,18 @@ font-size: 80px;
   }
 
   .profileCard {
-    position: static;
+    position: relative;
+    top: 0;
+    margin-top: 40px;
     width: 400px;
   }
 
   .about {
     margin: 0;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     text-align: center;
   }
 
@@ -764,17 +881,18 @@ font-size: 80px;
   }
 
   .about h4 {
-    width: 100%;
-    padding: 0;
+    width: 80%;
+    padding: auto;
   }
 
   .numbers {
-    width: 100%;
+    width: 80%;
   }
+.bc
+{
+  max-width: 95%;
+}
 
-  #download1 {
-    width: 100%;
-  }
 
   .statsgraph {
     align-items: center;
@@ -824,14 +942,41 @@ font-size: 80px;
     -ms-user-select: none;
     user-select: none;
   }
-  
-.links .socialIcons:hover {
-  scale: 1;
-  background:none;
-  border-color:none;
-  box-shadow: none;
+html,
+body {
+    overflow-x: hidden;
+}
+  .terminal{
+    left: 12%;
+  }
+#download1
+{
+  display: flex;
 }
 
+.bc
+{
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.resumeBox,.pBox
+{
+  display: none;
+}
+.statsLanguages h4{
+  color: red;
+}
+  #linkedin-icon,
+  #github-icon,
+  #leetcode-icon,
+  #email-icon {
+    font-size: 28px;
+    color: orange;
+  }
 
   .proj-grid { max-width: 95%; margin: 24px auto 0; }
   .proj-card { padding: 16px; gap: 14px; }
@@ -839,10 +984,9 @@ font-size: 80px;
   .proj-title { font-size: 14px; }
   .proj-desc { font-size: 12px; }
 
-.profileCard::before
-{
-  display: none;
-}
+  .profileCard::before {
+    display: none;
+  }
 
   .left {
     height: max-content;
@@ -853,24 +997,28 @@ font-size: 80px;
     justify-content: start;
   }
 
-  .links .socialIcons
-  {
-    width: 40px;
-  }
   .profileCard {
-    position: unset;
+    position: relative;
     height: min-content;
     max-width: 80%;
+    height: 500px;
     left: 0;
+    padding: 10px;
+    margin: 0;
+  }
+
+  #fire {
+    display: none;
   }
 
   .profileCard img {
-    max-width: 90%;
+    max-width: 85%;
     height: auto;
   }
 
   .profileCard h4 {
     font-size: 17px;
+    margin-top: 20px;
   }
 
   .profileCard h2 {
@@ -888,10 +1036,20 @@ font-size: 80px;
   .about {
     display: flex;
     flex-direction: column;
+    justify-content: start;
+    height: max-content;
+  }
+
+  #software {
+    padding-bottom: 20px;
   }
 
   .about h4 {
-    max-width: 90%;
+font-size: 15px;
+padding: 0;
+margin: 0;
+    width: 100%;
+    display: none;
   }
 
   .about h1 {
