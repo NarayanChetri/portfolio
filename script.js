@@ -1,88 +1,210 @@
-//   // ============== Form submission and reset logic ============= //
-document.addEventListener('DOMContentLoaded', function() {
-  let locationFound = false; // flag to track if location was successfully found
 
-  document.getElementById('contactform').addEventListener('submit', async function(e) {
-    e.preventDefault();
+let projSection = document.querySelector('.projects');
+let cards = document.querySelectorAll('.proj-card');
+let desc = document.querySelectorAll('.desc');
 
-    const form = e.target;
-    const formData = new FormData(form);
 
-    try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData
-      });
+let lastActiveIndex = -1;
+let autoHoverTimeout = null;
+let autoHoverRaf = null;
 
-      const result = await response.json();
+function triggerAutoHover(card) {
+  if (autoHoverTimeout) clearTimeout(autoHoverTimeout);
+  if (autoHoverRaf) cancelAnimationFrame(autoHoverRaf);
 
-      if (result.success) {
-        document.getElementById('successMessage').style.display = 'block';
-        form.reset();
-        setTimeout(() => {
-          document.getElementById('successMessage').style.display = 'none';
-        }, 5000);
+  card.classList.remove('auto-hover');
+  void card.offsetWidth;
+
+  autoHoverRaf = requestAnimationFrame(() => {
+    autoHoverRaf = requestAnimationFrame(() => {
+      card.classList.add('auto-hover');
+      autoHoverTimeout = setTimeout(() => {
+        card.classList.remove('auto-hover');
+      }, 200);
+    });
+  });
+}
+
+if (projSection && cards.length) {
+  window.addEventListener('scroll', () => {
+    const rect = projSection.getBoundingClientRect();
+    let sectionTop = rect.top;
+    const sectionHeight = rect.height - window.innerHeight;
+
+    let progress = -sectionTop / sectionHeight;
+    progress = Math.max(0, Math.min(1, progress));
+
+    const step = 1 / cards.length;
+
+    let activeIndex = -1;
+    if (progress > 0) {
+      activeIndex = Math.floor(progress / step);
+      activeIndex = Math.min(activeIndex, cards.length - 1);
+    }
+
+    cards.forEach((card, index) => {
+      if (progress > index * step) {
+        card.classList.add('stack');
       } else {
-        alert('Submission failed. Try again.');
+        card.classList.remove('stack');
       }
-    } catch (error) {
-      alert('Error submitting form.');
-      console.error(error);
+
+      if (desc[index]) {
+        if (index === activeIndex) {
+          desc[index].classList.add('active-desc');
+        } else {
+          desc[index].classList.remove('active-desc');
+        }
+      }
+    });
+
+    if (activeIndex !== -1 && activeIndex !== lastActiveIndex) {
+      triggerAutoHover(cards[activeIndex]);
+    }
+    lastActiveIndex = activeIndex;
+  });
+}
+
+// ---------------------------------------------------------------------
+// Generic reveal-on-scroll
+// ---------------------------------------------------------------------
+const revealEls = document.querySelectorAll('[data-reveal]');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+revealEls.forEach((el) => revealObserver.observe(el));
+
+// ---------------------------------------------------------------------
+// Custom cursor — smooth follow + hover state + click-through
+// ---------------------------------------------------------------------
+(function () {
+  // Disable custom cursor script on mobile and touch devices
+  if (window.innerWidth <= 980 || window.matchMedia("(hover: none)").matches) {
+    return; 
+  }
+
+  const cursor = document.getElementById('customCursor');
+  const hoverCards = document.querySelectorAll('.proj-card, .cert-card');
+  if (!cursor || !hoverCards.length) return;
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let cursorX = mouseX;
+  let cursorY = mouseY;
+  const ease = 0.18;
+  let rafStarted = false;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (!rafStarted) {
+      rafStarted = true;
+      requestAnimationFrame(animateCursor);
     }
   });
 
+  function animateCursor() {
+    cursorX += (mouseX - cursorX) * ease;
+    cursorY += (mouseY - cursorY) * ease;
+    
+    // Update left/top position so we don't overwrite the CSS transform/scale
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    
+    requestAnimationFrame(animateCursor);
+  }
 
- });
+  hoverCards.forEach((card) => {
+    const isCertCard = card.classList.contains('cert-card');
 
-// ============== Sticky profile card: swap face by active section ============== //
-document.addEventListener('DOMContentLoaded', function () {
-  const desktopQuery = window.matchMedia('(min-width: 1001px)');
-  const sections = Array.from(document.querySelectorAll('[data-face]')).filter(
-    el => el.tagName !== 'DIV' || !el.classList.contains('card-face')
-  );
-  const faces = document.querySelectorAll('.profileCard > .card-face');
+    card.addEventListener('mouseenter', () => {
+      cursor.classList.add('is-visible');
+      if (isCertCard) {
+        cursor.classList.add('is-small');
+      }
+    });
 
-  let observer = null;
+    card.addEventListener('mouseleave', () => {
+      cursor.classList.remove('is-visible');
+      cursor.classList.remove('is-clicking');
+      if (isCertCard) {
+        cursor.classList.remove('is-small');
+      }
+    });
 
-  // Swap the active face; only one .active class lives at a time so the
-  // CSS cross-fade transition handles the visual swap.
-  function setActiveFace(name) {
-    faces.forEach(face => {
-      face.classList.toggle('active', face.dataset.face === name);
+    card.addEventListener('mousedown', () => {
+      cursor.classList.add('is-clicking');
+    });
+
+    card.addEventListener('mouseup', () => {
+      cursor.classList.remove('is-clicking');
+    });
+
+    card.addEventListener('click', () => {
+      const link = card.getAttribute('data-link');
+      if (link) {
+        window.open(link, '_blank', 'noopener');
+      }
+    });
+  });
+})();
+
+// ---------------------------------------------------------------------
+// Nav scroll-spy + "Home"/logo click scrolls to top
+// ---------------------------------------------------------------------
+(function () {
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  if (!navLinks.length) return;
+
+  function scrollToTop(e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  const homeLink = document.querySelector('.nav-links a[href="#hero-fixed"]');
+  if (homeLink) homeLink.addEventListener('click', scrollToTop);
+
+  const logoLink = document.querySelector('.nav .logo');
+  if (logoLink) logoLink.addEventListener('click', scrollToTop);
+
+  const sections = Array.from(navLinks).map((link) => {
+    const id = link.getAttribute('href').slice(1);
+    const el = id === 'hero-fixed' ? null : document.getElementById(id);
+    return { link, el };
+  });
+
+  function updateActiveLink() {
+    const scrollPos = window.scrollY + 120; // nav height + buffer
+    let current = sections[0]; // default: home
+
+    sections.forEach((section) => {
+      if (section.el && section.el.offsetTop <= scrollPos) {
+        current = section;
+      }
+    });
+
+    sections.forEach((section) => {
+      section.link.classList.toggle('active', section === current);
     });
   }
 
-  function handleIntersections(entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) setActiveFace(entry.target.dataset.face);
-    });
-  }
+  window.addEventListener('scroll', updateActiveLink);
+  window.addEventListener('resize', updateActiveLink);
+  updateActiveLink();
+})();
 
-  function startObserving() {
-    if (observer) return;
-    // A thin band around the vertical center of the viewport, rather than
-    // a raw 0.5 threshold, so sections taller than the viewport still
-    // trigger correctly when their middle crosses the screen's middle.
-    observer = new IntersectionObserver(handleIntersections, {
-      root: null,
-      rootMargin: '-45% 0px -45% 0px',
-      threshold: 0
-    });
-    sections.forEach(section => observer.observe(section));
+// ---------------------------------------------------------------------
+// Footer year
+// ---------------------------------------------------------------------
+(function () {
+  const yearEl = document.getElementById('footerYear');
+  if (yearEl && !yearEl.textContent) {
+    yearEl.textContent = new Date().getFullYear();
   }
-
-  function stopObserving() {
-    if (!observer) return;
-    observer.disconnect();
-    observer = null;
-    setActiveFace('about'); // reset to default when leaving desktop
-  }
-
-  function syncWithBreakpoint(e) {
-    if (e.matches) startObserving();
-    else stopObserving();
-  }
-
-  syncWithBreakpoint(desktopQuery);
-  desktopQuery.addEventListener('change', syncWithBreakpoint);
-});
+})();
