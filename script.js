@@ -1,13 +1,50 @@
-
 let projSection = document.querySelector('.projects');
 let cards = document.querySelectorAll('.proj-card');
 let desc = document.querySelectorAll('.desc');
-
+let ghostNumber = document.getElementById('projGhostNumber');
+let progressFill = document.getElementById('projProgressFill');
+let progressDots = document.querySelectorAll('.proj-progress-dot');
 
 let lastActiveIndex = -1;
 let autoHoverTimeout = null;
 let autoHoverRaf = null;
 
+// ---------------------------------------------------------------------
+// Preloader
+// ---------------------------------------------------------------------
+(function () {
+  document.body.classList.add('is-loading');
+  const preloader = document.getElementById('preloader');
+  if (!preloader) return;
+
+  const MIN_DISPLAY = 700;  // ms — avoids a jarring flash on fast loads
+  const MAX_WAIT = 4000;    // ms — hard safety cap, never trust load() alone
+  const start = Date.now();
+  let done = false;
+
+  function hidePreloader() {
+    if (done) return;
+    done = true;
+    const elapsed = Date.now() - start;
+    const wait = Math.max(0, MIN_DISPLAY - elapsed);
+    setTimeout(() => {
+      preloader.classList.add('loaded');
+      document.body.classList.remove('is-loading');
+      setTimeout(() => preloader.remove(), 700);
+    }, wait);
+  }
+
+  // Normal path: wait for full load
+  if (document.readyState === 'complete') {
+    hidePreloader();
+  } else {
+    window.addEventListener('load', hidePreloader);
+  }
+
+  // Safety net: if 'load' never fires (blocked request, slow analytics
+  // script, etc.), force-hide anyway so the page is never stuck.
+  setTimeout(hidePreloader, MAX_WAIT);
+})();
 function triggerAutoHover(card) {
   if (autoHoverTimeout) clearTimeout(autoHoverTimeout);
   if (autoHoverRaf) cancelAnimationFrame(autoHoverRaf);
@@ -35,27 +72,52 @@ if (projSection && cards.length) {
     progress = Math.max(0, Math.min(1, progress));
 
     const step = 1 / cards.length;
+    // First card should appear almost the instant the section pins,
+    // independent of section height or card count.
+    const firstThreshold = 0.01;
 
     let activeIndex = -1;
-    if (progress > 0) {
-      activeIndex = Math.floor(progress / step);
-      activeIndex = Math.min(activeIndex, cards.length - 1);
+    if (progress > firstThreshold) {
+      if (progress <= step) {
+        activeIndex = 0;
+      } else {
+        activeIndex = Math.floor(progress / step);
+        activeIndex = Math.min(activeIndex, cards.length - 1);
+      }
     }
 
     cards.forEach((card, index) => {
-      if (progress > index * step) {
+      const threshold = index === 0 ? firstThreshold : index * step;
+      const isPast = progress > threshold;
+
+      if (isPast) {
         card.classList.add('stack');
       } else {
         card.classList.remove('stack');
       }
 
       if (desc[index]) {
-        if (index === activeIndex) {
+        if (isPast && index === activeIndex) {
           desc[index].classList.add('active-desc');
         } else {
           desc[index].classList.remove('active-desc');
         }
       }
+    });
+
+    // Ghost number behind the active card
+    if (ghostNumber) {
+      const num = (activeIndex === -1 ? 0 : activeIndex) + 1;
+      ghostNumber.textContent = String(num).padStart(2, '0');
+    }
+
+    // Vertical progress rail: fill height + dot states
+    if (progressFill) {
+      progressFill.style.height = (progress * 100) + '%';
+    }
+    progressDots.forEach((dot, index) => {
+      dot.classList.toggle('is-active', index === activeIndex);
+      dot.classList.toggle('is-done', activeIndex !== -1 && index < activeIndex);
     });
 
     if (activeIndex !== -1 && activeIndex !== lastActiveIndex) {
@@ -86,7 +148,7 @@ revealEls.forEach((el) => revealObserver.observe(el));
 (function () {
   // Disable custom cursor script on mobile and touch devices
   if (window.innerWidth <= 980 || window.matchMedia("(hover: none)").matches) {
-    return; 
+    return;
   }
 
   const cursor = document.getElementById('customCursor');
@@ -112,11 +174,11 @@ revealEls.forEach((el) => revealObserver.observe(el));
   function animateCursor() {
     cursorX += (mouseX - cursorX) * ease;
     cursorY += (mouseY - cursorY) * ease;
-    
+
     // Update left/top position so we don't overwrite the CSS transform/scale
     cursor.style.left = cursorX + 'px';
     cursor.style.top = cursorY + 'px';
-    
+
     requestAnimationFrame(animateCursor);
   }
 

@@ -27,7 +27,19 @@
     />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+<body>
+<div id="preloader">
+      <div class="preloader-inner">
+        <div class="preloader-shapes">
+          <span class="preloader-shape"></span>
+          <span class="preloader-shape"></span>
+          <span class="preloader-shape"></span>
+          <span class="preloader-logo">N<em>C</em></span>
+        </div>
+        <span class="preloader-text">Loading experience…</span>
+      </div>
+    </div>
+
     <div class="custom-cursor" id="customCursor">
       <span class="custom-cursor-text">View</span>
       <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -344,14 +356,16 @@
             <span class="deco-dots deco-dots-left"></span>
             <span class="deco-dots deco-dots-right"></span>
           </div>
-          <div class="projects-heading" data-anim>
-            <span class="about-eyebrow">// PROJECTS</span>
-            <h2 class="about-title-simple">
-              MY <span class="text-red">PROJECTS</span>
-            </h2>
-          </div>
+<div class="projects-heading" data-anim>
+  <span class="about-eyebrow">// PROJECTS</span>
+  <h2 class="about-title-simple">
+    MY <span class="text-red">PROJECTS</span>
+  </h2>
+</div>
 
           <div class="proj-cards">
+            <div class="proj-ghost-number" id="projGhostNumber" aria-hidden="true">01</div>
+
             <div
               id="card1"
               class="proj-card"
@@ -629,6 +643,19 @@
 </div>
 
           </div>
+
+          <div class="proj-progress-rail" id="projProgressRail" aria-hidden="true">
+            <span class="proj-progress-track">
+              <span class="proj-progress-fill" id="projProgressFill"></span>
+            </span>
+            <div class="proj-progress-dots">
+              <span class="proj-progress-dot" data-dot="0"><em>01</em></span>
+              <span class="proj-progress-dot" data-dot="1"><em>02</em></span>
+              <span class="proj-progress-dot" data-dot="2"><em>03</em></span>
+              <span class="proj-progress-dot" data-dot="3"><em>04</em></span>
+            </div>
+          </div>
+
         </div>
 
   <!-- Mobile-only normal-scroll version -->

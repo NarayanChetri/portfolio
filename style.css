@@ -14,7 +14,148 @@
 html {
   scroll-behavior: smooth;
 }
+/* ---------------------------------------------------------------------
+   Preloader
+--------------------------------------------------------------------- */
+body.is-loading {
+  overflow: hidden;
+}
 
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#preloader::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(229, 52, 46, 0.14), transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+#preloader.loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Orbit stage */
+.preloader-shapes {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: preloader-orbit 5s linear infinite;
+}
+
+.preloader-shape {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 3px;
+  background: linear-gradient(135deg, #ff7a6f, var(--red) 60%, #ac1c17);
+  box-shadow: 0 0 14px rgba(229, 52, 46, 0.55);
+  animation: preloader-pulse 1.8s ease-in-out infinite;
+}
+
+.preloader-shape:nth-child(1) {
+  transform: rotate(0deg) translateY(-40px) rotate(45deg);
+  animation-delay: 0s;
+}
+.preloader-shape:nth-child(2) {
+  transform: rotate(120deg) translateY(-40px) rotate(45deg);
+  animation-delay: 0.3s;
+}
+.preloader-shape:nth-child(3) {
+  transform: rotate(240deg) translateY(-40px) rotate(45deg);
+  animation-delay: 0.6s;
+}
+
+/* Static center logo, counter-rotated so it never spins */
+.preloader-logo {
+  position: relative;
+  font-family: "Anton", sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.5px;
+  color: var(--white);
+  animation: preloader-counter-spin 5s linear infinite;
+}
+
+.preloader-logo em {
+  font-style: normal;
+  color: var(--red);
+}
+
+.preloader-text {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gray);
+  animation: preloader-text-fade 1.6s ease-in-out infinite;
+}
+
+@keyframes preloader-orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Spins the opposite direction at the same speed as the parent orbit,
+   so the "NC" mark in the center always stays upright */
+@keyframes preloader-counter-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes preloader-pulse {
+  0%, 100% {
+    transform-origin: center;
+    opacity: 0.55;
+    filter: brightness(0.9);
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(1.15);
+  }
+}
+
+@keyframes preloader-text-fade {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader-shapes,
+  .preloader-logo,
+  .preloader-shape,
+  .preloader-text {
+    animation: none;
+  }
+}
 body {
   min-height: 100vh;
   background: var(--bg);
@@ -30,7 +171,13 @@ body {
     height: 450px;
     overflow: hidden;
 }
-
+.projects-heading {
+  position: absolute;
+  top: 50px;
+  left: 60px;
+  z-index: 3;
+  max-width: 480px;
+}
 .img {
     position: absolute;
     width: 280px;
@@ -93,7 +240,108 @@ body {
   overflow: hidden;
   pointer-events: none;
 }
+/* Ghost number behind the project image */
+.proj-ghost-number {
+  position: absolute;
+  display: none;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -52%);
+  font-family: "Anton", sans-serif;
+  font-size: clamp(220px, 26vw, 420px);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(229, 52, 46, 0.14);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.5s ease;
+  white-space: nowrap;
+}
 
+/* Vertical progress rail */
+.proj-progress-rail {
+  position: absolute;
+  top: 50%;
+  right: 48px;
+  transform: translateY(-50%);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  height: 260px;
+}
+
+.proj-progress-track {
+  position: relative;
+  width: 2px;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.proj-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: var(--red);
+  border-radius: 2px;
+  transition: height 0.15s linear;
+}
+
+.proj-progress-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.proj-progress-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.03);
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.proj-progress-dot em {
+  font-style: normal;
+  font-family: "Inter", sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--gray);
+  transition: color 0.3s ease;
+}
+
+.proj-progress-dot.is-active {
+  border-color: var(--red);
+  background: rgba(229, 52, 46, 0.12);
+  transform: scale(1.15);
+  box-shadow: 0 0 0 4px rgba(229, 52, 46, 0.08);
+}
+
+.proj-progress-dot.is-active em {
+  color: var(--white);
+}
+
+.proj-progress-dot.is-done {
+  border-color: rgba(229, 52, 46, 0.4);
+}
+
+@media (max-width: 1200px) {
+  .proj-progress-rail { right: 20px; }
+  .proj-ghost-number { font-size: clamp(160px, 22vw, 300px); }
+}
 .bg-ambient .orb {
   position: absolute;
   width: 4px;
@@ -269,7 +517,13 @@ body {
   transform: translate(-50%, -50%) scale(0.5);
 
 }
-
+.about-deco {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
 .custom-cursor.is-clicking.is-small {
   transform: translate(-50%, -50%) scale(0.55);
 }
@@ -840,7 +1094,7 @@ body {
   padding: 100px 60px 60px;
   display: flex;
   align-items: center;
-  overflow: hidden;
+
 }
 
 .about-container {
@@ -862,8 +1116,44 @@ body {
   color: var(--red);
   display: block;
   margin-bottom: 22px;
+  margin-top: 45px;
 }
 
+.ph-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+
+.ph-kicker-line {
+  width: 34px;
+  height: 2px;
+  background: var(--red);
+  border-radius: 2px;
+}
+
+.ph-title {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-size: clamp(70px, 11vw, 165px);
+  line-height: 0.88;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--white);
+  text-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  margin: 0;
+}
+
+@media (max-width: 1200px) {
+  .ph-title { font-size: clamp(54px, 10vw, 100px); }
+}
 .text-red {
   color: var(--red);
 }
@@ -1148,7 +1438,7 @@ body {
 }
 
 .projects {
-  height: 400vh;
+  height: 320vh;
   background: var(--bg);
   position: relative;
   z-index: 2;
@@ -1164,13 +1454,6 @@ body {
   overflow: hidden;
 }
 
-.projects-heading {
-  position: absolute;
-  top: 50px;
-  left: 60px;
-  z-index: 3;
-  max-width: 480px;
-}
 
 .proj-cards {
   width: 50%;
@@ -1194,8 +1477,8 @@ body {
   transform: translateY(100vh) rotate(45deg);
   opacity: 0;
   transition:
-    transform 0.8s ease-in-out,
-    opacity 0.6s ease-in-out;
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.45s ease-out;
   background: linear-gradient(
     155deg,
     rgba(255, 255, 255, 0.05),
@@ -1207,6 +1490,17 @@ body {
   cursor: none;
 }
 
+.proj-card.stack {
+  opacity: 1;
+  transform: translateY(0) rotate(0);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.45s ease-out;
+}
+
+/* first card should feel like it slides in immediately, no lag */
+#card1.stack {
+  transition-duration: 0.5s;
+}
 .proj-card::before {
   content: attr(data-index);
   position: absolute;
@@ -1231,11 +1525,6 @@ body {
   opacity: 0.8;
 }
 
-.proj-card.stack {
-  opacity: 1;
-  transform: translateY(0) rotate(0);
-  transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
 
 #card1 {
   --i:1;
@@ -1371,15 +1660,14 @@ transition: 0.2s ease-in;
   padding: 40px;
   backdrop-filter: blur(6px);
   transition:
-    transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1),
-    opacity 0.6s ease,
-    visibility 0.6s ease;
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.45s ease-out,
+    visibility 0.45s ease-out;
   opacity: 0;
   visibility: hidden;
   transform: translateY(60px);
   overflow-y: auto;
 }
-
 .desc::before {
   content: attr(data-index);
   font-family: "Inter", sans-serif;
