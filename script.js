@@ -10,7 +10,7 @@ let autoHoverTimeout = null;
 let autoHoverRaf = null;
 
 // ---------------------------------------------------------------------
-// Preloader
+// Preloader — real progress driven by actual <img> load state
 // ---------------------------------------------------------------------
 (function () {
   document.body.classList.add('is-loading');
@@ -20,14 +20,14 @@ let autoHoverRaf = null;
   const fill = document.getElementById('preloaderProgressFill');
   const text = document.getElementById('preloaderProgressText');
 
-  const MIN_DISPLAY = 800;   // never flash-close before this
-  const MAX_WAIT = 8000;     // hard safety cap regardless of load state
-  const HOLD_AT_100 = 300;   // let the bar visibly reach 100% before hiding
+  const MIN_DISPLAY = 800;   // ms — avoid a jarring flash on fast loads
+  const MAX_WAIT = 6000;     // ms — hard safety cap, never trust image events alone
+  const HOLD_AT_100 = 300;   // ms — let the bar visibly reach 100% before hiding
   const start = Date.now();
 
   let done = false;
   let target = 0;      // real progress, 0–100
-  let displayed = 0;    // smoothed value shown on screen
+  let displayed = 0;   // smoothed value actually shown on screen
 
   function setTarget(pct) {
     target = Math.max(target, Math.min(100, pct));
@@ -44,30 +44,22 @@ let autoHoverRaf = null;
   }
   requestAnimationFrame(tick);
 
-  // ---- Real progress source: every <img> on the page ----
+  // Every image on the page counts now — no lazy-load exclusion.
   const images = Array.from(document.images);
   const total = images.length;
   let loadedCount = 0;
 
-  function onImageSettled() {
-    loadedCount++;
-    // Reserve the top 10% for final window-load + settle time,
-    // so the bar doesn't sit at 100% while other assets trickle in.
-    const pct = total > 0 ? (loadedCount / total) * 90 : 90;
-    setTarget(pct);
+  function checkDone() {
+    if (loadedCount >= total) hidePreloader();
   }
 
-  if (total === 0) {
-    setTarget(90);
-  } else {
-    images.forEach((img) => {
-      if (img.complete) {
-        onImageSettled();
-      } else {
-        img.addEventListener('load', onImageSettled, { once: true });
-        img.addEventListener('error', onImageSettled, { once: true });
-      }
-    });
+  function onImageSettled() {
+    loadedCount++;
+    // Reserve the top 10% for final settle/hold time so the bar doesn't
+    // sit pinned at 100% while the hide transition is still pending.
+    const pct = total > 0 ? (loadedCount / total) * 90 : 90;
+    setTarget(pct);
+    checkDone();
   }
 
   function hidePreloader() {
@@ -83,18 +75,23 @@ let autoHoverRaf = null;
     }, wait);
   }
 
-  // Normal path: everything (images, fonts, scripts) finished loading
-  if (document.readyState === 'complete') {
+  if (total === 0) {
     hidePreloader();
   } else {
-    window.addEventListener('load', hidePreloader);
+    images.forEach((img) => {
+      if (img.complete) {
+        onImageSettled();
+      } else {
+        img.addEventListener('load', onImageSettled, { once: true });
+        img.addEventListener('error', onImageSettled, { once: true });
+      }
+    });
   }
 
-  // Safety net: something never fires 'load' — force-hide anyway
+  // Safety net: if some image event never fires, force-hide anyway so
+  // the page is never stuck behind the preloader.
   setTimeout(hidePreloader, MAX_WAIT);
 })();
-
-
 
 function triggerAutoHover(card) {
   if (autoHoverTimeout) clearTimeout(autoHoverTimeout);
