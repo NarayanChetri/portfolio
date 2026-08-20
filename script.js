@@ -17,16 +17,65 @@ let autoHoverRaf = null;
   const preloader = document.getElementById('preloader');
   if (!preloader) return;
 
-  const MIN_DISPLAY = 700;  // ms — avoids a jarring flash on fast loads
-  const MAX_WAIT = 4000;    // ms — hard safety cap, never trust load() alone
+  const fill = document.getElementById('preloaderProgressFill');
+  const text = document.getElementById('preloaderProgressText');
+
+  const MIN_DISPLAY = 800;   // never flash-close before this
+  const MAX_WAIT = 8000;     // hard safety cap regardless of load state
+  const HOLD_AT_100 = 300;   // let the bar visibly reach 100% before hiding
   const start = Date.now();
+
   let done = false;
+  let target = 0;      // real progress, 0–100
+  let displayed = 0;    // smoothed value shown on screen
+
+  function setTarget(pct) {
+    target = Math.max(target, Math.min(100, pct));
+  }
+
+  function tick() {
+    if (done && displayed >= target) return;
+    displayed += (target - displayed) * 0.15;
+    if (target - displayed < 0.15) displayed = target;
+    const val = Math.round(displayed);
+    if (fill) fill.style.width = val + '%';
+    if (text) text.textContent = val + '%';
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  // ---- Real progress source: every <img> on the page ----
+  const images = Array.from(document.images);
+  const total = images.length;
+  let loadedCount = 0;
+
+  function onImageSettled() {
+    loadedCount++;
+    // Reserve the top 10% for final window-load + settle time,
+    // so the bar doesn't sit at 100% while other assets trickle in.
+    const pct = total > 0 ? (loadedCount / total) * 90 : 90;
+    setTarget(pct);
+  }
+
+  if (total === 0) {
+    setTarget(90);
+  } else {
+    images.forEach((img) => {
+      if (img.complete) {
+        onImageSettled();
+      } else {
+        img.addEventListener('load', onImageSettled, { once: true });
+        img.addEventListener('error', onImageSettled, { once: true });
+      }
+    });
+  }
 
   function hidePreloader() {
     if (done) return;
     done = true;
+    setTarget(100);
     const elapsed = Date.now() - start;
-    const wait = Math.max(0, MIN_DISPLAY - elapsed);
+    const wait = Math.max(0, MIN_DISPLAY - elapsed) + HOLD_AT_100;
     setTimeout(() => {
       preloader.classList.add('loaded');
       document.body.classList.remove('is-loading');
@@ -34,17 +83,19 @@ let autoHoverRaf = null;
     }, wait);
   }
 
-  // Normal path: wait for full load
+  // Normal path: everything (images, fonts, scripts) finished loading
   if (document.readyState === 'complete') {
     hidePreloader();
   } else {
     window.addEventListener('load', hidePreloader);
   }
 
-  // Safety net: if 'load' never fires (blocked request, slow analytics
-  // script, etc.), force-hide anyway so the page is never stuck.
+  // Safety net: something never fires 'load' — force-hide anyway
   setTimeout(hidePreloader, MAX_WAIT);
 })();
+
+
+
 function triggerAutoHover(card) {
   if (autoHoverTimeout) clearTimeout(autoHoverTimeout);
   if (autoHoverRaf) cancelAnimationFrame(autoHoverRaf);
@@ -92,8 +143,14 @@ if (projSection && cards.length) {
 
       if (isPast) {
         card.classList.add('stack');
+        // How far back in the fanned deck this card sits behind the
+        // active one — drives the scale/rotate/offset in CSS.
+        const depth = Math.max(0, activeIndex - index);
+        card.style.setProperty('--depth', depth);
+        card.classList.toggle('is-active', index === activeIndex);
       } else {
-        card.classList.remove('stack');
+        card.classList.remove('stack', 'is-active');
+        card.style.removeProperty('--depth');
       }
 
       if (desc[index]) {

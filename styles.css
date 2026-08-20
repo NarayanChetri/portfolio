@@ -1,0 +1,1594 @@
+/* =================================================================== */
+/* 0. COLOR VARIABLES                                                   */
+/* All colours used anywhere in this file are defined here so the whole */
+/* site's palette can be changed from this single place.                */
+/* =================================================================== */
+:root {
+  /* --- Core brand / background colors --- */
+  --color-white: #ffffff;
+  --color-bg: #151312;                 /* main page background */
+  --color-terminal-green: #00ff66;     /* "$ whoami" terminal text + connect border */
+  --color-orange: orange;              /* social icons */
+  --color-wheat: wheat;                /* "Let's Connect" text + arrow icon */
+  --color-green-glow: rgb(34, 97, 21); /* box-shadow glow behind "Connect" pill */
+  --color-cream: #FAF9F6;              /* profile card background */
+  --color-success: green;              /* form success message */
+
+  /* --- Accent blue (used for resume button + cta button + ambulance project) --- */
+  --color-blue: #2196f3;
+  --color-blue-dark: #1565c0;          /* cta hover fill */
+  --color-blue-glow: #2195f360;        /* animated-button hover box-shadow */
+
+  /* --- White at different opacities (borders, glows, muted text) --- */
+  --white-04: rgba(255, 255, 255, 0.04);
+  --white-05: rgba(255, 255, 255, 0.05);
+  --white-06: rgba(255, 255, 255, 0.06);
+  --white-07: rgba(255, 255, 255, 0.07);
+  --white-08: rgba(255, 255, 255, 0.08);
+  --white-15: rgba(255, 255, 255, 0.15);
+  --white-18: rgba(255, 255, 255, 0.18);
+  --white-20: rgba(255, 255, 255, 0.2);
+  --white-25: rgba(255, 255, 255, 0.25);
+  --white-35: rgba(255, 255, 255, 0.35);
+  --white-45: rgba(255, 255, 255, 0.45);
+  --white-63: rgba(255, 255, 255, 0.63);
+  --white-637: rgba(255, 255, 255, 0.637);
+  --white-75: rgba(255, 255, 255, 0.75);
+  --white-90: rgba(255, 255, 255, 0.9);
+  --white-alpha-40: #ffffff40;         /* animated-button default text color */
+  --white-alpha-20: #ffffff20;         /* animated-button default ring */
+
+  /* --- Black at different opacities (profile card text/shadows) --- */
+  --black-05: rgba(0, 0, 0, 0.05);
+  --black-08: rgba(0, 0, 0, 0.08);
+  --black-12: rgba(0, 0, 0, 0.12);
+  --black-30: rgba(0, 0, 0, 0.3);
+  --black-40: rgba(0, 0, 0, 0.4);
+  --black-61: rgba(0, 0, 0, 0.61);
+  --black-88: rgba(0, 0, 0, 0.884);
+
+  /* --- Dark surface colors (cards / inputs) --- */
+  --surface-1: #1e1c1b;                /* skill pill background */
+  --surface-1-hover: #2a2726;          /* skill pill hover background */
+  --surface-2: #1c1a19;                /* project card + contact form background */
+  --surface-2-hover: #222020;          /* project card hover background */
+  --surface-3: rgba(30, 28, 27, 0.4);  /* tech stack category card background */
+  --input-bg: #353334;                 /* form input/textarea background */
+  --input-text: #7a7a7a;               /* form input text color */
+  --placeholder-color: #aaa;           /* textarea placeholder color */
+
+  /* --- Project accent: blue (Ambulance Service card) --- */
+  --accent-blue: #60a5fa;
+  --accent-blue-glow-bg: rgba(33, 150, 243, 0.1);
+  --accent-blue-bg: rgba(33, 150, 243, 0.12);
+  --accent-blue-border: rgba(33, 150, 243, 0.2);
+
+  /* --- Project accent: purple (Google Form Solver card) --- */
+  --accent-purple: #a78bfa;
+  --accent-purple-glow-bg: rgba(167, 139, 250, 0.1);
+  --accent-purple-bg: rgba(167, 139, 250, 0.12);
+  --accent-purple-border: rgba(167, 139, 250, 0.2);
+  --accent-purple-text: #c4b5fd;       /* "Gemini AI" badge text */
+  --accent-purple-badge-border: rgba(167, 139, 250, 0.25);
+
+  /* --- Project accent: green (More Projects card + Live badge) --- */
+  --accent-green: #6ee7b7;
+  --accent-green-glow-bg: rgba(52, 211, 153, 0.1);
+  --accent-green-bg: rgba(52, 211, 153, 0.12);
+  --accent-green-border: rgba(52, 211, 153, 0.2);
+  --accent-green-badge-border: rgba(52, 211, 153, 0.25);
+
+  /* --- Project accent: amber (Work In Progress badge) --- */
+  --accent-amber: #fbbf24;
+  --accent-amber-bg: rgba(251, 191, 36, 0.1);
+  --accent-amber-border: rgba(251, 191, 36, 0.2);
+
+  /* --- Mobile-only overrides (small phone cta button) --- */
+  --mobile-cta-bg: #234567;
+  --mobile-cta-stroke: #ff0000;
+}
+
+/* =================================================================== */
+/* 1. GLOBAL STYLES & RESETS                                           */
+/* =================================================================== */
+* {
+  color: var(--color-white);
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+*:focus {
+  outline: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+}
+
+section {
+  margin-top: 100px;
+}
+
+/* "$ whoami" terminal-style label above the hero heading */
+.terminal {
+  font-family: "Fira Code", monospace;
+  color: var(--color-terminal-green);
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 0px;
+  position: absolute;
+  top: -3%;
+  left: 2%;
+}
+
+/* =================================================================== */
+/* 2. MAIN LAYOUT (DESKTOP)                                            */
+/* =================================================================== */
+.container {
+  background: var(--color-bg);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Left column: sticky profile card */
+.left {
+  display: flex;
+  justify-content: center;
+  width: 40%;
+}
+
+/* Right column: all content sections (about, stack, projects, contact) */
+.right {
+  padding-left: 50px;
+  height: 100%;
+  width: 60%;
+}
+
+/* Social icon glyph color */
+#linkedin-icon,
+#github-icon,
+#leetcode-icon,
+#email-icon {
+  font-size: 30px;
+  color: var(--color-orange);
+}
+
+/* "Let's Connect" pill, top-right of the hero section */
+#connect {
+  position: absolute;
+  right: 4%;
+  top: -10%;
+  padding: 5px 10px;
+  border: 1px solid var(--color-terminal-green);
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--color-wheat);
+  box-shadow: 0px 0px 5px var(--color-green-glow);
+  transition: 0.2s ease-in;
+}
+#connect:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 0px 10px var(--color-green-glow);
+}
+#arrowtop {
+  color: var(--color-wheat);
+  font-size: 30px;
+}
+
+/* =================================================================== */
+/* 3. REUSABLE COMPONENTS (BUTTONS & BADGES)                           */
+/* =================================================================== */
+
+/* --- Resume download button (pill with expanding circle fill) --- */
+.animated-button {
+  position: relative;
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  font-size: 16px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+  color: var(--white-alpha-40);
+  box-shadow: 0 0 0 2px var(--white-alpha-20);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.animated-button span:first-child {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Resume + Projects shortcut cards (below the hero heading) --- */
+.bc {
+  display: flex;
+  gap: 30px;
+  justify-content: flex-start;
+  padding-right: 30px;
+}
+
+.resumeBox,
+.pBox {
+  width: 350px;
+  height: 250px;
+  margin-top: 40px;
+  position: relative;
+  border-radius: 20px;
+  transition: 0.35s ease;
+  max-width: 50%;
+  min-width: 20%;
+}
+.resumeBox {
+  background: url('box1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.pBox {
+  background: url('box2.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Lift card on hover */
+.resumeBox:hover,
+.pBox:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 18px 35px var(--black-30);
+}
+
+/* Slight press-down on click */
+.resumeBox:active,
+.pBox:active {
+  transform: translateY(-6px);
+}
+
+.bc h2 {
+  font-size: 35px;
+  line-height: 1.2;
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  width: 80%;
+  z-index: 2;
+}
+
+#layer,
+#picon {
+  font-size: 40px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 2;
+}
+
+#arrow {
+  font-size: 40px;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+/* Nudge arrow icon to the right on hover */
+.resumeBox:hover #arrow,
+.pBox:hover #arrow {
+  transform: translateX(6px);
+}
+
+/* Make the whole card a clickable link */
+.resumeBox a,
+.pBox a {
+  position: absolute;
+  inset: 0;
+  display: block;
+  z-index: 3;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Keep the arrow glyph above the link overlay */
+.resumeBox a i,
+.pBox a i {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  font-size: 40px;
+}
+
+/* Expanding circle fill that reveals on hover */
+.animated-button span:last-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-blue);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button:hover {
+  box-shadow: 0 0 0 5px var(--color-blue-glow);
+  color: var(--color-white);
+}
+
+.animated-button:hover span:last-child {
+  width: 250px;
+  height: 250px;
+  opacity: 1;
+}
+
+.animated-button:active {
+  scale: 0.95;
+}
+
+/* --- Contact form submit button --- */
+.cta {
+  position: relative;
+  margin-top: 20px;
+  padding: 12px 18px;
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 150px;
+}
+
+.cta:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-radius: 50px;
+  background: var(--color-blue);
+  width: 50%;
+  height: 45px;
+  transition: all 0.3s ease;
+}
+
+.cta span {
+  position: relative;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-white);
+}
+
+.cta svg {
+  position: relative;
+  top: 0;
+  margin-left: 10px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: var(--color-white);
+  stroke-width: 2;
+  transform: translateX(-5px);
+  transition: all 0.3s ease;
+}
+
+/* Fill expands and arrow slides in on hover */
+.cta:hover:before {
+  width: 100%;
+  background: var(--color-blue-dark);
+}
+.cta:hover svg {
+  transform: translateX(0);
+}
+.cta:active {
+  transform: scale(0.95);
+}
+
+/* =================================================================== */
+/* 4. LEFT COLUMN (PROFILE CARD)                                       */
+/* =================================================================== */
+.profileCard {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: sticky;
+  top: 10svh;
+  width: 320px;
+  height: 600px;
+  /* padding removed: each .card-face now carries its own padding (see
+     section 7) so faces can be absolutely stacked and cross-faded
+     without doubling up on spacing */
+  border-radius: 24px;
+  background-color: var(--color-cream);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch' result='noise'/%3E%3CfeColorMatrix in='noise' type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.05'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(115deg, var(--black-05) 0px, transparent 1px, transparent 3px),
+    repeating-linear-gradient(25deg, var(--black-05) 0px, transparent 1px, transparent 4px),
+    linear-gradient(160deg, #FEFDFB 0%, var(--color-cream) 55%, #F2ECE2 100%);
+  background-blend-mode: multiply, multiply, multiply, normal;
+  border: 1px solid var(--white-18);
+  box-shadow:
+    0 8px 32px var(--black-40),
+    inset 0 1px 0 var(--white-20),
+    inset 0 -1px 0 var(--white-05),
+    inset 0 0 40px var(--black-05);
+}
+
+.profileCard img {
+  width: 240px;
+  height: 260px;
+  border-radius: 30px;
+  outline: 3px solid var(--white-20);
+  outline-offset: 2px;
+}
+
+.profileCard h2 {
+  color: var(--black-88);
+  font-size: 28px;
+  font-weight: bold;
+  text-shadow: 0 1px 8px var(--black-30);
+  letter-spacing: 0.3px;
+  margin: 16px 0 6px;
+}
+
+.profileCard h4 {
+  color: var(--black-61);
+  width: 100%;
+  text-align: center;
+  line-height: 1.5;
+  font-size: 16px;
+  margin-top: 100px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Decorative flame image next to the profile card */
+#fire {
+  position: absolute;
+  bottom: 24%;
+  left: -3%;
+  outline: none;
+  height: 120px;
+  width: auto;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  padding-top: 18px;
+}
+
+/* Thin divider line above the social icons row */
+.links::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--white-25), transparent);
+}
+
+/* =================================================================== */
+/* 5. RIGHT COLUMN SECTIONS                                            */
+/* =================================================================== */
+
+/* --- 5.1 About / Hero Section --- */
+.about {
+  margin-top: 12svh;
+  height: 100svh;
+}
+
+.about h1 {
+  font-size: 80px;
+  padding-left: 20px;
+  width: fit-content;
+  max-width: 90%;
+  line-height: 1.3;
+  letter-spacing: -2px;
+}
+
+/* Faded/ghost variant used for the second line of two-line headings */
+.fadeText {
+  position: relative;
+  bottom: 20px;
+  color: var(--white-20);
+}
+
+.about h4 {
+  position: relative;
+  bottom: 10px;
+  width: 550px;
+  color: var(--white-637);
+  padding-left: 30px;
+  font-size: 20px;
+  font-weight: 300;
+  margin-top: 30px;
+}
+
+#software {
+  margin-top: 60px;
+}
+
+/* Stat counters (DSA problems / projects / years) */
+.numbers {
+  width: 460px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.numbers span {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.numbers span h1 {
+  font-size: 60px;
+  padding: 0;
+}
+
+.numbers span h5 {
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--white-63);
+}
+
+/* Mobile-only resume button, hidden on desktop (see 6.3) */
+#download1 {
+  display: none;
+  margin-top: 50px;
+  width: 500px;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* --- 5.2 Tech Stacks Section --- */
+.statsLanguages {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.statsLanguages h1 {
+  font-size: 80px;
+}
+
+.statsLanguages h2 {
+  margin-top: 50px;
+  margin-bottom: 25px;
+  font-size: 28px;
+  color: var(--color-white);
+}
+
+/* LeetCode / GitHub stat card images */
+.statsgraph {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 30px;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+#stats1 {
+  width: 490px;
+  max-width: 95%;
+  transition: transform 0.3s ease;
+}
+#stats2 {
+  width: 490px;
+  max-width: 95%;
+  transition: transform 0.3s ease;
+}
+#stats1:hover {
+  transform: translateY(-4px);
+}
+#stats2:hover {
+  transform: translateY(-4px);
+}
+
+/* Tech Categories Grid Container */
+.tech-categories-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  padding: 15px;
+}
+
+/* Individual Category Cards (Frontend / Backend / Databases / Tools) */
+.skills-category {
+  background: var(--surface-3);
+  border: 1px solid var(--white-06);
+  border-radius: 16px;
+  padding: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.skills-category:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px var(--black-30);
+  border-color: var(--white-15);
+}
+
+.skills-category h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: var(--white-90);
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--white-08);
+}
+
+/* Inner Skills Grid */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Individual Skill Pills */
+.skill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background: var(--surface-1);
+  border: 1px solid var(--white-08);
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--white-75);
+  transition: all 0.25s ease;
+  cursor: default;
+}
+
+.skill:hover {
+  background: var(--surface-1-hover);
+  border-color: var(--white-25);
+  color: var(--color-white);
+  transform: scale(1.05); /* gentle pop effect */
+}
+
+.skill img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.skill span {
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* --- 5.3 Projects Section --- */
+.projectSec {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+}
+
+.projectSec h1 {
+  font-size: 80px;
+  width: 100%;
+}
+
+.proj-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 32px;
+  max-width: 680px;
+}
+
+.proj-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--surface-2);
+  border: 1px solid var(--white-07);
+  border-radius: 16px;
+  padding: 22px 24px;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+}
+
+/* Soft radial glow overlay revealed on hover, colored per-card below */
+.proj-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+.proj-card:hover {
+  border-color: var(--white-18);
+  background: var(--surface-2-hover);
+  transform: translateY(-2px);
+}
+
+.proj-card:hover::before {
+  opacity: 1;
+}
+
+/* Per-card accent glow color */
+.proj-blue::before { background: radial-gradient(ellipse at top left, var(--accent-blue-glow-bg) 0%, transparent 60%); }
+.proj-purple::before { background: radial-gradient(ellipse at top left, var(--accent-purple-glow-bg) 0%, transparent 60%); }
+.proj-green::before { background: radial-gradient(ellipse at top left, var(--accent-green-glow-bg) 0%, transparent 60%); }
+
+.proj-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.proj-icon-blue { background: var(--accent-blue-bg); border: 1px solid var(--accent-blue-border); }
+.proj-icon-purple { background: var(--accent-purple-bg); border: 1px solid var(--accent-purple-border); }
+.proj-icon-green { background: var(--accent-green-bg); border: 1px solid var(--accent-green-border); }
+
+.proj-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.proj-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.proj-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-white);
+  margin: 0;
+}
+
+.proj-badge {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.badge-live { background: var(--accent-green-bg); color: var(--accent-green); border: 1px solid var(--accent-green-badge-border); }
+.badge-ai { background: var(--accent-purple-bg); color: var(--accent-purple-text); border: 1px solid var(--accent-purple-badge-border); }
+.badge-wip { background: var(--accent-amber-bg); color: var(--accent-amber); border: 1px solid var(--accent-amber-border); }
+
+.proj-desc {
+  font-size: 13px;
+  color: var(--white-45);
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.proj-stack {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.stack-tag {
+  font-size: 11px;
+  color: var(--white-35);
+  background: var(--white-04);
+  border: 1px solid var(--white-07);
+  padding: 2px 9px;
+  border-radius: 6px;
+}
+
+.proj-arrow {
+  margin-left: auto;
+  padding-left: 16px;
+  flex-shrink: 0;
+  opacity: 0.3;
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+.proj-card:hover .proj-arrow {
+  opacity: 0.8;
+  transform: translate(3px, -3px);
+}
+
+/* --- 5.4 Contact Section --- */
+#contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+.contacth1 {
+  font-size: 80px;
+  width: 100%;
+}
+
+.contacth2 {
+  font-size: 80px;
+}
+
+#contactform {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  height: max-content;
+  width: max-content;
+  flex-wrap: wrap;
+  max-width: 90%;
+  padding-bottom: 30px;
+  background: var(--surface-2);
+  border: 1px solid var(--white-07);
+  border-radius: 16px;
+  padding: 22px 24px;
+  margin-bottom: 30px;
+}
+
+.formRow {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.input1 {
+  margin-bottom: 20px;
+}
+
+.input3 {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  max-width: 95%;
+}
+
+#name,
+#email {
+  margin-top: 10px;
+  background: var(--input-bg);
+  border: none;
+  outline: none;
+  height: 40px;
+  width: 338px;
+  max-width: 70%;
+  border-radius: 10px;
+  padding: 10px;
+  color: var(--input-text);
+}
+
+#message {
+  width: 650px;
+  height: 200px;
+  border-radius: 10px;
+  background: var(--input-bg);
+  border: none;
+  margin-top: 10px;
+  max-width: 90%;
+  padding: 10px;
+  text-align: left;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  color: var(--color-white);
+  font-size: 16px;
+  resize: none;
+}
+
+#message::placeholder {
+  text-align: left;
+  color: var(--placeholder-color);
+}
+
+#successMessage {
+  display: none;
+  color: var(--color-success);
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+/* =================================================================== */
+/* 6. MEDIA QUERIES (RESPONSIVE DESIGN)                                */
+/* =================================================================== */
+
+/* --- 6.1 Large Tablet / Small Laptop --- */
+@media (max-width: 1443px) {
+  .statsgraph {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .skills-grid {
+    min-width: 90%;
+    max-width: 90%;
+  }
+}
+
+/* --- 6.2 Tablet --- */
+@media (max-width: 1000px) {
+  .container {
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+  }
+#connect {
+display: none;
+}
+  .terminal {
+    left: 28%;
+    top: 5%;
+  }
+
+  .projectSec {
+    align-items: center;
+  }
+
+  .left {
+    padding: 0;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    height: max-content;
+  }
+
+  .right {
+    width: 100%;
+    text-align: center;
+    overflow-y: visible;
+    margin: 0;
+    padding: 0;
+  }
+
+  .profileCard {
+    position: relative;
+    top: 0;
+    margin-top: 40px;
+    width: 400px;
+  }
+
+  /* Non-sticky mobile card: always show the default face, no swapping.
+     JS already skips attaching the observer below this breakpoint —
+     this is a CSS-level fallback so nothing depends on JS timing. */
+  .card-face {
+    position: relative;
+    inset: auto;
+    opacity: 1;
+    transform: none;
+    filter: none;
+    pointer-events: auto;
+    transition: none;
+  }
+  .card-face:not(.face-about) {
+    display: none;
+  }
+
+  .about {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    text-align: center;
+  }
+
+  #software,
+  .fadeText {
+    min-width: 100%;
+    padding: 0;
+  }
+
+  .about h4 {
+    width: 80%;
+    padding: auto;
+  }
+
+  .numbers {
+    width: 80%;
+  }
+
+  .bc {
+    max-width: 95%;
+  }
+
+  .statsgraph {
+    align-items: center;
+  }
+
+  .skills-grid {
+    min-width: 99%;
+    max-width: 90%;
+  }
+
+  #contact {
+    align-items: center;
+  }
+
+  .formRow {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  #contactform {
+    height: max-content;
+    width: 95%;
+    align-items: center;
+  }
+
+  #contactform h4 {
+    margin-top: 10px;
+  }
+
+  #message {
+    width: 100%;
+  }
+
+  .input3 {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* --- 6.3 Large Phone --- */
+@media (max-width: 625px) {
+  /* Disable text selection on mobile (feels more app-like) */
+  *,
+  *::before,
+  *::after {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .terminal {
+    left: 12%;
+  }
+
+  /* Show the inline resume button since the card shortcuts are hidden below */
+  #download1 {
+    display: flex;
+  }
+
+  .bc {
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Resume/Projects shortcut cards are replaced by #download1 + nav on mobile */
+  .resumeBox,
+  .pBox {
+    display: none;
+  }
+
+  #linkedin-icon,
+  #github-icon,
+  #leetcode-icon,
+  #email-icon {
+    font-size: 28px;
+    color: var(--color-orange);
+  }
+
+  .proj-grid {
+    max-width: 95%;
+    margin: 24px auto 0;
+  }
+  .proj-card {
+    padding: 16px;
+    gap: 14px;
+  }
+  .proj-icon {
+    width: 48px;
+    height: 48px;
+  }
+  .proj-title {
+    font-size: 14px;
+  }
+  .proj-desc {
+    font-size: 12px;
+  }
+
+  .left {
+    height: max-content;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+  }
+
+  .profileCard {
+    position: relative;
+    height: min-content;
+    max-width: 80%;
+    height: 500px;
+    left: 0;
+    padding: 10px;
+    margin: 0;
+  }
+
+  /* Hide the decorative flame image on small screens */
+  #fire {
+    display: none;
+  }
+
+  .profileCard img {
+    max-width: 85%;
+    height: auto;
+  }
+
+  .profileCard h4 {
+    font-size: 17px;
+    margin-top: 20px;
+  }
+
+  .profileCard h2 {
+    font-size: 25px;
+  }
+
+  section {
+    margin-top: 100px;
+  }
+
+  .projectSec h1 {
+    font-size: 50px;
+  }
+
+  .about {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    height: max-content;
+  }
+
+  #software {
+    padding-bottom: 20px;
+  }
+
+  /* Hero subtitle is hidden on mobile to keep the hero compact */
+  .about h4 {
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: none;
+  }
+
+  .about h1 {
+    font-size: 50px;
+  }
+
+  .about #engineer {
+    padding: 0;
+  }
+
+  .numbers {
+    width: 90%;
+  }
+
+  .numbers .numbers2 {
+    font-size: 40px;
+  }
+
+  #tools h1 {
+    font-size: 50px;
+  }
+
+  .skills-grid {
+    justify-content: center;
+  }
+
+  .contacth1 {
+    font-size: 50px;
+  }
+
+  .contacth2 {
+    font-size: 55px;
+  }
+
+  #contactform {
+    height: max-content;
+    align-items: center;
+  }
+
+  .formRow {
+    align-items: center;
+  }
+
+  #message {
+    max-width: none;
+    width: 100%;
+    margin: 10px 0px;
+  }
+
+  .input1,
+  .input2,
+  .input3 {
+    max-width: 90%;
+  }
+
+  #email,
+  #name {
+    min-width: 90%;
+  }
+
+  .cta:before {
+    background: var(--mobile-cta-bg);
+    width: 100%;
+  }
+
+  .cta svg {
+    stroke: var(--mobile-cta-stroke);
+    transform: translateX(0px);
+  }
+}
+
+/* --- 6.4 Small Phone --- */
+@media (max-width: 300px) {
+  .about h1,
+  .statsLanguages h1 {
+    font-size: 20px;
+  }
+
+  .fadeText {
+    margin-top: 20px;
+  }
+
+  .profileCard h2 {
+    font-size: 15px;
+  }
+
+  .profileCard img {
+    max-width: 90%;
+  }
+
+  .links {
+    display: none;
+  }
+
+  .numbers {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .numbers .numbers2 {
+    font-size: 20px;
+  }
+
+  .contacth1,
+  .contacth2 {
+    font-size: 30px;
+  }
+
+  .input1,
+  .input2,
+  .input3 {
+    max-width: 90%;
+  }
+}
+
+/* =================================================================== */
+/* 7. STICKY PROFILE CARD — SECTION-AWARE FACES (DESKTOP ONLY)         */
+/* =================================================================== */
+
+/* Faces stack directly on top of one another inside the fixed-size card
+   and cross-fade via opacity + a subtle slide/scale/blur, so swapping
+   never changes the card's height and never hard-cuts between states. */
+.card-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 20px 24px; /* matches the padding .profileCard used to carry */
+  opacity: 0;
+  transform: translateY(14px) scale(0.97);
+  filter: blur(6px);
+  pointer-events: none;
+  transition:
+    opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+    transform 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+    filter 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card-face.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+  pointer-events: auto;
+  z-index: 1;
+}
+
+/* --- Shared face typography --- */
+.face-title {
+  color: var(--black-88);
+  font-size: 23px;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0 8px;
+  letter-spacing: 0.2px;
+}
+
+.face-note {
+  color: var(--black-61);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin-top: 4px;
+  padding: 0 8px;
+}
+
+/* --- Icon badge, shared across faces --- */
+.face-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 26px;
+  font-size: 27px;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card-face.active .face-icon {
+  animation: face-icon-pop 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes face-icon-pop {
+  0% { transform: scale(0.8); }
+  60% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.face-icon-blue {
+  background: var(--accent-blue-bg);
+  border: 1px solid var(--accent-blue-border);
+  box-shadow: 0 8px 20px var(--accent-blue-glow-bg);
+}
+.face-icon-green {
+  background: var(--accent-green-bg);
+  border: 1px solid var(--accent-green-border);
+  box-shadow: 0 8px 20px var(--accent-green-glow-bg);
+}
+.face-icon-purple {
+  background: var(--accent-purple-bg);
+  border: 1px solid var(--accent-purple-border);
+  box-shadow: 0 8px 20px var(--accent-purple-glow-bg);
+}
+
+.face-icon-blue i { color: var(--accent-blue); }
+.face-icon-green i { color: var(--accent-green); }
+.face-icon-purple i { color: var(--accent-purple); }
+
+/* --- Stats face: numbers with a vertical divider --- */
+.face-stat-list {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  margin-top: 24px;
+  padding: 18px 26px;
+  background: var(--black-05);
+  border: 1px solid var(--black-08);
+  border-radius: 16px;
+}
+
+.face-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 70px;
+}
+
+.face-stat-value {
+  color: var(--black-88);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.face-stat-label {
+  color: var(--black-61);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-top: 4px;
+  text-align: center;
+}
+
+.face-stat-divider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--black-12);
+}
+
+/* --- Pill (used for the "currently learning" note) --- */
+.face-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+  padding: 9px 16px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.face-pill-blue {
+  background: var(--accent-blue-bg);
+  border: 1px solid var(--accent-blue-border);
+  color: var(--color-blue-dark);
+}
+
+.face-pill i {
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+/* --- Chip row (used on the projects face) --- */
+.face-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 0 6px;
+}
+
+.face-chip {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--black-61);
+  background: var(--black-05);
+  border: 1px solid var(--black-08);
+  padding: 5px 12px;
+  border-radius: 100px;
+}
+
+.face-chip-muted {
+  color: var(--white-63);
+  background: var(--black-88);
+  border-color: var(--black-88);
+}
+
+/* --- CTA buttons (projects "View on GitHub" + contact email) --- */
+.face-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding: 11px 20px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+              background 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.face-cta-solid {
+  background: var(--color-blue);
+  color: var(--color-white);
+  box-shadow: 0 8px 18px var(--accent-blue-glow-bg);
+}
+.face-cta-solid:hover {
+  background: var(--color-blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px var(--accent-blue-glow-bg);
+}
+.face-cta-solid i,
+.face-cta-solid span {
+  color: var(--color-white);
+}
+
+.face-cta-outline {
+  background: transparent;
+  color: var(--color-blue-dark);
+  border: 1.5px solid var(--accent-blue-border);
+  max-width: 90%;
+}
+.face-cta-outline:hover {
+  background: var(--accent-blue-bg);
+  transform: translateY(-2px);
+}
+.face-cta-outline i,
+.face-cta-outline span {
+  color: var(--color-blue-dark);
+}
+.face-cta-outline span {
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
+.face-cta:active {
+  transform: scale(0.96);
+}
+
+/* --- Social links row (contact face) --- */
+.face-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 26px;
+}
+
+.face-links a {
+  display: flex;
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.face-links a:hover {
+  transform: translateY(-3px);
+}
+
+.face-links i {
+  font-size: 26px;
+  color: var(--color-orange);
+}

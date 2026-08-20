@@ -29,17 +29,23 @@
   </head>
 <body>
 <div id="preloader">
-      <div class="preloader-inner">
-        <div class="preloader-shapes">
-          <span class="preloader-shape"></span>
-          <span class="preloader-shape"></span>
-          <span class="preloader-shape"></span>
-          <span class="preloader-logo">N<em>C</em></span>
-        </div>
-        <span class="preloader-text">Loading experience…</span>
-      </div>
+  <div class="preloader-inner">
+    <div class="preloader-shapes">
+      <span class="preloader-shape"></span>
+      <span class="preloader-shape"></span>
+      <span class="preloader-shape"></span>
+      <span class="preloader-logo">N<em>C</em></span>
     </div>
+    <span class="preloader-text">Loading experience…</span>
 
+    <div class="preloader-progress">
+      <div class="preloader-progress-track">
+        <div class="preloader-progress-fill" id="preloaderProgressFill"></div>
+      </div>
+      <span class="preloader-progress-text" id="preloaderProgressText">0%</span>
+    </div>
+  </div>
+</div>
     <div class="custom-cursor" id="customCursor">
       <span class="custom-cursor-text">View</span>
       <i class="fa-solid fa-arrow-up-right-from-square"></i>
