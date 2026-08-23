@@ -1,11 +1,3 @@
-let projSection = document.querySelector('.projects');
-let cards = document.querySelectorAll('.proj-card');
-let desc = document.querySelectorAll('.desc');
-let ghostNumber = document.getElementById('projGhostNumber');
-let progressFill = document.getElementById('projProgressFill');
-let progressDots = document.querySelectorAll('.proj-progress-dot');
-
-let lastActiveIndex = -1;
 let autoHoverTimeout = null;
 let autoHoverRaf = null;
 
@@ -44,7 +36,6 @@ let autoHoverRaf = null;
   }
   requestAnimationFrame(tick);
 
-  // Every image on the page counts now — no lazy-load exclusion.
   const images = Array.from(document.images);
   const total = images.length;
   let loadedCount = 0;
@@ -55,8 +46,6 @@ let autoHoverRaf = null;
 
   function onImageSettled() {
     loadedCount++;
-    // Reserve the top 10% for final settle/hold time so the bar doesn't
-    // sit pinned at 100% while the hide transition is still pending.
     const pct = total > 0 ? (loadedCount / total) * 90 : 90;
     setTarget(pct);
     checkDone();
@@ -88,8 +77,6 @@ let autoHoverRaf = null;
     });
   }
 
-  // Safety net: if some image event never fires, force-hide anyway so
-  // the page is never stuck behind the preloader.
   setTimeout(hidePreloader, MAX_WAIT);
 })();
 
@@ -110,75 +97,38 @@ function triggerAutoHover(card) {
   });
 }
 
-if (projSection && cards.length) {
-  window.addEventListener('scroll', () => {
-    const rect = projSection.getBoundingClientRect();
-    let sectionTop = rect.top;
-    const sectionHeight = rect.height - window.innerHeight;
+// ---------------------------------------------------------------------
+// Project Scroll Spy (Swaps Descriptions on Scroll)
+// ---------------------------------------------------------------------
+const projectCards = document.querySelectorAll('.proj-card');
+const projectDescs = document.querySelectorAll('.desc');
 
-    let progress = -sectionTop / sectionHeight;
-    progress = Math.max(0, Math.min(1, progress));
+if (projectCards.length > 0 && projectDescs.length > 0) {
+  const observerOptions = {
+    root: null,
+    rootMargin: '-30% 0px -40% 0px', 
+    threshold: 0
+  };
 
-    const step = 1 / cards.length;
-    // First card should appear almost the instant the section pins,
-    // independent of section height or card count.
-    const firstThreshold = 0.01;
+  const projectObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const activeIndex = entry.target.getAttribute('data-index');
 
-    let activeIndex = -1;
-    if (progress > firstThreshold) {
-      if (progress <= step) {
-        activeIndex = 0;
-      } else {
-        activeIndex = Math.floor(progress / step);
-        activeIndex = Math.min(activeIndex, cards.length - 1);
-      }
-    }
+        projectDescs.forEach(desc => {
+          if (desc.getAttribute('data-index') === activeIndex) {
+            desc.classList.add('active-desc');
+          } else {
+            desc.classList.remove('active-desc');
+          }
+        });
 
-    cards.forEach((card, index) => {
-      const threshold = index === 0 ? firstThreshold : index * step;
-      const isPast = progress > threshold;
-
-      if (isPast) {
-        card.classList.add('stack');
-        // How far back in the fanned deck this card sits behind the
-        // active one — drives the scale/rotate/offset in CSS.
-        const depth = Math.max(0, activeIndex - index);
-        card.style.setProperty('--depth', depth);
-        card.classList.toggle('is-active', index === activeIndex);
-      } else {
-        card.classList.remove('stack', 'is-active');
-        card.style.removeProperty('--depth');
-      }
-
-      if (desc[index]) {
-        if (isPast && index === activeIndex) {
-          desc[index].classList.add('active-desc');
-        } else {
-          desc[index].classList.remove('active-desc');
-        }
+        triggerAutoHover(entry.target);
       }
     });
+  }, observerOptions);
 
-    // Ghost number behind the active card
-    if (ghostNumber) {
-      const num = (activeIndex === -1 ? 0 : activeIndex) + 1;
-      ghostNumber.textContent = String(num).padStart(2, '0');
-    }
-
-    // Vertical progress rail: fill height + dot states
-    if (progressFill) {
-      progressFill.style.height = (progress * 100) + '%';
-    }
-    progressDots.forEach((dot, index) => {
-      dot.classList.toggle('is-active', index === activeIndex);
-      dot.classList.toggle('is-done', activeIndex !== -1 && index < activeIndex);
-    });
-
-    if (activeIndex !== -1 && activeIndex !== lastActiveIndex) {
-      triggerAutoHover(cards[activeIndex]);
-    }
-    lastActiveIndex = activeIndex;
-  });
+  projectCards.forEach(card => projectObserver.observe(card));
 }
 
 // ---------------------------------------------------------------------
@@ -200,7 +150,6 @@ revealEls.forEach((el) => revealObserver.observe(el));
 // Custom cursor — smooth follow + hover state + click-through
 // ---------------------------------------------------------------------
 (function () {
-  // Disable custom cursor script on mobile and touch devices
   if (window.innerWidth <= 980 || window.matchMedia("(hover: none)").matches) {
     return;
   }
@@ -229,7 +178,6 @@ revealEls.forEach((el) => revealObserver.observe(el));
     cursorX += (mouseX - cursorX) * ease;
     cursorY += (mouseY - cursorY) * ease;
 
-    // Update left/top position so we don't overwrite the CSS transform/scale
     cursor.style.left = cursorX + 'px';
     cursor.style.top = cursorY + 'px';
 
