@@ -22,24 +22,6 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="preloader">
-      <div class="preloader-inner">
-        <div class="preloader-shapes">
-          <span class="preloader-shape"></span>
-          <span class="preloader-shape"></span>
-          <span class="preloader-shape"></span>
-          <span class="preloader-logo">N<em>C</em></span>
-        </div>
-        <span class="preloader-text">Loading experience…</span>
-
-        <div class="preloader-progress">
-          <div class="preloader-progress-track">
-            <div class="preloader-progress-fill" id="preloaderProgressFill"></div>
-          </div>
-          <span class="preloader-progress-text" id="preloaderProgressText">0%</span>
-        </div>
-      </div>
-    </div>
     
     <div class="custom-cursor" id="customCursor">
       <span class="custom-cursor-text">View</span>
@@ -58,25 +40,29 @@
         <span class="orb"></span>
       </div>
 
+      <div class="nav-glow" aria-hidden="true">
+        <span class="nav-glow-orb nav-glow-1"></span>
+        <span class="nav-glow-orb nav-glow-2"></span>
+        <span class="nav-glow-orb nav-glow-3"></span>
+      </div>
+
       <nav class="nav">
-        <a class="logo" href="#hero-fixed">
-          <span class="logo-text">N<em>C</em></span>
-          <svg class="logo-crown" viewBox="0 0 60 40" width="34" height="24" aria-hidden="true">
-            <path d="M4 34 L9 10 L20 22 L30 4 L40 22 L51 10 L56 34 Z" fill="none" stroke="#e5342e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
-          </svg>
-        </a>
+        <div class="nav-greeting" id="navGreeting">
+          <i class="fa-solid fa-sun" id="navGreetingIcon"></i>
+          <span id="navGreetingText">Good Evening</span>
+        </div>
         <div class="nav-links">
-          <a href="#hero-fixed" class="active">Home</a>
-          <a href="#about">SKILLS</a>
-          <a href="#projects">PROJECTS</a>
-          <a href="#contact">CONTACT</a>
+          <a href="#hero-fixed" class="active nav-item">Home</a>
+          <a href="#about" class="nav-item">ABOUT</a>
+          <a href="#projects" class="nav-item">PROJECTS</a>
+          <a href="#contact" class="nav-item">CONTACT</a>
         </div>
       </nav>
 
       <div class="hero-fixed" id="hero-fixed">
         <header class="header"></header>
 
-        <div class="social-rail">
+        <div class="social-rail" data-entrance="social-rail">
           <span class="rail-line"></span>
           <a href="https://github.com/NarayanChetri" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
           <a href="www.linkedin.com/in/narayan-chetri" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -85,7 +71,7 @@
 
         <section class="hero">
           <div class="hero-copy">
-            <div class="headline-wrap">
+            <div class="headline-wrap" data-entrance="headline">
               <svg class="spark-mark" viewBox="0 0 40 30" width="30" height="22" aria-hidden="true">
                 <path d="M6 22 L2 28" stroke="#e5342e" stroke-width="2.5" stroke-linecap="round" />
                 <path d="M14 18 L11 26" stroke="#e5342e" stroke-width="2.5" stroke-linecap="round" />
@@ -101,16 +87,16 @@
               </svg>
             </div>
 
-            <p class="tagline">
+            <p class="tagline" data-entrance="tagline">
               I'm a <strong>MCA Student</strong> at Tezpur University, Learning DSA and Full-Stack Development
             </p>
 
-            <div class="cta-row">
+            <div class="cta-row" data-entrance="cta">
               <a href="My_Resume.pdf" download="Narayan Chetri Resume" class="btn-outline">View My Resume<i class="fa-solid fa-arrow-right"></i></a>
               <span class="handwritten">Let's work together!</span>
             </div>
 
-            <div class="hero-stats">
+            <div class="hero-stats" data-entrance="stats">
               <div class="hero-stat">
                 <span class="hero-stat-icon"><i class="fa-solid fa-code"></i></span>
                 <h3 class="hero-stat-number">+100</h3>
@@ -132,10 +118,13 @@
           </div>
 
           <div class="hero-photo">
-            <img src="profile.png" alt="Narayan Chetri" />
-            <div class="floating-chip chip-1"><i class="fa-brands fa-android"></i>Android</div>
-            <div class="floating-chip chip-2"><i class="fa-brands fa-react"></i>React</div>
-            <div class="floating-chip chip-3"><i class="fa-brands fa-github"></i>Open Source</div>
+            <div class="hero-photo-wrapper" data-entrance="photo">
+              <img src="profile.png" alt="Narayan Chetri" id="heroProfileImg" />
+              <div class="hero-photo-shimmer"></div>
+            </div>
+            <div class="floating-chip chip-1" data-entrance="chip-1"><i class="fa-brands fa-android"></i>Android</div>
+            <div class="floating-chip chip-2" data-entrance="chip-2"><i class="fa-brands fa-react"></i>React</div>
+            <div class="floating-chip chip-3" data-entrance="chip-3"><i class="fa-brands fa-github"></i>Open Source</div>
           </div>
         </section>
       </div>

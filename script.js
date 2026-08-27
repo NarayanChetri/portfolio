@@ -2,83 +2,109 @@ let autoHoverTimeout = null;
 let autoHoverRaf = null;
 
 // ---------------------------------------------------------------------
-// Preloader — real progress driven by actual <img> load state
+// Entrance Animations — instant reveal, staggered via CSS
 // ---------------------------------------------------------------------
 (function () {
-  document.body.classList.add('is-loading');
-  const preloader = document.getElementById('preloader');
-  if (!preloader) return;
-
-  const fill = document.getElementById('preloaderProgressFill');
-  const text = document.getElementById('preloaderProgressText');
-
-  const MIN_DISPLAY = 800;   // ms — avoid a jarring flash on fast loads
-  const MAX_WAIT = 6000;     // ms — hard safety cap, never trust image events alone
-  const HOLD_AT_100 = 300;   // ms — let the bar visibly reach 100% before hiding
-  const start = Date.now();
-
-  let done = false;
-  let target = 0;      // real progress, 0–100
-  let displayed = 0;   // smoothed value actually shown on screen
-
-  function setTarget(pct) {
-    target = Math.max(target, Math.min(100, pct));
+  // Trigger entrance animations as soon as DOM is ready
+  function reveal() {
+    document.body.classList.add('is-revealed');
+    startNavGreeting();
   }
 
-  function tick() {
-    if (done && displayed >= target) return;
-    displayed += (target - displayed) * 0.15;
-    if (target - displayed < 0.15) displayed = target;
-    const val = Math.round(displayed);
-    if (fill) fill.style.width = val + '%';
-    if (text) text.textContent = val + '%';
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-
-  const images = Array.from(document.images);
-  const total = images.length;
-  let loadedCount = 0;
-
-  function checkDone() {
-    if (loadedCount >= total) hidePreloader();
-  }
-
-  function onImageSettled() {
-    loadedCount++;
-    const pct = total > 0 ? (loadedCount / total) * 90 : 90;
-    setTarget(pct);
-    checkDone();
-  }
-
-  function hidePreloader() {
-    if (done) return;
-    done = true;
-    setTarget(100);
-    const elapsed = Date.now() - start;
-    const wait = Math.max(0, MIN_DISPLAY - elapsed) + HOLD_AT_100;
-    setTimeout(() => {
-      preloader.classList.add('loaded');
-      document.body.classList.remove('is-loading');
-      setTimeout(() => preloader.remove(), 700);
-    }, wait);
-  }
-
-  if (total === 0) {
-    hidePreloader();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', reveal);
   } else {
-    images.forEach((img) => {
-      if (img.complete) {
-        onImageSettled();
-      } else {
-        img.addEventListener('load', onImageSettled, { once: true });
-        img.addEventListener('error', onImageSettled, { once: true });
-      }
-    });
+    reveal();
   }
 
-  setTimeout(hidePreloader, MAX_WAIT);
+  // Progressive hero photo load — shimmer → fade-in
+  var heroImg = document.getElementById('heroProfileImg');
+  if (heroImg) {
+    if (heroImg.complete && heroImg.naturalWidth > 0) {
+      heroImg.classList.add('is-loaded');
+    } else {
+      heroImg.addEventListener('load', function () { heroImg.classList.add('is-loaded'); }, { once: true });
+      heroImg.addEventListener('error', function () { heroImg.classList.add('is-loaded'); }, { once: true });
+    }
+  }
+
+  // ----- Nav Greeting Sequence -----
+  function startNavGreeting() {
+    var nav = document.querySelector('.nav');
+    var greeting = document.getElementById('navGreeting');
+    var icon = document.getElementById('navGreetingIcon');
+    var text = document.getElementById('navGreetingText');
+    var navItems = document.querySelectorAll('.nav .nav-item');
+
+    if (!greeting || !icon || !text) return;
+
+    // Set initial greeting mode state with reflow trigger
+    if (nav) {
+      void nav.offsetWidth;
+      nav.classList.add('nav-greeting-mode');
+    }
+
+    // Determine time-of-day
+    var hour = new Date().getHours();
+    var greetText, iconClass, iconColorClass;
+
+    if (hour >= 5 && hour < 12) {
+      greetText = 'Good Morning';
+      iconClass = 'fa-solid fa-sun';
+      iconColorClass = 'greeting-icon-morning';
+    } else if (hour >= 12 && hour < 17) {
+      greetText = 'Good Afternoon';
+      iconClass = 'fa-solid fa-sun';
+      iconColorClass = 'greeting-icon-afternoon';
+    } else if (hour >= 17 && hour < 21) {
+      greetText = 'Good Evening';
+      iconClass = 'fa-solid fa-cloud-moon';
+      iconColorClass = 'greeting-icon-evening';
+    } else {
+      greetText = 'Good Night';
+      iconClass = 'fa-solid fa-moon';
+      iconColorClass = 'greeting-icon-night';
+    }
+
+    text.textContent = greetText;
+    icon.className = iconClass + ' ' + iconColorClass;
+
+    // Timeline: show greeting → hold → hide → expand capsule → pop-in nav items
+    setTimeout(function () {
+      greeting.classList.add('is-visible');
+    }, 400);
+
+    // Hide greeting
+    setTimeout(function () {
+      greeting.classList.remove('is-visible');
+      greeting.classList.add('is-hiding');
+    }, 2200);
+
+    // Expand width of capsule
+    setTimeout(function () {
+      if (nav) {
+        nav.classList.remove('nav-greeting-mode');
+        nav.classList.add('nav-expanded-mode');
+      }
+    }, 2600);
+
+    // After capsule finishes expanding, pop in nav elements one-by-one
+    var popStart = 3800;
+    var stagger = 150;
+    navItems.forEach(function (item, i) {
+      setTimeout(function () {
+        item.classList.add('is-popped');
+      }, popStart + i * stagger);
+    });
+
+    // Clean up greeting element after animation completes
+    setTimeout(function () {
+      greeting.remove();
+    }, 4800);
+  }
 })();
+
+
 
 function triggerAutoHover(card) {
   if (autoHoverTimeout) clearTimeout(autoHoverTimeout);
