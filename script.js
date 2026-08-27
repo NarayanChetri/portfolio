@@ -44,41 +44,49 @@ let autoHoverRaf = null;
       nav.classList.add('nav-greeting-mode');
     }
 
+    // Instant Inline SVG icons for zero font-loading latency
+    var greetingSVGs = {
+      sun: '<svg viewBox="0 0 512 512" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z"/></svg>',
+      cloudMoon: '<svg viewBox="0 0 576 512" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M223.5 32C100 32 0 132.3 0 256c0 84.4 46.7 157.9 115.8 196.2A224 224 0 0 1 112 416c0-106 86-192 192-192c10.4 0 20.6 .8 30.5 2.4C322.2 144.5 277.9 77.2 223.5 32zM480 320a128 128 0 1 1 -256 0 128 128 0 1 1 256 0z"/></svg>',
+      moon: '<svg viewBox="0 0 384 512" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"/></svg>'
+    };
+
     // Determine time-of-day
     var hour = new Date().getHours();
-    var greetText, iconClass, iconColorClass;
+    var greetText, svgHtml, iconColorClass;
 
     if (hour >= 5 && hour < 12) {
       greetText = 'Good Morning';
-      iconClass = 'fa-solid fa-sun';
+      svgHtml = greetingSVGs.sun;
       iconColorClass = 'greeting-icon-morning';
     } else if (hour >= 12 && hour < 17) {
       greetText = 'Good Afternoon';
-      iconClass = 'fa-solid fa-sun';
+      svgHtml = greetingSVGs.sun;
       iconColorClass = 'greeting-icon-afternoon';
     } else if (hour >= 17 && hour < 21) {
       greetText = 'Good Evening';
-      iconClass = 'fa-solid fa-cloud-moon';
+      svgHtml = greetingSVGs.cloudMoon;
       iconColorClass = 'greeting-icon-evening';
     } else {
       greetText = 'Good Night';
-      iconClass = 'fa-solid fa-moon';
+      svgHtml = greetingSVGs.moon;
       iconColorClass = 'greeting-icon-night';
     }
 
     text.textContent = greetText;
-    icon.className = iconClass + ' ' + iconColorClass;
+    icon.className = 'nav-greeting-icon-wrap ' + iconColorClass;
+    icon.innerHTML = svgHtml;
 
-    // Timeline: show greeting → hold → hide → expand capsule → pop-in nav items
+    // Timeline: show greeting → hold → hide → expand capsule → pop-in nav items (snappy, fast pace)
     setTimeout(function () {
       greeting.classList.add('is-visible');
-    }, 400);
+    }, 200);
 
     // Hide greeting
     setTimeout(function () {
       greeting.classList.remove('is-visible');
       greeting.classList.add('is-hiding');
-    }, 2200);
+    }, 1400);
 
     // Expand width of capsule
     setTimeout(function () {
@@ -86,11 +94,11 @@ let autoHoverRaf = null;
         nav.classList.remove('nav-greeting-mode');
         nav.classList.add('nav-expanded-mode');
       }
-    }, 2600);
+    }, 1700);
 
-    // After capsule finishes expanding, pop in nav elements one-by-one
-    var popStart = 3800;
-    var stagger = 150;
+    // After capsule finishes expanding, pop in nav elements one-by-one with snappy stagger
+    var popStart = 2200;
+    var stagger = 90;
     navItems.forEach(function (item, i) {
       setTimeout(function () {
         item.classList.add('is-popped');
@@ -100,7 +108,7 @@ let autoHoverRaf = null;
     // Clean up greeting element after animation completes
     setTimeout(function () {
       greeting.remove();
-    }, 4800);
+    }, 2800);
   }
 })();
 
