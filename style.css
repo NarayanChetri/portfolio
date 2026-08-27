@@ -180,7 +180,7 @@ body.is-revealed [data-entrance="chip-3"] {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-entrance] {
+  body.is-revealed [data-entrance] {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;

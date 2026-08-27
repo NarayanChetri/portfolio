@@ -5,16 +5,41 @@ let autoHoverRaf = null;
 // Entrance Animations — instant reveal, staggered via CSS
 // ---------------------------------------------------------------------
 (function () {
-  // Trigger entrance animations as soon as DOM is ready
+  // Trigger entrance animations once critical fonts are loaded
+  let isRevealed = false;
   function reveal() {
+    if (isRevealed) return;
+    isRevealed = true;
     document.body.classList.add('is-revealed');
     startNavGreeting();
   }
 
+  function initReveal() {
+    if ('fonts' in document) {
+      // Pre-request critical fonts and wait until fonts are ready (or max 800ms safety timeout)
+      Promise.race([
+        Promise.allSettled([
+          document.fonts.load('400 48px Anton'),
+          document.fonts.load('400 16px Inter'),
+          document.fonts.load('600 16px Inter'),
+          document.fonts.load('700 16px Inter'),
+          document.fonts.load('800 16px Inter'),
+          document.fonts.load('600 24px Caveat'),
+          document.fonts.ready
+        ]),
+        new Promise(function (resolve) {
+          setTimeout(resolve, 800);
+        })
+      ]).then(reveal).catch(reveal);
+    } else {
+      reveal();
+    }
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', reveal);
+    document.addEventListener('DOMContentLoaded', initReveal);
   } else {
-    reveal();
+    initReveal();
   }
 
   // Progressive hero photo load — shimmer → fade-in
